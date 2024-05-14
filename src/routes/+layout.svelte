@@ -1,13 +1,13 @@
 <script>
-  import Footer from '$components/TheFooter.svelte';
-  import Header from '$components/TheHeader.svelte';
+  import TheFooter from '$components/TheFooter.svelte';
+  import TheHeader from '$components/TheHeader.svelte';
   import './layout.scss';
 </script>
 
 <div class="app">
-  <Header />
+  <TheHeader />
   <main class="my-4 my-md-5">
     <slot />
   </main>
-  <Footer />
+  <TheFooter />
 </div>

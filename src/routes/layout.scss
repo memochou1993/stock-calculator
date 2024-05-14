@@ -1,5 +1,16 @@
 @import 'bootstrap/scss/bootstrap';
 
-body {
-  font-family: 'Microsoft JhengHei', 'Helvetica Neue', Arial, sans-serif;
+$navbar-bg-light: $gray-800;
+$navbar-bg-dark: $gray-800;
+
+html {
+  body {
+    --bs-body-font-family: 'Microsoft JhengHei', 'Helvetica Neue', Arial, sans-serif;
+  }
+  &[data-bs-theme='light'] {
+    --navbar-bg: #{$navbar-bg-light};
+  }
+  &[data-bs-theme='dark'] {
+    --navbar-bg: #{$navbar-bg-dark};
+  }
 }
