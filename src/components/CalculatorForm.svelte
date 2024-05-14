@@ -13,6 +13,15 @@
     交易股數: 1000,
   };
 
+  const calcInputStep = (price: number | null): number => {
+    if (!price || price < 10) return 0.01;
+    if (price < 50) return 0.05;
+    if (price < 100) return 0.1;
+    if (price < 500) return 0.5;
+    if (price < 1000) return 1;
+    return 5;
+  };
+
   const isInRange = (value: number | null, min: number, max: number) => {
     return !value || (value >= min && value <= max);
   };
@@ -42,7 +51,7 @@
         inputmode="decimal"
         max={MAX_買入價格}
         min={MIN_買入價格}
-        step="0.1"
+        step={calcInputStep(state.買入價格)}
         type="number"
       />
       <div class="invalid-feedback">
@@ -61,7 +70,7 @@
         inputmode="decimal"
         max={MAX_賣出價格}
         min={MIN_賣出價格}
-        step="0.1"
+        step={calcInputStep(state.賣出價格)}
         type="number"
       />
       <div class="invalid-feedback">
