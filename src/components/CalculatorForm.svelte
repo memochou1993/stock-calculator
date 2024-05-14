@@ -14,7 +14,12 @@
   };
 
   const calcInputStep = (price: number | null): number => {
-    if (!price || price < 10) return 0.01;
+    if (!price) return 0.01;
+    if (state.交易類別 === 'ETF') {
+      if (price < 50) return 0.01;
+      return 0.05;
+    }
+    if (price < 10) return 0.01;
     if (price < 50) return 0.05;
     if (price < 100) return 0.1;
     if (price < 500) return 0.5;
@@ -31,7 +36,7 @@
   <div class="col-md-3">
     <div class="form-group mb-4">
       <label for="交易類別" class="mb-1">交易類別</label>
-      <select class="form-control form-control-md" id="交易類別">
+      <select bind:value={state.交易類別} class="form-control form-control-md" id="交易類別">
         <option value="現股">現股</option>
         <option value="現股當沖">現股當沖</option>
         <option value="ETF">ETF</option>
