@@ -8,13 +8,13 @@
 
   const state = {
     交易類別: '現股',
-    買入價格: '',
-    賣出價格: '',
-    交易股數: '1000',
+    買入價格: null,
+    賣出價格: null,
+    交易股數: 1000,
   };
 
-  const isValueBetween = (value: number, min: number, max: number) => {
-    return value === 0 || (value >= min && value <= max);
+  const isInRange = (value: number | null, min: number, max: number) => {
+    return !value || (value >= min && value <= max);
   };
 </script>
 
@@ -37,7 +37,7 @@
         autocomplete="off"
         autofocus
         bind:value={state.買入價格}
-        class="form-control form-control-md {!isValueBetween(parseFloat(state.買入價格 || '0'), MIN_買入價格, MAX_買入價格) && 'is-invalid'}"
+        class="form-control form-control-md {!isInRange(state.買入價格, MIN_買入價格, MAX_買入價格) && 'is-invalid'}"
         id="買入價格"
         inputmode="decimal"
         max={MAX_買入價格}
@@ -56,7 +56,7 @@
       <input
         autocomplete="off"
         bind:value={state.賣出價格}
-        class="form-control form-control-md {!isValueBetween(parseFloat(state.賣出價格 || '0'), MIN_賣出價格, MAX_賣出價格) && 'is-invalid'}"
+        class="form-control form-control-md {!isInRange(state.賣出價格, MIN_賣出價格, MAX_賣出價格) && 'is-invalid'}"
         id="賣出價格"
         inputmode="decimal"
         max={MAX_賣出價格}
@@ -75,7 +75,7 @@
       <input
         autocomplete="off"
         bind:value={state.交易股數}
-        class="form-control form-control-md {!isValueBetween(parseFloat(state.交易股數 || '0'), MIN_交易股數, MAX_交易股數) && 'is-invalid'}"
+        class="form-control form-control-md {!isInRange(state.交易股數, MIN_交易股數, MAX_交易股數) && 'is-invalid'}"
         id="交易股數"
         inputmode="numeric"
         max="MAX_交易股數"
