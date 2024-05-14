@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import AppThemeSwitch from './AppThemeSwitch.svelte';
 </script>
 

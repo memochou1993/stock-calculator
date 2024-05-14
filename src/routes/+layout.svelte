@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import TheFooter from '$components/TheFooter.svelte';
   import TheHeader from '$components/TheHeader.svelte';
   import './layout.scss';
