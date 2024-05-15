@@ -6,7 +6,7 @@
 
 <div class="app">
   <TheHeader />
-  <main class="my-4 my-md-5">
+  <main>
     <slot />
   </main>
   <TheFooter />

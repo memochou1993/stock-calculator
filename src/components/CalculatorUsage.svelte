@@ -1,4 +1,4 @@
-<div class="bg-body-secondary rounded-2 my-4">
+<div class="bg-body-secondary rounded-3">
   <div class="container-fluid p-4">
     <p class="lead">使用說明</p>
     <hr />
