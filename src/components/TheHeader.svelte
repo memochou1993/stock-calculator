@@ -2,7 +2,7 @@
   import AppThemeSwitch from './AppThemeSwitch.svelte';
 </script>
 
-<nav class="navbar navbar-expand-md text-light px-2 py-3">
+<nav class="navbar text-light px-2 py-3">
   <div class="container-fluid">
     <a class="navbar-brand text-light" href="/">台股交易計算器</a>
     <div>

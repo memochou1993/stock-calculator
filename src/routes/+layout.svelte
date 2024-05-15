@@ -6,7 +6,7 @@
 
 <div class="app">
   <TheHeader />
-  <main>
+  <main class="pt-4 pt-sm-5">
     <slot />
   </main>
   <TheFooter />

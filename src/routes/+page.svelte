@@ -5,7 +5,7 @@
 </script>
 
 <div class="container">
-  <div class="row g-4 my-2 my-md-4">
+  <div class="row g-4">
     <div class="col-12 col-md-3">
       <CalculatorForm />
     </div>

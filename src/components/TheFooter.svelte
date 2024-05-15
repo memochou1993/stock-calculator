@@ -1,4 +1,4 @@
-<footer class="text-center my-4">
+<footer class="text-center py-5">
   Built with ❤️ by
   <a href="https://profile.epoch.tw/" rel="noopener noreferrer" target="_blank">Memo Chou</a>
 </footer>
