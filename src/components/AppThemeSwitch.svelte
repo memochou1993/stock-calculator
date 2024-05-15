@@ -1,15 +1,32 @@
 <script lang="ts">
-  let theme = 'dark';
+  import { onMount } from 'svelte';
 
-  const toggle = () => {
-    theme = theme === 'light' ? 'dark' : 'light';
+  const THEME_LIGHT = 'light';
+  const THEME_DARK = 'dark';
+  const THEME_STORAGE_KEY = 'theme';
+
+  let theme: string;
+
+  const setTheme = (v: string) => {
+    theme = v;
     document.documentElement.setAttribute('data-bs-theme', theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   };
+
+  onMount(() => {
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    setTheme(localStorage.getItem(THEME_STORAGE_KEY) || (prefersDarkScheme.matches ? THEME_DARK : THEME_LIGHT));
+
+    prefersDarkScheme.addEventListener('change', (e) => {
+      setTheme(e.matches ? THEME_DARK : THEME_LIGHT);
+    });
+  });
 </script>
 
-<button class="btn ms-2" on:click={toggle}>
+<button class="btn ms-2" on:click={() => setTheme(theme === THEME_LIGHT ? THEME_DARK : THEME_LIGHT)}>
   <span class="material-symbols-outlined d-flex">
-    {theme === 'light' ? 'dark_mode' : 'light_mode'}
+    {theme === THEME_LIGHT ? 'dark_mode' : 'light_mode'}
   </span>
 </button>
 
