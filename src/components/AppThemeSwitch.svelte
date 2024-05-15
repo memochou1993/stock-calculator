@@ -7,7 +7,7 @@
   };
 </script>
 
-<button class="btn ms-3" on:click={toggle}>
+<button class="btn ms-2" on:click={toggle}>
   <span class="material-symbols-outlined d-flex">
     {theme === 'light' ? 'dark_mode' : 'light_mode'}
   </span>
