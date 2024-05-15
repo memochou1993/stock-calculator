@@ -4,7 +4,7 @@
 
 <div class="bg-body-secondary rounded-3">
   <div class="container-fluid p-4">
-    <p class="lead">{title}</p>
+    <p class="fs-5">{title}</p>
     <hr />
     <slot />
   </div>

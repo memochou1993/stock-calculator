@@ -9,7 +9,7 @@
   const MAX_交易股數 = 100000000;
 
   const state = {
-    交易類別: '現股',
+    交易類別: '股票',
     買入價格: null,
     賣出價格: null,
     交易股數: 1000,
@@ -40,8 +40,8 @@
       <div class="form-group mb-4">
         <label for="交易類別" class="mb-1">交易類別</label>
         <select bind:value={state.交易類別} class="form-control form-control-md" id="交易類別">
-          <option value="現股">現股</option>
-          <option value="現股當沖">現股當沖</option>
+          <option value="股票">股票</option>
+          <option value="股票當日沖銷">股票當日沖銷</option>
           <option value="ETF">ETF</option>
         </select>
       </div>
