@@ -1,7 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
-import CalculatorInput from './CalculatorInput';
-import CalculatorOutput from './CalculatorOutput';
+import { calculate, CalculatorConstant, CalculatorInput, CalculatorOutput } from './calculator';
 import Validator from './Validator';
-import calculate from './calculate';
 
-export { CalculatorInput, CalculatorOutput, Validator, calculate };
+export { calculate, CalculatorConstant, CalculatorInput, CalculatorOutput, Validator };

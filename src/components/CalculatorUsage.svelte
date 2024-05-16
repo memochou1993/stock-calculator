@@ -1,5 +1,5 @@
 <script>
-  import { 證券交易稅稅率常數 } from '../constants';
+  import { CalculatorConstant } from '$lib';
   import AppCard from './AppCard.svelte';
 </script>
 
@@ -15,15 +15,15 @@
       <tbody>
         <tr>
           <td>股票</td>
-          <td>{證券交易稅稅率常數.股票 * 1000}‰</td>
+          <td>{CalculatorConstant.證券交易稅稅率常數.股票 * 1000}‰</td>
         </tr>
         <tr>
           <td>股票當日沖銷</td>
-          <td>{證券交易稅稅率常數.股票當日沖銷 * 1000}‰</td>
+          <td>{CalculatorConstant.證券交易稅稅率常數.股票當日沖銷 * 1000}‰</td>
         </tr>
         <tr>
           <td>指數股票型基金（ETF）</td>
-          <td>{證券交易稅稅率常數.指數股票型基金 * 1000}‰</td>
+          <td>{CalculatorConstant.證券交易稅稅率常數.指數股票型基金 * 1000}‰</td>
         </tr>
       </tbody>
     </table>

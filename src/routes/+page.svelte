@@ -1,10 +1,9 @@
 <script lang="ts">
   import { CalculatorForm, CalculatorTable, CalculatorUsage } from '$components';
-  import { CalculatorInput } from '$lib';
-  import { 交易類別常數 } from '../constants';
+  import { CalculatorConstant, CalculatorInput } from '$lib';
 
   let calculatorInput = new CalculatorInput({
-    交易類別: 交易類別常數.股票,
+    交易類別: CalculatorConstant.交易類別常數.股票,
     買入價格: null,
     賣出價格: null,
     交易股數: 1000,

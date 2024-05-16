@@ -1,4 +1,4 @@
-import { 交易類別常數 } from '../constants';
+import * as CalculatorConstant from './CalculatorConstant';
 
 interface CalculatorInputArgs {
   交易類別: string;
@@ -28,7 +28,7 @@ class CalculatorInput {
 
   public calculateStep(price: number | null): number {
     if (!price) return 0.01;
-    if (this.交易類別 === 交易類別常數.ETF) {
+    if (this.交易類別 === CalculatorConstant.交易類別常數.ETF) {
       if (price < 50) return 0.01;
       return 0.05;
     }
