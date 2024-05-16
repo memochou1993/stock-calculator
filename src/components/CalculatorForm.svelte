@@ -1,36 +1,21 @@
 <script lang="ts">
+  import { CalculatorInput, Validator } from '$lib';
+  import { afterUpdate } from 'svelte';
   import { 交易常數, 交易類別常數 } from '../constants';
   import AppCard from './AppCard.svelte';
 
-  const state: {
-    交易類別: string;
-    買入價格: number | null;
-    賣出價格: number | null;
-    交易股數: number | null;
-  } = {
+  export let onUpdate: (input: CalculatorInput) => void;
+
+  const input = new CalculatorInput({
     交易類別: 交易類別常數.股票,
     買入價格: null,
     賣出價格: null,
     交易股數: 1000,
-  };
+  });
 
-  const calcInputStep = (price: number | null): number => {
-    if (!price) return 0.01;
-    if (state.交易類別 === 交易類別常數.ETF) {
-      if (price < 50) return 0.01;
-      return 0.05;
-    }
-    if (price < 10) return 0.01;
-    if (price < 50) return 0.05;
-    if (price < 100) return 0.1;
-    if (price < 500) return 0.5;
-    if (price < 1000) return 1;
-    return 5;
-  };
-
-  const isInRange = (value: number | null, min: number, max: number) => {
-    return !value || (value >= min && value <= max);
-  };
+  afterUpdate(() => {
+    onUpdate(input);
+  });
 </script>
 
 <AppCard title="交易參數">
@@ -38,7 +23,7 @@
     <div class="col-12">
       <div class="form-group mb-4">
         <label for="交易類別" class="mb-1">交易類別</label>
-        <select bind:value={state.交易類別} class="form-control form-control-md" id="交易類別">
+        <select bind:value={input.交易類別} class="form-control form-control-md" id="交易類別">
           <option value={交易類別常數.股票}>{交易類別常數.股票}</option>
           <option value={交易類別常數.股票當日沖銷}>{交易類別常數.股票當日沖銷}</option>
           <option value={交易類別常數.ETF}>{交易類別常數.ETF}</option>
@@ -52,13 +37,13 @@
         <input
           autocomplete="off"
           autofocus
-          bind:value={state.買入價格}
-          class="form-control form-control-md {!isInRange(state.買入價格, 交易常數.最小買入價格, 交易常數.最大買入價格) && 'is-invalid'}"
+          bind:value={input.買入價格}
+          class="form-control form-control-md {!Validator.isBetween(input.買入價格, 交易常數.最小買入價格, 交易常數.最大買入價格) && 'is-invalid'}"
           id="買入價格"
           inputmode="decimal"
           max={交易常數.最大買入價格}
           min={交易常數.最小買入價格}
-          step={calcInputStep(state.買入價格)}
+          step={input.calcInputStep(input.買入價格)}
           type="number"
         />
         <div class="invalid-feedback">
@@ -71,13 +56,13 @@
         <label for="賣出價格" class="mb-1">賣出價格</label>
         <input
           autocomplete="off"
-          bind:value={state.賣出價格}
-          class="form-control form-control-md {!isInRange(state.賣出價格, 交易常數.最小賣出價格, 交易常數.最大賣出價格) && 'is-invalid'}"
+          bind:value={input.賣出價格}
+          class="form-control form-control-md {!Validator.isBetween(input.賣出價格, 交易常數.最小賣出價格, 交易常數.最大賣出價格) && 'is-invalid'}"
           id="賣出價格"
           inputmode="decimal"
           max={交易常數.最大賣出價格}
           min={交易常數.最小賣出價格}
-          step={calcInputStep(state.賣出價格)}
+          step={input.calcInputStep(input.賣出價格)}
           type="number"
         />
         <div class="invalid-feedback">
@@ -90,8 +75,8 @@
         <label for="交易股數" class="mb-1">交易股數</label>
         <input
           autocomplete="off"
-          bind:value={state.交易股數}
-          class="form-control form-control-md {!isInRange(state.交易股數, 交易常數.最小交易股數, 交易常數.最大交易股數) && 'is-invalid'}"
+          bind:value={input.交易股數}
+          class="form-control form-control-md {!Validator.isBetween(input.交易股數, 交易常數.最小交易股數, 交易常數.最大交易股數) && 'is-invalid'}"
           id="交易股數"
           inputmode="numeric"
           max={交易常數.最大交易股數}

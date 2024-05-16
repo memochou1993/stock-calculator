@@ -2,6 +2,7 @@
   import CalculatorForm from '$components/CalculatorForm.svelte';
   import CalculatorTable from '$components/CalculatorTable.svelte';
   import CalculatorUsage from '$components/CalculatorUsage.svelte';
+  import type { CalculatorInput } from '$lib';
 
   // FIXME:
   let 交易類別 = '股票';
@@ -10,12 +11,17 @@
   let 交易股數 = 1000;
   let 手續費折扣 = 0.6;
   let 最低手續費 = 20;
+
+  const handleUpdate = (input: CalculatorInput) => {
+    // TODO:
+    console.log(input);
+  };
 </script>
 
 <div class="container">
   <div class="row g-4">
     <div class="col-12 col-md-3">
-      <CalculatorForm />
+      <CalculatorForm onUpdate={handleUpdate} />
     </div>
     <div class="col-12 col-md-9">
       <div class="row g-4">
