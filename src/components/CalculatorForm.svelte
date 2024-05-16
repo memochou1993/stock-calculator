@@ -37,7 +37,7 @@
           inputmode="decimal"
           max={交易常數.最大買入價格}
           min={交易常數.最小買入價格}
-          step={data.calcInputStep(data.買入價格)}
+          step={data.calculateStep(data.買入價格)}
           type="number"
         />
         <div class="invalid-feedback">
@@ -56,7 +56,7 @@
           inputmode="decimal"
           max={交易常數.最大賣出價格}
           min={交易常數.最小賣出價格}
-          step={data.calcInputStep(data.賣出價格)}
+          step={data.calculateStep(data.賣出價格)}
           type="number"
         />
         <div class="invalid-feedback">

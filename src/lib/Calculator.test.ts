@@ -14,14 +14,14 @@ test('試算股票', () => {
 
   const calculator = new Calculator(calculatorInput);
 
-  expect(calculator.成交價格.toFixed(1)).toBe('480.0');
-  expect(calculator.支付總金額.toFixed(1)).toBe('240205.2');
-  expect(calculator.實收總金額.toFixed(1)).toBe('478149.6');
-  expect(calculator.買入手續費.toFixed(1)).toBe('205.2');
-  expect(calculator.賣出手續費.toFixed(1)).toBe('410.4');
-  expect(calculator.證券交易稅.toFixed(1)).toBe('1440.0');
-  expect(calculator.損益金額.toFixed(1)).toBe('237944.4');
-  expect(calculator.報酬率.toFixed(4)).toBe('0.9914');
+  expect(calculator.output.成交價格.toFixed(1)).toBe('480.0');
+  expect(calculator.output.支付總金額.toFixed(1)).toBe('240205.2');
+  expect(calculator.output.實收總金額.toFixed(1)).toBe('478149.6');
+  expect(calculator.output.買入手續費.toFixed(1)).toBe('205.2');
+  expect(calculator.output.賣出手續費.toFixed(1)).toBe('410.4');
+  expect(calculator.output.證券交易稅.toFixed(1)).toBe('1440.0');
+  expect(calculator.output.損益金額.toFixed(1)).toBe('237944.4');
+  expect(calculator.output.報酬率.toFixed(4)).toBe('0.9914');
 });
 
 test('試算股票未滿最低手續費', () => {
@@ -36,12 +36,12 @@ test('試算股票未滿最低手續費', () => {
 
   const calculator = new Calculator(calculatorInput);
 
-  expect(calculator.成交價格.toFixed(1)).toBe('15.0');
-  expect(calculator.支付總金額.toFixed(1)).toBe('10020.0');
-  expect(calculator.實收總金額.toFixed(1)).toBe('14935.0');
-  expect(calculator.買入手續費.toFixed(1)).toBe('20.0');
-  expect(calculator.賣出手續費.toFixed(1)).toBe('20.0');
-  expect(calculator.證券交易稅.toFixed(1)).toBe('45.0');
-  expect(calculator.損益金額.toFixed(1)).toBe('4915.0');
-  expect(calculator.報酬率.toFixed(4)).toBe('0.4915');
+  expect(calculator.output.成交價格.toFixed(1)).toBe('15.0');
+  expect(calculator.output.支付總金額.toFixed(1)).toBe('10020.0');
+  expect(calculator.output.實收總金額.toFixed(1)).toBe('14935.0');
+  expect(calculator.output.買入手續費.toFixed(1)).toBe('20.0');
+  expect(calculator.output.賣出手續費.toFixed(1)).toBe('20.0');
+  expect(calculator.output.證券交易稅.toFixed(1)).toBe('45.0');
+  expect(calculator.output.損益金額.toFixed(1)).toBe('4915.0');
+  expect(calculator.output.報酬率.toFixed(4)).toBe('0.4915');
 });

@@ -1,5 +1,6 @@
 import { 交易類別常數, 手續費費率常數, 證券交易稅稅率常數 } from '../constants';
 import type CalculatorInput from './CalculatorInput';
+import type CalculatorOutput from './CalculatorOutput';
 
 class Calculator {
   交易類別: string;
@@ -18,47 +19,60 @@ class Calculator {
     this.最低手續費 = Number(args.最低手續費);
   }
 
-  get 成本(): number {
+  get output(): CalculatorOutput {
+    return {
+      成交價格: this.成交價格,
+      支付總金額: this.支付總金額,
+      實收總金額: this.實收總金額,
+      買入手續費: this.買入手續費,
+      賣出手續費: this.賣出手續費,
+      證券交易稅: this.證券交易稅,
+      損益金額: this.損益金額,
+      報酬率: this.報酬率,
+    };
+  }
+
+  private get 成本(): number {
     return this.買入價格 * this.交易股數;
   }
 
-  get 市值(): number {
+  private get 市值(): number {
     return this.成交價格 * this.交易股數;
   }
 
-  get 成交價格(): number {
+  private get 成交價格(): number {
     return this.賣出價格;
   }
 
-  get 支付總金額(): number {
+  private get 支付總金額(): number {
     return this.成本 + this.買入手續費;
   }
 
-  get 實收總金額(): number {
+  private get 實收總金額(): number {
     return this.市值 - this.賣出手續費 - this.證券交易稅;
   }
 
-  get 買入手續費(): number {
+  private get 買入手續費(): number {
     return Math.max(this.最低手續費, this.成本 * 手續費費率常數.證券經紀商 * this.手續費折扣);
   }
 
-  get 賣出手續費(): number {
+  private get 賣出手續費(): number {
     return Math.max(this.最低手續費, this.市值 * 手續費費率常數.證券經紀商 * this.手續費折扣);
   }
 
-  get 證券交易稅(): number {
+  private get 證券交易稅(): number {
     return this.市值 * this.計算證券交易稅稅率(this.交易類別);
   }
 
-  get 損益金額(): number {
+  private get 損益金額(): number {
     return this.實收總金額 - this.支付總金額;
   }
 
-  get 報酬率(): number {
+  private get 報酬率(): number {
     return this.損益金額 / this.成本;
   }
 
-  計算證券交易稅稅率(交易類別: string): number {
+  private 計算證券交易稅稅率(交易類別: string): number {
     if (交易類別 === 交易類別常數.股票當日沖銷) {
       return 證券交易稅稅率常數.股票當日沖銷;
     }

@@ -1,9 +1,13 @@
 <script lang="ts">
-  import { Calculator, CalculatorInput } from '$lib';
+  import { Calculator, CalculatorInput, CalculatorOutput } from '$lib';
   import AppCard from './AppCard.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
 
   export let data: CalculatorInput;
+
+  const calculate = (data: CalculatorInput): CalculatorOutput => {
+    return new Calculator(data).output;
+  };
 </script>
 
 <AppCard title="試算結果">
@@ -25,14 +29,10 @@
         <!-- FIXME: calculate step -->
         {#each Array.from({ length: 11 }, (_, i) => i - 5) as offset}
           <CalculatorTableRow
-            calculator={new Calculator(
+            data={calculate(
               new CalculatorInput({
-                交易類別: data.交易類別,
-                買入價格: data.買入價格,
+                ...data,
                 賣出價格: Number(data.賣出價格) + offset,
-                交易股數: data.交易股數,
-                手續費折扣: data.手續費折扣,
-                最低手續費: data.最低手續費,
               }),
             )}
           />
