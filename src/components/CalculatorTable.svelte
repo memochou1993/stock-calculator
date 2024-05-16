@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Calculator } from '$lib';
   import AppCard from './AppCard.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
 
@@ -12,7 +13,7 @@
 
 <AppCard title="試算結果">
   <div class="table-responsive">
-    <table class="table table-bordered table-striped text-center mb-0">
+    <table class="table table-bordered table-striped align-middle text-center mb-0">
       <thead>
         <tr>
           <th>成交價格</th>
@@ -27,7 +28,16 @@
       </thead>
       <tbody>
         {#each Array.from({ length: 11 }, (_, i) => i - 5) as offset}
-          <CalculatorTableRow {交易類別} {買入價格} 賣出價格={賣出價格 + offset} {交易股數} {手續費折扣} {最低手續費} />
+          <CalculatorTableRow
+            calculator={new Calculator({
+              交易類別,
+              買入價格,
+              賣出價格: 賣出價格 + offset,
+              交易股數,
+              手續費折扣,
+              最低手續費,
+            })}
+          />
         {/each}
       </tbody>
     </table>

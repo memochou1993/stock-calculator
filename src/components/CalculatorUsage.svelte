@@ -5,10 +5,10 @@
 
 <AppCard title="證券交易稅">
   <div class="table-responsive">
-    <table class="table align-middle">
+    <table class="table align-middle text-center mb-0">
       <thead>
         <tr>
-          <th style="width:30%;">交易類別</th>
+          <th style="width:75%;">交易類別</th>
           <th>稅率</th>
         </tr>
       </thead>

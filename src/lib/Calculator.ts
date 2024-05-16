@@ -7,28 +7,13 @@ class Calculator {
   交易股數: number;
   手續費折扣: number;
   最低手續費: number;
-
-  constructor({
-    交易類別,
-    買入價格,
-    賣出價格,
-    交易股數,
-    手續費折扣,
-    最低手續費,
-  }: {
-    交易類別: string;
-    買入價格: number;
-    賣出價格: number;
-    交易股數: number;
-    手續費折扣: number;
-    最低手續費: number;
-  }) {
-    this.交易類別 = 交易類別;
-    this.買入價格 = 買入價格;
-    this.賣出價格 = 賣出價格;
-    this.交易股數 = 交易股數;
-    this.手續費折扣 = 手續費折扣;
-    this.最低手續費 = 最低手續費;
+  constructor(args: { 交易類別: string; 買入價格: number; 賣出價格: number; 交易股數: number; 手續費折扣: number; 最低手續費: number }) {
+    this.交易類別 = args.交易類別;
+    this.買入價格 = args.買入價格;
+    this.賣出價格 = args.賣出價格;
+    this.交易股數 = args.交易股數;
+    this.手續費折扣 = args.手續費折扣;
+    this.最低手續費 = args.最低手續費;
   }
 
   get 成本(): number {
