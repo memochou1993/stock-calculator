@@ -2,31 +2,32 @@
   import CalculatorForm from '$components/CalculatorForm.svelte';
   import CalculatorTable from '$components/CalculatorTable.svelte';
   import CalculatorUsage from '$components/CalculatorUsage.svelte';
-  import type { CalculatorInput } from '$lib';
+  import { CalculatorInput } from '$lib';
+  import { 交易類別常數 } from '../constants';
 
-  // FIXME:
-  let 交易類別 = '股票';
-  let 買入價格 = 100;
-  let 賣出價格 = 101;
-  let 交易股數 = 1000;
-  let 手續費折扣 = 0.6;
-  let 最低手續費 = 20;
+  let calculatorInput = new CalculatorInput({
+    交易類別: 交易類別常數.股票,
+    買入價格: null,
+    賣出價格: null,
+    交易股數: 1000,
+    手續費折扣: 1,
+    最低手續費: 20,
+  });
 
-  const handleUpdate = (input: CalculatorInput) => {
-    // TODO:
-    console.log(input);
+  const handleUpdate = (data: CalculatorInput) => {
+    calculatorInput = data;
   };
 </script>
 
 <div class="container">
   <div class="row g-4">
-    <div class="col-12 col-md-3">
-      <CalculatorForm onUpdate={handleUpdate} />
+    <div class="col-12 col-lg-3">
+      <CalculatorForm data={calculatorInput} onUpdate={handleUpdate} />
     </div>
-    <div class="col-12 col-md-9">
+    <div class="col-12 col-lg-9">
       <div class="row g-4">
         <div class="col-12">
-          <CalculatorTable {交易類別} {買入價格} {賣出價格} {交易股數} {手續費折扣} {最低手續費} />
+          <CalculatorTable data={calculatorInput} />
         </div>
         <div class="col-12">
           <CalculatorUsage />

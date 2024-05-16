@@ -1,4 +1,5 @@
 import { 交易類別常數, 手續費費率常數, 證券交易稅稅率常數 } from '../constants';
+import type CalculatorInput from './CalculatorInput';
 
 class Calculator {
   交易類別: string;
@@ -7,13 +8,14 @@ class Calculator {
   交易股數: number;
   手續費折扣: number;
   最低手續費: number;
-  constructor(args: { 交易類別: string; 買入價格: number; 賣出價格: number; 交易股數: number; 手續費折扣: number; 最低手續費: number }) {
+
+  constructor(args: CalculatorInput) {
     this.交易類別 = args.交易類別;
-    this.買入價格 = args.買入價格;
-    this.賣出價格 = args.賣出價格;
-    this.交易股數 = args.交易股數;
-    this.手續費折扣 = args.手續費折扣;
-    this.最低手續費 = args.最低手續費;
+    this.買入價格 = Number(args.買入價格);
+    this.賣出價格 = Number(args.賣出價格);
+    this.交易股數 = Number(args.交易股數);
+    this.手續費折扣 = Number(args.手續費折扣);
+    this.最低手續費 = Number(args.最低手續費);
   }
 
   get 成本(): number {

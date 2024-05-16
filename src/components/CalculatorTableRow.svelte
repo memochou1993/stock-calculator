@@ -5,7 +5,7 @@
 </script>
 
 <tr>
-  <td>{Number(calculator.成交價格.toFixed(1)).toLocaleString()}</td>
+  <td>{Number(calculator.成交價格.toFixed(2)).toLocaleString()}</td>
   <td>{Number(calculator.支付總金額.toFixed(1)).toLocaleString()}</td>
   <td>{Number(calculator.實收總金額.toFixed(1)).toLocaleString()}</td>
   <td>{Number(calculator.買入手續費.toFixed(1)).toLocaleString()}</td>

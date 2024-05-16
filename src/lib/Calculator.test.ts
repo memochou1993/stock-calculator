@@ -1,15 +1,18 @@
 import { expect, test } from 'vitest';
 import Calculator from './Calculator';
+import CalculatorInput from './CalculatorInput';
 
 test('試算股票', () => {
-  const calculator = new Calculator({
-    交易類別: '買進',
+  const calculatorInput = new CalculatorInput({
+    交易類別: '股票',
     買入價格: 240,
     賣出價格: 480,
     交易股數: 1000,
     手續費折扣: 0.6,
     最低手續費: 20,
   });
+
+  const calculator = new Calculator(calculatorInput);
 
   expect(calculator.成交價格.toFixed(1)).toBe('480.0');
   expect(calculator.支付總金額.toFixed(1)).toBe('240205.2');
@@ -21,8 +24,8 @@ test('試算股票', () => {
   expect(calculator.報酬率.toFixed(4)).toBe('0.9914');
 });
 
-test('試算股票小額交易', () => {
-  const calculator = new Calculator({
+test('試算股票未滿最低手續費', () => {
+  const calculatorInput = new CalculatorInput({
     交易類別: '股票',
     買入價格: 10,
     賣出價格: 15,
@@ -30,6 +33,8 @@ test('試算股票小額交易', () => {
     手續費折扣: 0.6,
     最低手續費: 20,
   });
+
+  const calculator = new Calculator(calculatorInput);
 
   expect(calculator.成交價格.toFixed(1)).toBe('15.0');
   expect(calculator.支付總金額.toFixed(1)).toBe('10020.0');
