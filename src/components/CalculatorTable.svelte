@@ -1,13 +1,9 @@
 <script lang="ts">
-  import { Calculator, CalculatorInput, CalculatorOutput } from '$lib';
+  import { CalculatorInput, calculate } from '$lib';
   import AppCard from './AppCard.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
 
   export let data: CalculatorInput;
-
-  const calculate = (data: CalculatorInput): CalculatorOutput => {
-    return new Calculator(data).output;
-  };
 </script>
 
 <AppCard title="試算結果">
