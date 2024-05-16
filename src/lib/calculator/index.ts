@@ -1,5 +1,5 @@
 import calculate from './calculate';
-import * as CalculatorConstant from './CalculatorConstant';
+import CalculatorConstant from './CalculatorConstant';
 import CalculatorInput from './CalculatorInput';
 import CalculatorOutput from './CalculatorOutput';
 

@@ -3,7 +3,7 @@
   import { CalculatorConstant, CalculatorInput } from '$lib';
 
   let calculatorInput = new CalculatorInput({
-    交易類別: CalculatorConstant.交易類別常數.股票,
+    交易類別: CalculatorConstant.交易類別.股票,
     買入價格: null,
     賣出價格: null,
     交易股數: 1000,
