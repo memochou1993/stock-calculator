@@ -7,6 +7,9 @@
   export let onUpdate: (data: CalculatorInput) => void;
 
   afterUpdate(() => {
+    if (document.getElementsByClassName('is-invalid').length > 0) {
+      return;
+    }
     onUpdate(data);
   });
 </script>
