@@ -1,4 +1,4 @@
-import { 手續費費率, 證券交易稅稅率 } from '../constants';
+import { 交易類別常數, 手續費費率常數, 證券交易稅稅率常數 } from '../constants';
 
 class Calculator {
   交易類別: string;
@@ -37,11 +37,11 @@ class Calculator {
   }
 
   get 買入手續費(): number {
-    return Math.max(this.最低手續費, this.成本 * 手續費費率.證券經紀商 * this.手續費折扣);
+    return Math.max(this.最低手續費, this.成本 * 手續費費率常數.證券經紀商 * this.手續費折扣);
   }
 
   get 賣出手續費(): number {
-    return Math.max(this.最低手續費, this.市值 * 手續費費率.證券經紀商 * this.手續費折扣);
+    return Math.max(this.最低手續費, this.市值 * 手續費費率常數.證券經紀商 * this.手續費折扣);
   }
 
   get 證券交易稅(): number {
@@ -57,13 +57,13 @@ class Calculator {
   }
 
   計算證券交易稅稅率(交易類別: string): number {
-    if (交易類別 === '股票當日沖銷') {
-      return 證券交易稅稅率.股票當日沖銷;
+    if (交易類別 === 交易類別常數.股票當日沖銷) {
+      return 證券交易稅稅率常數.股票當日沖銷;
     }
-    if (交易類別 === 'ETF') {
-      return 證券交易稅稅率.指數股票型基金;
+    if (交易類別 === 交易類別常數.ETF) {
+      return 證券交易稅稅率常數.指數股票型基金;
     }
-    return 證券交易稅稅率.股票;
+    return 證券交易稅稅率常數.股票;
   }
 }
 

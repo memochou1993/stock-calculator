@@ -1,15 +1,14 @@
 <script lang="ts">
+  import { 交易常數, 交易類別常數 } from '../constants';
   import AppCard from './AppCard.svelte';
 
-  const MIN_買入價格 = 0;
-  const MIN_賣出價格 = 0;
-  const MIN_交易股數 = 0;
-  const MAX_買入價格 = 10000;
-  const MAX_賣出價格 = 10000;
-  const MAX_交易股數 = 100000000;
-
-  const state = {
-    交易類別: '股票',
+  const state: {
+    交易類別: string;
+    買入價格: number | null;
+    賣出價格: number | null;
+    交易股數: number | null;
+  } = {
+    交易類別: 交易類別常數.股票,
     買入價格: null,
     賣出價格: null,
     交易股數: 1000,
@@ -17,7 +16,7 @@
 
   const calcInputStep = (price: number | null): number => {
     if (!price) return 0.01;
-    if (state.交易類別 === 'ETF') {
+    if (state.交易類別 === 交易類別常數.ETF) {
       if (price < 50) return 0.01;
       return 0.05;
     }
@@ -40,9 +39,9 @@
       <div class="form-group mb-4">
         <label for="交易類別" class="mb-1">交易類別</label>
         <select bind:value={state.交易類別} class="form-control form-control-md" id="交易類別">
-          <option value="股票">股票</option>
-          <option value="股票當日沖銷">股票當日沖銷</option>
-          <option value="ETF">ETF</option>
+          <option value={交易類別常數.股票}>{交易類別常數.股票}</option>
+          <option value={交易類別常數.股票當日沖銷}>{交易類別常數.股票當日沖銷}</option>
+          <option value={交易類別常數.ETF}>{交易類別常數.ETF}</option>
         </select>
       </div>
     </div>
@@ -54,16 +53,16 @@
           autocomplete="off"
           autofocus
           bind:value={state.買入價格}
-          class="form-control form-control-md {!isInRange(state.買入價格, MIN_買入價格, MAX_買入價格) && 'is-invalid'}"
+          class="form-control form-control-md {!isInRange(state.買入價格, 交易常數.最小買入價格, 交易常數.最大買入價格) && 'is-invalid'}"
           id="買入價格"
           inputmode="decimal"
-          max={MAX_買入價格}
-          min={MIN_買入價格}
+          max={交易常數.最大買入價格}
+          min={交易常數.最小買入價格}
           step={calcInputStep(state.買入價格)}
           type="number"
         />
         <div class="invalid-feedback">
-          請輸入 {MIN_買入價格.toLocaleString()} 到 {MAX_買入價格.toLocaleString()} 之間的數字
+          請輸入 {交易常數.最小買入價格.toLocaleString()} 到 {交易常數.最大買入價格.toLocaleString()} 之間的數字
         </div>
       </div>
     </div>
@@ -73,16 +72,16 @@
         <input
           autocomplete="off"
           bind:value={state.賣出價格}
-          class="form-control form-control-md {!isInRange(state.賣出價格, MIN_賣出價格, MAX_賣出價格) && 'is-invalid'}"
+          class="form-control form-control-md {!isInRange(state.賣出價格, 交易常數.最小賣出價格, 交易常數.最大賣出價格) && 'is-invalid'}"
           id="賣出價格"
           inputmode="decimal"
-          max={MAX_賣出價格}
-          min={MIN_賣出價格}
+          max={交易常數.最大賣出價格}
+          min={交易常數.最小賣出價格}
           step={calcInputStep(state.賣出價格)}
           type="number"
         />
         <div class="invalid-feedback">
-          請輸入 {MIN_賣出價格.toLocaleString()} 到 {MAX_賣出價格.toLocaleString()} 之間的數字
+          請輸入 {交易常數.最小賣出價格.toLocaleString()} 到 {交易常數.最大賣出價格.toLocaleString()} 之間的數字
         </div>
       </div>
     </div>
@@ -92,16 +91,16 @@
         <input
           autocomplete="off"
           bind:value={state.交易股數}
-          class="form-control form-control-md {!isInRange(state.交易股數, MIN_交易股數, MAX_交易股數) && 'is-invalid'}"
+          class="form-control form-control-md {!isInRange(state.交易股數, 交易常數.最小交易股數, 交易常數.最大交易股數) && 'is-invalid'}"
           id="交易股數"
           inputmode="numeric"
-          max="MAX_交易股數"
-          min="MIN_交易股數"
+          max={交易常數.最大交易股數}
+          min={交易常數.最小交易股數}
           step="1000"
           type="number"
         />
         <div class="invalid-feedback">
-          請輸入 {MIN_交易股數.toLocaleString()} 到 {MAX_交易股數.toLocaleString()} 之間的數字
+          請輸入 {交易常數.最小交易股數.toLocaleString()} 到 {交易常數.最大交易股數.toLocaleString()} 之間的數字
         </div>
       </div>
     </div>
