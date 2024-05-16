@@ -1,7 +1,5 @@
 <script lang="ts">
-  import CalculatorForm from '$components/CalculatorForm.svelte';
-  import CalculatorTable from '$components/CalculatorTable.svelte';
-  import CalculatorUsage from '$components/CalculatorUsage.svelte';
+  import { CalculatorForm, CalculatorTable, CalculatorUsage } from '$components';
   import { CalculatorInput } from '$lib';
   import { 交易類別常數 } from '../constants';
 
