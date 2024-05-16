@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CalculatorConstant, CalculatorInput, Validator } from '$lib';
+  import { CalculatorConstant, CalculatorInput, validate } from '$lib';
   import { afterUpdate } from 'svelte';
   import AppCard from './AppCard.svelte';
 
@@ -31,8 +31,7 @@
           autocomplete="off"
           autofocus
           bind:value={data.買入價格}
-          class="form-control form-control-md {!Validator.isBetween(
-            data.買入價格,
+          class="form-control form-control-md {!validate(data.買入價格).isBetween(
             CalculatorConstant.交易參數.最小買入價格,
             CalculatorConstant.交易參數.最大買入價格,
           ) && 'is-invalid'}"
@@ -54,8 +53,7 @@
         <input
           autocomplete="off"
           bind:value={data.賣出價格}
-          class="form-control form-control-md {!Validator.isBetween(
-            data.賣出價格,
+          class="form-control form-control-md {!validate(data.賣出價格).isBetween(
             CalculatorConstant.交易參數.最小賣出價格,
             CalculatorConstant.交易參數.最大賣出價格,
           ) && 'is-invalid'}"
@@ -77,8 +75,7 @@
         <input
           autocomplete="off"
           bind:value={data.交易股數}
-          class="form-control form-control-md {!Validator.isBetween(
-            data.交易股數,
+          class="form-control form-control-md {!validate(data.交易股數).isBetween(
             CalculatorConstant.交易參數.最小交易股數,
             CalculatorConstant.交易參數.最大交易股數,
           ) && 'is-invalid'}"
@@ -100,8 +97,7 @@
         <input
           autocomplete="off"
           bind:value={data.手續費折扣}
-          class="form-control form-control-md {!Validator.isBetween(
-            data.手續費折扣,
+          class="form-control form-control-md {!validate(data.手續費折扣).isBetween(
             CalculatorConstant.交易參數.最小手續費折扣,
             CalculatorConstant.交易參數.最大手續費折扣,
           ) && 'is-invalid'}"
@@ -122,8 +118,7 @@
           <input
             autocomplete="off"
             bind:value={data.最低手續費}
-            class="form-control form-control-md {!Validator.isBetween(
-              data.最低手續費,
+            class="form-control form-control-md {!validate(data.最低手續費).isBetween(
               CalculatorConstant.交易參數.最小最低手續費,
               CalculatorConstant.交易參數.最大最低手續費,
             ) && 'is-invalid'}"
