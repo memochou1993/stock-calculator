@@ -1,5 +1,3 @@
-import CalculatorConstant from './CalculatorConstant';
-
 interface CalculatorInputArgs {
   交易類別: string;
   買入價格: number | null;
@@ -24,20 +22,6 @@ class CalculatorInput {
     this.交易股數 = args.交易股數;
     this.手續費折扣 = args.手續費折扣;
     this.最低手續費 = args.最低手續費;
-  }
-
-  public calculateStep(price: number | null): number {
-    if (!price) return 0.01;
-    if (this.交易類別 === CalculatorConstant.交易類別.ETF) {
-      if (price < 50) return 0.01;
-      return 0.05;
-    }
-    if (price < 10) return 0.01;
-    if (price < 50) return 0.05;
-    if (price < 100) return 0.1;
-    if (price < 500) return 0.5;
-    if (price < 1000) return 1;
-    return 5;
   }
 }
 

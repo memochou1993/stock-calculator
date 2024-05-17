@@ -1,9 +1,25 @@
 <script lang="ts">
-  import { CalculatorInput, calculate } from '$lib';
+  import { CalculatorInput, calculate, calculateStep } from '$lib';
   import AppCard from './AppCard.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
 
   export let data: CalculatorInput;
+
+  const generatePrices = (type: string, price: number, length: number): number[] => {
+    const prices = [];
+    for (let i = 0; i < Math.abs(length); i++) {
+      const step = calculateStep(type, price);
+      price += step * (length > 0 ? 1 : -1);
+      prices.push(price);
+    }
+    return prices;
+  };
+
+  $: prices = [
+    ...generatePrices(data.交易類別, Number(data.賣出價格), -5).reverse(),
+    Number(data.賣出價格),
+    ...generatePrices(data.交易類別, Number(data.賣出價格), 5),
+  ];
 </script>
 
 <AppCard title="試算結果">
@@ -22,16 +38,15 @@
         </tr>
       </thead>
       <tbody>
-        <!-- FIXME: calculate step -->
-        {#each Array.from({ length: 11 }, (_, i) => i - 5) as offset}
+        {#each prices as price}
           <CalculatorTableRow
             data={calculate(
               new CalculatorInput({
                 ...data,
-                賣出價格: Number(data.賣出價格) + offset,
+                賣出價格: price,
               }),
             )}
-            highlighted={offset === 0}
+            highlighted={Number(data.賣出價格) === price}
           />
         {/each}
       </tbody>

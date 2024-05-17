@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CalculatorConstant, CalculatorInput, validate } from '$lib';
+  import { CalculatorConstant, CalculatorInput, calculateStep, validate } from '$lib';
   import { afterUpdate } from 'svelte';
   import AppCard from './AppCard.svelte';
 
@@ -42,7 +42,7 @@
           inputmode="decimal"
           max={CalculatorConstant.交易參數.最大買入價格}
           min={CalculatorConstant.交易參數.最小買入價格}
-          step={data.calculateStep(data.買入價格)}
+          step={calculateStep(data.交易類別, data.買入價格)}
           type="number"
         />
         <div class="invalid-feedback">
@@ -64,7 +64,7 @@
           inputmode="decimal"
           max={CalculatorConstant.交易參數.最大賣出價格}
           min={CalculatorConstant.交易參數.最小賣出價格}
-          step={data.calculateStep(data.賣出價格)}
+          step={calculateStep(data.交易類別, data.賣出價格)}
           type="number"
         />
         <div class="invalid-feedback">
