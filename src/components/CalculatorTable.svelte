@@ -8,8 +8,8 @@
 
 <AppCard title="試算結果">
   <div class="table-responsive">
-    <table class="table table-bordered table-striped align-middle text-center mb-0">
-      <thead>
+    <table class="table table-bordered table-striped table-light align-middle text-center mb-0">
+      <thead class="table-dark">
         <tr>
           <th>成交價格</th>
           <th>支付總金額</th>
@@ -31,6 +31,7 @@
                 賣出價格: Number(data.賣出價格) + offset,
               }),
             )}
+            highlighted={offset === 0}
           />
         {/each}
       </tbody>
