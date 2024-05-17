@@ -1,16 +1,21 @@
 <script lang="ts">
   import { CalculatorConstant, CalculatorInput, calculateStep, validate } from '$lib';
-  import { afterUpdate } from 'svelte';
+  import { afterUpdate, onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
 
-  export let data: CalculatorInput;
-  export let onUpdate: (data: CalculatorInput) => void;
+  export let calculatorInput: CalculatorInput;
+  export let onUpdate: (calculatorInput: CalculatorInput) => void;
+
+  onMount(() => {
+    calculatorInput.手續費折扣 = Number(localStorage.getItem(CalculatorConstant.儲存鍵.手續費折扣));
+    calculatorInput.最低手續費 = Number(localStorage.getItem(CalculatorConstant.儲存鍵.最低手續費));
+  });
 
   afterUpdate(() => {
     if (document.getElementsByClassName('is-invalid').length > 0) {
       return;
     }
-    onUpdate(data);
+    onUpdate(calculatorInput);
   });
 </script>
 
@@ -19,7 +24,7 @@
     <div class="col-12">
       <div class="form-group mb-4">
         <label for="交易類別" class="mb-1">交易類別</label>
-        <select bind:value={data.交易類別} class="form-control form-control-md" id="交易類別">
+        <select bind:value={calculatorInput.交易類別} class="form-control form-control-md" id="交易類別">
           <option value={CalculatorConstant.交易類別.股票}>{CalculatorConstant.交易類別.股票}</option>
           <option value={CalculatorConstant.交易類別.股票當日沖銷}>{CalculatorConstant.交易類別.股票當日沖銷}</option>
           <option value={CalculatorConstant.交易類別.ETF}>{CalculatorConstant.交易類別.ETF}</option>
@@ -33,8 +38,8 @@
         <input
           autocomplete="off"
           autofocus
-          bind:value={data.買入價格}
-          class="form-control form-control-md {!validate(data.買入價格).isBetween(
+          bind:value={calculatorInput.買入價格}
+          class="form-control form-control-md {!validate(calculatorInput.買入價格).isBetween(
             CalculatorConstant.交易參數.最小買入價格,
             CalculatorConstant.交易參數.最大買入價格,
           ) && 'is-invalid'}"
@@ -42,7 +47,7 @@
           inputmode="decimal"
           max={CalculatorConstant.交易參數.最大買入價格}
           min={CalculatorConstant.交易參數.最小買入價格}
-          step={calculateStep(data.交易類別, data.買入價格)}
+          step={calculateStep(calculatorInput.交易類別, calculatorInput.買入價格)}
           type="number"
         />
         <div class="invalid-feedback">
@@ -55,8 +60,8 @@
         <label for="賣出價格" class="mb-1">賣出價格</label>
         <input
           autocomplete="off"
-          bind:value={data.賣出價格}
-          class="form-control form-control-md {!validate(data.賣出價格).isBetween(
+          bind:value={calculatorInput.賣出價格}
+          class="form-control form-control-md {!validate(calculatorInput.賣出價格).isBetween(
             CalculatorConstant.交易參數.最小賣出價格,
             CalculatorConstant.交易參數.最大賣出價格,
           ) && 'is-invalid'}"
@@ -64,7 +69,7 @@
           inputmode="decimal"
           max={CalculatorConstant.交易參數.最大賣出價格}
           min={CalculatorConstant.交易參數.最小賣出價格}
-          step={calculateStep(data.交易類別, data.賣出價格)}
+          step={calculateStep(calculatorInput.交易類別, calculatorInput.賣出價格)}
           type="number"
         />
         <div class="invalid-feedback">
@@ -77,8 +82,8 @@
         <label for="交易股數" class="mb-1">交易股數</label>
         <input
           autocomplete="off"
-          bind:value={data.交易股數}
-          class="form-control form-control-md {!validate(data.交易股數).isBetween(
+          bind:value={calculatorInput.交易股數}
+          class="form-control form-control-md {!validate(calculatorInput.交易股數).isBetween(
             CalculatorConstant.交易參數.最小交易股數,
             CalculatorConstant.交易參數.最大交易股數,
           ) && 'is-invalid'}"
@@ -99,8 +104,8 @@
         <label for="手續費折扣" class="mb-1">手續費折扣</label>
         <input
           autocomplete="off"
-          bind:value={data.手續費折扣}
-          class="form-control form-control-md {!validate(data.手續費折扣).isBetween(
+          bind:value={calculatorInput.手續費折扣}
+          class="form-control form-control-md {!validate(calculatorInput.手續費折扣).isBetween(
             CalculatorConstant.交易參數.最小手續費折扣,
             CalculatorConstant.交易參數.最大手續費折扣,
           ) && 'is-invalid'}"
@@ -108,6 +113,7 @@
           inputmode="decimal"
           max={CalculatorConstant.交易參數.最大手續費折扣}
           min={CalculatorConstant.交易參數.最小手續費折扣}
+          on:input={() => localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(calculatorInput.手續費折扣))}
           step="0.05"
           type="number"
         />
@@ -120,8 +126,8 @@
           <label for="最低手續費" class="mb-1">最低手續費</label>
           <input
             autocomplete="off"
-            bind:value={data.最低手續費}
-            class="form-control form-control-md {!validate(data.最低手續費).isBetween(
+            bind:value={calculatorInput.最低手續費}
+            class="form-control form-control-md {!validate(calculatorInput.最低手續費).isBetween(
               CalculatorConstant.交易參數.最小最低手續費,
               CalculatorConstant.交易參數.最大最低手續費,
             ) && 'is-invalid'}"
@@ -129,6 +135,7 @@
             inputmode="numeric"
             max={CalculatorConstant.交易參數.最大最低手續費}
             min={CalculatorConstant.交易參數.最小最低手續費}
+            on:input={() => localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費))}
             step="1"
             type="number"
           />

@@ -10,21 +10,17 @@
     手續費折扣: 1,
     最低手續費: 20,
   });
-
-  const handleUpdate = (data: CalculatorInput) => {
-    calculatorInput = data;
-  };
 </script>
 
 <div class="container">
   <div class="row g-4">
     <div class="col-12 col-lg-3">
-      <CalculatorForm data={calculatorInput} onUpdate={handleUpdate} />
+      <CalculatorForm {calculatorInput} onUpdate={(v) => (calculatorInput = v)} />
     </div>
     <div class="col-12 col-lg-9">
       <div class="row g-4">
         <div class="col-12">
-          <CalculatorTable data={calculatorInput} />
+          <CalculatorTable {calculatorInput} />
         </div>
         <div class="col-12">
           <CalculatorUsage />

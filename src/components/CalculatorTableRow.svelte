@@ -1,35 +1,34 @@
 <script lang="ts">
   import { CalculatorOutput } from '$lib';
 
-  export let data: CalculatorOutput;
-
+  export let calculatorOutput: CalculatorOutput;
   export let highlighted;
 </script>
 
 <tr class={highlighted && 'highlighted fw-medium'}>
   <td>
-    {CalculatorOutput.toLocaleString(data.成交價格, 2)}
+    {CalculatorOutput.toLocaleString(calculatorOutput.成交價格, 2)}
   </td>
   <td>
-    {CalculatorOutput.toLocaleString(data.支付總金額, 1)}
+    {CalculatorOutput.toLocaleString(calculatorOutput.支付總金額, 1)}
   </td>
   <td>
-    {CalculatorOutput.toLocaleString(data.實收總金額, 1)}
+    {CalculatorOutput.toLocaleString(calculatorOutput.實收總金額, 1)}
   </td>
   <td>
-    {CalculatorOutput.toLocaleString(data.買入手續費, 1)}
+    {CalculatorOutput.toLocaleString(calculatorOutput.買入手續費, 1)}
   </td>
   <td>
-    {CalculatorOutput.toLocaleString(data.賣出手續費, 1)}
+    {CalculatorOutput.toLocaleString(calculatorOutput.賣出手續費, 1)}
   </td>
   <td>
-    {CalculatorOutput.toLocaleString(data.證券交易稅, 1)}
+    {CalculatorOutput.toLocaleString(calculatorOutput.證券交易稅, 1)}
   </td>
-  <td class={data.損益金額 > 0 ? 'positive' : 'negative'}>
-    {CalculatorOutput.toLocaleString(data.損益金額, 1)}
+  <td class={calculatorOutput.損益金額 > 0 ? 'positive' : 'negative'}>
+    {CalculatorOutput.toLocaleString(calculatorOutput.損益金額, 1)}
   </td>
-  <td class={data.報酬率 > 0 ? 'positive' : 'negative'}>
-    {CalculatorOutput.toLocaleString(data.報酬率 * 100, 2)}%
+  <td class={calculatorOutput.報酬率 > 0 ? 'positive' : 'negative'}>
+    {CalculatorOutput.toLocaleString(calculatorOutput.報酬率 * 100, 2)}%
   </td>
 </tr>
 

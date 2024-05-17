@@ -3,7 +3,7 @@
   import AppCard from './AppCard.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
 
-  export let data: CalculatorInput;
+  export let calculatorInput: CalculatorInput;
 
   const generatePrices = (type: string, price: number, length: number): number[] => {
     const prices = [];
@@ -16,9 +16,9 @@
   };
 
   $: prices = [
-    ...generatePrices(data.交易類別, Number(data.賣出價格), -5).reverse(),
-    Number(data.賣出價格),
-    ...generatePrices(data.交易類別, Number(data.賣出價格), 5),
+    ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), -5).reverse(),
+    Number(calculatorInput.賣出價格),
+    ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), 5),
   ];
 </script>
 
@@ -40,13 +40,13 @@
       <tbody>
         {#each prices as price}
           <CalculatorTableRow
-            data={calculate(
+            calculatorOutput={calculate(
               new CalculatorInput({
-                ...data,
+                ...calculatorInput,
                 賣出價格: price,
               }),
             )}
-            highlighted={Number(data.賣出價格) === price}
+            highlighted={Number(calculatorInput.賣出價格) === price}
           />
         {/each}
       </tbody>

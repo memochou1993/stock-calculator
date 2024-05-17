@@ -24,6 +24,10 @@ export const CalculatorConstant = Object.freeze({
     最大手續費折扣: 1,
     最大最低手續費: 20,
   },
+  儲存鍵: {
+    手續費折扣: '手續費折扣',
+    最低手續費: '最低手續費',
+  },
 });
 
 export default CalculatorConstant;
