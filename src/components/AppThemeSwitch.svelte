@@ -3,7 +3,7 @@
 
   const THEME_LIGHT = 'light';
   const THEME_DARK = 'dark';
-  const THEME_STORAGE_KEY = 'theme';
+  const THEME_STORAGE_KEY = '主題';
 
   let theme: string;
 
