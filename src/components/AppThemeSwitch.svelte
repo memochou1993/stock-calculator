@@ -1,4 +1,6 @@
 <script lang="ts">
+  import theme_dark from '$lib/assets/theme_dark.svg';
+  import theme_light from '$lib/assets/theme_light.svg';
   import { onMount } from 'svelte';
 
   const THEME_LIGHT = 'light';
@@ -18,16 +20,18 @@
 
     setTheme(localStorage.getItem(THEME_STORAGE_KEY) || (prefersDarkScheme.matches ? THEME_DARK : THEME_LIGHT));
 
-    prefersDarkScheme.addEventListener('change', (e) => {
-      setTheme(e.matches ? THEME_DARK : THEME_LIGHT);
+    prefersDarkScheme.addEventListener('change', (event) => {
+      setTheme(event.matches ? THEME_DARK : THEME_LIGHT);
     });
   });
+
+  $: isLightTheme = theme === THEME_LIGHT;
+  $: alt = isLightTheme ? 'light theme' : 'dark theme';
+  $: src = isLightTheme ? theme_dark : theme_light;
 </script>
 
-<button class="btn ms-2" on:click={() => setTheme(theme === THEME_LIGHT ? THEME_DARK : THEME_LIGHT)}>
-  <span class="material-symbols-outlined d-flex">
-    {theme === THEME_LIGHT ? 'dark_mode' : 'light_mode'}
-  </span>
+<button class="btn ms-2" on:click={() => setTheme(isLightTheme ? THEME_DARK : THEME_LIGHT)}>
+  <img {alt} {src} width="28" />
 </button>
 
 <style lang="scss">
@@ -36,8 +40,5 @@
     --bs-btn-padding-y: 0;
     border: 0;
     color: var(--bs-gray-400);
-  }
-  .material-symbols-outlined {
-    font-size: 1.75rem;
   }
 </style>
