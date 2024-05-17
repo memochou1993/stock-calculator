@@ -5,7 +5,7 @@
   export let highlighted;
 </script>
 
-<tr class={highlighted && 'highlighted fw-medium'}>
+<tr class={highlighted && 'highlighted'}>
   <td>
     {CalculatorOutput.toLocaleString(calculatorOutput.成交價格, 2)}
   </td>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { CalculatorInput, calculate, calculateStep } from '$lib';
-  import { onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
+  import CalculatorMenu from './CalculatorMenu.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
 
   export let calculatorInput: CalculatorInput;
@@ -29,27 +29,7 @@
   <div slot="title">
     <div class="d-flex align-items-center justify-content-between">
       <p class="fs-4 fw-medium mb-0">試算結果</p>
-      <div class="dropdown">
-        <button type="button" class="btn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-          <div class="d-flex align-items-center">
-            <span class="material-symbols-outlined">tune</span>
-          </div>
-        </button>
-        <ul class="dropdown-menu">
-          <button type="button" class="btn dropdown-item" on:click={() => (outputCount += 1)} disabled={outputCount >= 100}>
-            <div class="d-flex align-items-center">
-              <span class="material-symbols-outlined">unfold_more</span>
-              <span class="px-2">增加試算結果</span>
-            </div>
-          </button>
-          <button type="button" class="btn dropdown-item" on:click={() => (outputCount -= 1)} disabled={outputCount <= 0}>
-            <div class="d-flex align-items-center">
-              <span class="material-symbols-outlined">unfold_less</span>
-              <span class="px-2">減少試算結果</span>
-            </div>
-          </button>
-        </ul>
-      </div>
+      <CalculatorMenu {outputCount} onOutputCountIncrease={() => (outputCount += 1)} onOutputCountDecrease={() => (outputCount -= 1)} />
     </div>
   </div>
   <div class="table-responsive">
@@ -82,14 +62,3 @@
     </table>
   </div>
 </AppCard>
-
-<style lang="scss">
-  .btn {
-    --bs-btn-padding-x: 0.25rem;
-    --bs-btn-padding-y: 0.25rem;
-    border: 0;
-    &:hover {
-      background-color: var(--btn-tune-bg);
-    }
-  }
-</style>

@@ -23,25 +23,13 @@
     });
   });
 
-  $: isLightTheme = theme === THEME_LIGHT;
+  $: isDarkTheme = theme === THEME_DARK;
 </script>
 
-<button type="button" class="btn ms-2" on:click={() => setTheme(isLightTheme ? THEME_DARK : THEME_LIGHT)}>
+<button type="button" class="btn btn-dark-variant mx-2" on:click={() => setTheme(isDarkTheme ? THEME_LIGHT : THEME_DARK)}>
   <div class="d-flex align-items-center">
     <span class="material-symbols-outlined">
-      {isLightTheme ? 'dark_mode' : 'light_mode'}
+      {isDarkTheme ? 'light_mode' : 'dark_mode'}
     </span>
   </div>
 </button>
-
-<style lang="scss">
-  .btn {
-    --bs-btn-padding-x: 0.25rem;
-    --bs-btn-padding-y: 0.25rem;
-    border: 0;
-    color: var(--bs-gray-400);
-    &:hover {
-      background-color: var(--btn-theme-bg);
-    }
-  }
-</style>

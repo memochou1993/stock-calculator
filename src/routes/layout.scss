@@ -2,10 +2,11 @@
 
 $navbar-bg-light: $gray-800;
 $navbar-bg-dark: $gray-800;
-$btn-theme-bg-light: $gray-700;
-$btn-theme-bg-dark: $gray-700;
-$btn-tune-bg-light: $gray-300;
-$btn-tune-bg-dark: $gray-700;
+
+$btn-dark-bg-hover: $gray-700;
+$btn-dark-bg-active: $gray-600;
+$btn-light-bg-hover: $gray-300;
+$btn-light-bg-active: $gray-400;
 
 html {
   body {
@@ -13,12 +14,45 @@ html {
   }
   &[data-bs-theme='light'] {
     --navbar-bg: #{$navbar-bg-light};
-    --btn-theme-bg: #{$btn-theme-bg-light};
-    --btn-tune-bg: #{$btn-tune-bg-light};
+    --btn-bg-hover: #{$btn-light-bg-hover};
+    --btn-bg-active: #{$btn-light-bg-active};
+    --btn-dark-bg-hover: #{$btn-dark-bg-hover};
+    --btn-dark-bg-active: #{$btn-dark-bg-active};
+    --btn-light-bg-hover: #{$btn-light-bg-hover};
+    --btn-light-bg-active: #{$btn-light-bg-active};
   }
   &[data-bs-theme='dark'] {
     --navbar-bg: #{$navbar-bg-dark};
-    --btn-theme-bg: #{$btn-theme-bg-light};
-    --btn-tune-bg: #{$btn-tune-bg-dark};
+    --btn-bg-hover: #{$btn-dark-bg-hover};
+    --btn-bg-active: #{$btn-dark-bg-active};
+    --btn-dark-bg-hover: #{$btn-dark-bg-hover};
+    --btn-dark-bg-active: #{$btn-dark-bg-active};
+    --btn-light-bg-hover: #{$btn-light-bg-hover};
+    --btn-light-bg-active: #{$btn-light-bg-active};
+  }
+}
+
+.btn-variant {
+  --bs-btn-padding-x: 0.25rem;
+  --bs-btn-padding-y: 0.25rem;
+  border: 0;
+  &:hover {
+    background-color: var(--btn-bg-hover);
+  }
+  &:active {
+    background-color: var(--btn-bg-active) !important;
+  }
+}
+
+.btn-dark-variant {
+  --bs-btn-padding-x: 0.25rem;
+  --bs-btn-padding-y: 0.25rem;
+  border: 0;
+  color: var(--bs-gray-400);
+  &:hover {
+    background-color: var(--btn-dark-bg-hover);
+  }
+  &:active {
+    background-color: var(--btn-dark-bg-active) !important;
   }
 }

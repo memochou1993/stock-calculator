@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <a class="navbar-brand text-light" href="/">台股交易計算器</a>
     <div>
-      <button class="btn btn-md">分享</button>
+      <button type="button" class="btn btn-md btn-dark-variant mx-2">分享</button>
       <AppThemeSwitch />
     </div>
   </div>
@@ -15,9 +15,5 @@
 <style lang="scss">
   nav {
     background-color: var(--navbar-bg);
-  }
-  .btn {
-    border: 0;
-    color: var(--bs-gray-400);
   }
 </style>
