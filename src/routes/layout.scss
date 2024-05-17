@@ -2,6 +2,10 @@
 
 $navbar-bg-light: $gray-800;
 $navbar-bg-dark: $gray-800;
+$btn-theme-bg-light: $gray-700;
+$btn-theme-bg-dark: $gray-700;
+$btn-tune-bg-light: $gray-300;
+$btn-tune-bg-dark: $gray-700;
 
 html {
   body {
@@ -9,8 +13,12 @@ html {
   }
   &[data-bs-theme='light'] {
     --navbar-bg: #{$navbar-bg-light};
+    --btn-theme-bg: #{$btn-theme-bg-light};
+    --btn-tune-bg: #{$btn-tune-bg-light};
   }
   &[data-bs-theme='dark'] {
     --navbar-bg: #{$navbar-bg-dark};
+    --btn-theme-bg: #{$btn-theme-bg-light};
+    --btn-tune-bg: #{$btn-tune-bg-dark};
   }
 }

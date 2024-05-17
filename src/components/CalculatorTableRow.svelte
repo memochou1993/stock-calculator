@@ -36,6 +36,7 @@
   .highlighted {
     td {
       --bs-bg-opacity: 1;
+      --bs-table-bg-type: none;
       background-color: rgba(var(--bs-warning-rgb), var(--bs-bg-opacity)) !important;
       background-image: var(--bs-gradient) !important;
     }

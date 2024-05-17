@@ -1,6 +1,4 @@
 <script lang="ts">
-  import theme_dark from '$lib/assets/theme_dark.svg';
-  import theme_light from '$lib/assets/theme_light.svg';
   import { onMount } from 'svelte';
 
   const THEME_LIGHT = 'light';
@@ -26,19 +24,24 @@
   });
 
   $: isLightTheme = theme === THEME_LIGHT;
-  $: alt = isLightTheme ? 'light theme' : 'dark theme';
-  $: src = isLightTheme ? theme_dark : theme_light;
 </script>
 
-<button class="btn ms-2" on:click={() => setTheme(isLightTheme ? THEME_DARK : THEME_LIGHT)}>
-  <img {alt} {src} width="28" />
+<button type="button" class="btn ms-2" on:click={() => setTheme(isLightTheme ? THEME_DARK : THEME_LIGHT)}>
+  <div class="d-flex align-items-center">
+    <span class="material-symbols-outlined">
+      {isLightTheme ? 'dark_mode' : 'light_mode'}
+    </span>
+  </div>
 </button>
 
 <style lang="scss">
   .btn {
-    --bs-btn-padding-x: 0;
-    --bs-btn-padding-y: 0;
+    --bs-btn-padding-x: 0.25rem;
+    --bs-btn-padding-y: 0.25rem;
     border: 0;
     color: var(--bs-gray-400);
+    &:hover {
+      background-color: var(--btn-theme-bg);
+    }
   }
 </style>

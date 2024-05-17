@@ -6,7 +6,6 @@
   <div class="container-fluid">
     <a class="navbar-brand text-light" href="/">台股交易計算器</a>
     <div>
-      <button class="btn btn-md">設定</button>
       <button class="btn btn-md">分享</button>
       <AppThemeSwitch />
     </div>
