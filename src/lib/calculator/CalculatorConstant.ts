@@ -27,6 +27,7 @@ export const CalculatorConstant = Object.freeze({
   儲存鍵: {
     手續費折扣: '手續費折扣',
     最低手續費: '最低手續費',
+    試算結果數量: '試算結果數量',
   },
 });
 

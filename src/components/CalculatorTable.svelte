@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { CalculatorInput, calculate, calculateStep } from '$lib';
+  import { CalculatorConstant, CalculatorInput, calculate, calculateStep } from '$lib';
+  import { onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
   import CalculatorMenu from './CalculatorMenu.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
@@ -7,6 +8,13 @@
   export let calculatorInput: CalculatorInput;
 
   let outputCount = 5;
+
+  onMount(() => {
+    const 試算結果數量 = localStorage.getItem(CalculatorConstant.儲存鍵.試算結果數量);
+    if (試算結果數量) {
+      outputCount = Number(試算結果數量);
+    }
+  });
 
   const generatePrices = (type: string, price: number, outputCount: number): number[] => {
     const prices = [];
@@ -29,7 +37,17 @@
   <div slot="title">
     <div class="d-flex align-items-center justify-content-between">
       <p class="fs-4 fw-medium mb-0">試算結果</p>
-      <CalculatorMenu {outputCount} onOutputCountIncrease={() => (outputCount += 1)} onOutputCountDecrease={() => (outputCount -= 1)} />
+      <CalculatorMenu
+        {outputCount}
+        onOutputCountIncrease={() => {
+          outputCount += 1;
+          localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(outputCount));
+        }}
+        onOutputCountDecrease={() => {
+          outputCount -= 1;
+          localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(outputCount));
+        }}
+      />
     </div>
   </div>
   <div class="table-responsive">

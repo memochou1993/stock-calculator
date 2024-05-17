@@ -7,8 +7,14 @@
   export let onUpdate: (calculatorInput: CalculatorInput) => void;
 
   onMount(() => {
-    calculatorInput.手續費折扣 = Number(localStorage.getItem(CalculatorConstant.儲存鍵.手續費折扣));
-    calculatorInput.最低手續費 = Number(localStorage.getItem(CalculatorConstant.儲存鍵.最低手續費));
+    const 手續費折扣 = localStorage.getItem(CalculatorConstant.儲存鍵.手續費折扣);
+    if (手續費折扣) {
+      calculatorInput.手續費折扣 = Number(手續費折扣);
+    }
+    const 最低手續費 = localStorage.getItem(CalculatorConstant.儲存鍵.最低手續費);
+    if (最低手續費) {
+      calculatorInput.最低手續費 = Number(最低手續費);
+    }
   });
 
   afterUpdate(() => {
@@ -113,7 +119,9 @@
           inputmode="decimal"
           max={CalculatorConstant.交易參數.最大手續費折扣}
           min={CalculatorConstant.交易參數.最小手續費折扣}
-          on:input={() => localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(calculatorInput.手續費折扣))}
+          on:input={() => {
+            localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(calculatorInput.手續費折扣 ?? 0));
+          }}
           step="0.05"
           type="number"
         />
@@ -135,7 +143,9 @@
             inputmode="numeric"
             max={CalculatorConstant.交易參數.最大最低手續費}
             min={CalculatorConstant.交易參數.最小最低手續費}
-            on:input={() => localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費))}
+            on:input={() => {
+              localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費 ?? 0));
+            }}
             step="1"
             type="number"
           />
