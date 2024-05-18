@@ -9,6 +9,9 @@
 
 <tr class={highlighted ? 'highlighted' : ''}>
   <td>
+    {CalculatorOutput.toLocaleString(calculatorOutput.買入價格, Math.max(fractionDigitCount, 2))}
+  </td>
+  <td>
     {CalculatorOutput.toLocaleString(calculatorOutput.賣出價格, Math.max(fractionDigitCount, 2))}
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.中}>
@@ -43,7 +46,7 @@
     {CalculatorOutput.toLocaleString(calculatorOutput.損益金額, fractionDigitCount)}
   </td>
   <td class={calculatorOutput.報酬率 >= 0 ? 'positive' : 'negative'}>
-    {CalculatorOutput.toLocaleString(calculatorOutput.報酬率 * 100, fractionDigitCount)}%
+    {CalculatorOutput.toLocaleString(calculatorOutput.報酬率 * 100, Math.max(fractionDigitCount, 1))}%
   </td>
 </tr>
 

@@ -21,6 +21,7 @@ class Calculator {
 
   get output(): CalculatorOutput {
     return new CalculatorOutput({
+      買入價格: this.買入價格,
       賣出價格: this.賣出價格,
       股票成本: this.股票成本,
       股票市值: this.股票市值,

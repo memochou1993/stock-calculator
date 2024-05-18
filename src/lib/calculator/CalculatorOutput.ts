@@ -1,4 +1,5 @@
 interface CalculatorOutputArgs {
+  買入價格: number;
   賣出價格: number;
   股票成本: number;
   股票市值: number;
@@ -13,6 +14,7 @@ interface CalculatorOutputArgs {
 }
 
 class CalculatorOutput {
+  買入價格: number;
   賣出價格: number;
   股票成本: number;
   股票市值: number;
@@ -26,6 +28,7 @@ class CalculatorOutput {
   報酬率: number;
 
   constructor(args: CalculatorOutputArgs) {
+    this.買入價格 = args.買入價格;
     this.賣出價格 = args.賣出價格;
     this.股票成本 = args.股票成本;
     this.股票市值 = args.股票市值;

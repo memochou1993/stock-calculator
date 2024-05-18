@@ -15,6 +15,7 @@ test('試算：股票', () => {
 
   const output = calculate(input);
 
+  expect(output.買入價格.toFixed(1)).toBe('123.0');
   expect(output.賣出價格.toFixed(1)).toBe('456.0');
   expect(output.股票成本.toFixed(1)).toBe('123000.0');
   expect(output.股票市值.toFixed(1)).toBe('456000.0');
@@ -38,6 +39,7 @@ test('試算：股票（最低手續費）', () => {
 
   const output = calculate(input);
 
+  expect(output.買入價格.toFixed(1)).toBe('1.2');
   expect(output.賣出價格.toFixed(1)).toBe('3.4');
   expect(output.股票成本.toFixed(1)).toBe('1200.0');
   expect(output.股票市值.toFixed(1)).toBe('3400.0');
@@ -63,6 +65,7 @@ test('試算：股票當日沖銷', () => {
 
   const output = calculate(input);
 
+  expect(output.買入價格.toFixed(1)).toBe('123.0');
   expect(output.賣出價格.toFixed(1)).toBe('456.0');
   expect(output.股票成本.toFixed(1)).toBe('123000.0');
   expect(output.股票市值.toFixed(1)).toBe('456000.0');
@@ -88,6 +91,7 @@ test('試算：股票當日沖銷（最低手續費）', () => {
 
   const output = calculate(input);
 
+  expect(output.買入價格.toFixed(1)).toBe('1.2');
   expect(output.賣出價格.toFixed(1)).toBe('3.4');
   expect(output.股票成本.toFixed(1)).toBe('1200.0');
   expect(output.股票市值.toFixed(1)).toBe('3400.0');
@@ -113,6 +117,7 @@ test('試算：ETF', () => {
 
   const output = calculate(input);
 
+  expect(output.買入價格.toFixed(1)).toBe('123.0');
   expect(output.賣出價格.toFixed(1)).toBe('456.0');
   expect(output.股票成本.toFixed(1)).toBe('123000.0');
   expect(output.股票市值.toFixed(1)).toBe('456000.0');
@@ -138,6 +143,7 @@ test('試算：ETF（最低手續費）', () => {
 
   const output = calculate(input);
 
+  expect(output.買入價格.toFixed(1)).toBe('1.2');
   expect(output.賣出價格.toFixed(1)).toBe('3.4');
   expect(output.股票成本.toFixed(1)).toBe('1200.0');
   expect(output.股票市值.toFixed(1)).toBe('3400.0');
