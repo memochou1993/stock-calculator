@@ -2,10 +2,10 @@
   import { CalculatorOutput } from '$lib';
 
   export let calculatorOutput: CalculatorOutput;
-  export let highlighted;
+  export let highlighted: boolean;
 </script>
 
-<tr class={highlighted && 'highlighted'}>
+<tr class={highlighted ? 'highlighted' : ''}>
   <td>
     {CalculatorOutput.toLocaleString(calculatorOutput.成交價格, 2)}
   </td>

@@ -1,7 +1,11 @@
-<script>
-  export let outputCount = 0;
-  export let onOutputCountIncrease = () => {};
-  export let onOutputCountDecrease = () => {};
+<script lang="ts">
+  import { CalculatorConstant } from '$lib';
+
+  export let outputCount: number;
+  export let onOutputCountChange = (v: number) => {};
+
+  export let sort: string;
+  export let onSortChange = (v: string) => {};
 </script>
 
 <div class="dropdown">
@@ -11,16 +15,48 @@
     </div>
   </button>
   <ul class="dropdown-menu">
-    <button type="button" class="btn dropdown-item" on:click={onOutputCountIncrease} disabled={outputCount >= 100}>
+    <button
+      class="btn dropdown-item"
+      disabled={outputCount >= CalculatorConstant.試算結果.最大數量}
+      on:click={() => onOutputCountChange(outputCount + 1)}
+      type="button"
+    >
       <div class="d-flex align-items-center">
         <span class="material-symbols-outlined">unfold_more</span>
         <span class="px-2">增加試算結果</span>
       </div>
     </button>
-    <button type="button" class="btn dropdown-item" on:click={onOutputCountDecrease} disabled={outputCount <= 0}>
+    <button
+      class="btn dropdown-item"
+      disabled={outputCount <= CalculatorConstant.試算結果.最小數量}
+      on:click={() => onOutputCountChange(outputCount - 1)}
+      type="button"
+    >
       <div class="d-flex align-items-center">
         <span class="material-symbols-outlined">unfold_less</span>
         <span class="px-2">減少試算結果</span>
+      </div>
+    </button>
+    <button
+      class="btn dropdown-item"
+      disabled={sort === CalculatorConstant.排序.由小到大}
+      on:click={() => onSortChange(CalculatorConstant.排序.由小到大)}
+      type="button"
+    >
+      <div class="d-flex align-items-center">
+        <span class="material-symbols-outlined">arrow_downward_alt</span>
+        <span class="px-2">價格由低至高</span>
+      </div>
+    </button>
+    <button
+      class="btn dropdown-item"
+      disabled={sort === CalculatorConstant.排序.由大到小}
+      on:click={() => onSortChange(CalculatorConstant.排序.由大到小)}
+      type="button"
+    >
+      <div class="d-flex align-items-center">
+        <span class="material-symbols-outlined">arrow_upward_alt</span>
+        <span class="px-2">價格由高至低</span>
       </div>
     </button>
   </ul>

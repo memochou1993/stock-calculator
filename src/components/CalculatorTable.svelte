@@ -7,12 +7,17 @@
 
   export let calculatorInput: CalculatorInput;
 
-  let outputCount = 5;
+  let outputCount = CalculatorConstant.試算結果.預設數量;
+  let sort = CalculatorConstant.排序.由小到大;
 
   onMount(() => {
     const 試算結果數量 = localStorage.getItem(CalculatorConstant.儲存鍵.試算結果數量);
     if (試算結果數量) {
       outputCount = Number(試算結果數量);
+    }
+    const 排序 = localStorage.getItem(CalculatorConstant.儲存鍵.排序);
+    if (排序) {
+      sort = 排序;
     }
   });
 
@@ -31,6 +36,7 @@
     Number(calculatorInput.賣出價格),
     ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount),
   ];
+  $: sortedPrices = sort === CalculatorConstant.排序.由小到大 ? prices : [...prices].reverse();
 </script>
 
 <AppCard>
@@ -39,13 +45,14 @@
       <p class="fs-4 fw-medium mb-0">試算結果</p>
       <CalculatorMenu
         {outputCount}
-        onOutputCountIncrease={() => {
-          outputCount += 1;
+        onOutputCountChange={(v) => {
+          outputCount = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(outputCount));
         }}
-        onOutputCountDecrease={() => {
-          outputCount -= 1;
-          localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(outputCount));
+        {sort}
+        onSortChange={(v) => {
+          sort = v;
+          localStorage.setItem(CalculatorConstant.儲存鍵.排序, String(sort));
         }}
       />
     </div>
@@ -65,7 +72,7 @@
         </tr>
       </thead>
       <tbody>
-        {#each prices as price}
+        {#each sortedPrices as price}
           <CalculatorTableRow
             calculatorOutput={calculate(
               new CalculatorInput({
