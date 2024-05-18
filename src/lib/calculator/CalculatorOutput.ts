@@ -1,5 +1,7 @@
 interface CalculatorOutputArgs {
   成交價格: number;
+  成本: number;
+  市值: number;
   支付總金額: number;
   實收總金額: number;
   買入手續費: number;
@@ -11,6 +13,8 @@ interface CalculatorOutputArgs {
 
 class CalculatorOutput {
   成交價格: number;
+  成本: number;
+  市值: number;
   支付總金額: number;
   實收總金額: number;
   買入手續費: number;
@@ -21,6 +25,8 @@ class CalculatorOutput {
 
   constructor(args: CalculatorOutputArgs) {
     this.成交價格 = args.成交價格;
+    this.成本 = args.成本;
+    this.市值 = args.市值;
     this.支付總金額 = args.支付總金額;
     this.實收總金額 = args.實收總金額;
     this.買入手續費 = args.買入手續費;

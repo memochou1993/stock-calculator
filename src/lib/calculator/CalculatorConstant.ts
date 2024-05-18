@@ -4,6 +4,7 @@ export const CalculatorConstant = Object.freeze({
     最低手續費: '最低手續費',
     試算結果數量: '試算結果數量',
     排序: '排序',
+    顯示等級: '顯示等級',
   },
   交易類別: {
     股票: '股票',
@@ -38,6 +39,11 @@ export const CalculatorConstant = Object.freeze({
     預設數量: 5,
     最小數量: 0,
     最大數量: 100,
+  },
+  顯示等級: {
+    少: 1,
+    中: 2,
+    多: 3,
   },
 });
 

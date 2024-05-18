@@ -9,6 +9,7 @@
 
   let outputCount = CalculatorConstant.試算結果.預設數量;
   let sort = CalculatorConstant.排序.由小到大;
+  let displayLevel = CalculatorConstant.顯示等級.中;
 
   onMount(() => {
     const 試算結果數量 = localStorage.getItem(CalculatorConstant.儲存鍵.試算結果數量);
@@ -18,6 +19,10 @@
     const 排序 = localStorage.getItem(CalculatorConstant.儲存鍵.排序);
     if (排序) {
       sort = 排序;
+    }
+    const 顯示等級 = localStorage.getItem(CalculatorConstant.儲存鍵.顯示等級);
+    if (顯示等級) {
+      displayLevel = Number(顯示等級);
     }
   });
 
@@ -47,12 +52,17 @@
         {outputCount}
         onOutputCountChange={(v) => {
           outputCount = v;
-          localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(outputCount));
+          localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(v));
         }}
         {sort}
         onSortChange={(v) => {
           sort = v;
-          localStorage.setItem(CalculatorConstant.儲存鍵.排序, String(sort));
+          localStorage.setItem(CalculatorConstant.儲存鍵.排序, String(v));
+        }}
+        {displayLevel}
+        onDisplayLevelChange={(v) => {
+          displayLevel = v;
+          localStorage.setItem(CalculatorConstant.儲存鍵.顯示等級, String(v));
         }}
       />
     </div>
@@ -62,11 +72,13 @@
       <thead class="table-dark">
         <tr>
           <th>成交價格</th>
-          <th>支付總金額</th>
-          <th>實收總金額</th>
-          <th>買入手續費</th>
-          <th>賣出手續費</th>
-          <th>證券交易稅</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.中}>股票成本</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.中}>股票市值</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>支付總金額</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>實收總金額</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>買入手續費</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>賣出手續費</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>交易稅</th>
           <th>損益金額</th>
           <th>報酬率</th>
         </tr>
@@ -81,6 +93,7 @@
               }),
             )}
             highlighted={Number(calculatorInput.賣出價格).toFixed(2) === price.toFixed(2)}
+            {displayLevel}
           />
         {/each}
       </tbody>

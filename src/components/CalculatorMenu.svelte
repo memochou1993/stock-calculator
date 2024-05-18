@@ -6,6 +6,9 @@
 
   export let sort: string;
   export let onSortChange = (v: string) => {};
+
+  export let displayLevel: number;
+  export let onDisplayLevelChange = (v: number) => {};
 </script>
 
 <div class="dropdown">
@@ -57,6 +60,28 @@
       <div class="d-flex align-items-center">
         <span class="material-symbols-outlined">arrow_upward_alt</span>
         <span class="px-2">價格由高至低</span>
+      </div>
+    </button>
+    <button
+      class="btn dropdown-item"
+      disabled={displayLevel <= CalculatorConstant.顯示等級.少}
+      on:click={() => onDisplayLevelChange(displayLevel - 1)}
+      type="button"
+    >
+      <div class="d-flex align-items-center">
+        <span class="material-symbols-outlined">zoom_out</span>
+        <span class="px-2">顯示較少說明</span>
+      </div>
+    </button>
+    <button
+      class="btn dropdown-item"
+      disabled={displayLevel >= CalculatorConstant.顯示等級.多}
+      on:click={() => onDisplayLevelChange(displayLevel + 1)}
+      type="button"
+    >
+      <div class="d-flex align-items-center">
+        <span class="material-symbols-outlined">zoom_in</span>
+        <span class="px-2">顯示較多說明</span>
       </div>
     </button>
   </ul>

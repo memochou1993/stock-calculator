@@ -20,8 +20,10 @@ class Calculator {
   }
 
   get output(): CalculatorOutput {
-    return {
+    return new CalculatorOutput({
       成交價格: this.成交價格,
+      成本: this.成本,
+      市值: this.市值,
       支付總金額: this.支付總金額,
       實收總金額: this.實收總金額,
       買入手續費: this.買入手續費,
@@ -29,7 +31,11 @@ class Calculator {
       證券交易稅: this.證券交易稅,
       損益金額: this.損益金額,
       報酬率: this.報酬率,
-    };
+    });
+  }
+
+  private get 成交價格(): number {
+    return this.賣出價格;
   }
 
   private get 成本(): number {
@@ -38,10 +44,6 @@ class Calculator {
 
   private get 市值(): number {
     return this.成交價格 * this.交易股數;
-  }
-
-  private get 成交價格(): number {
-    return this.賣出價格;
   }
 
   private get 支付總金額(): number {
