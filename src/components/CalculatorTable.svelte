@@ -11,6 +11,7 @@
   let outputCount = CalculatorConstant.試算結果.預設數量;
   let sort = CalculatorConstant.排序.由小到大;
   let displayLevel = CalculatorConstant.顯示等級.中;
+  let fractionDigitCount = CalculatorConstant.小數位數.預設數量;
 
   onMount(() => {
     const 試算結果數量 = localStorage.getItem(CalculatorConstant.儲存鍵.試算結果數量);
@@ -24,6 +25,10 @@
     const 顯示等級 = localStorage.getItem(CalculatorConstant.儲存鍵.顯示等級);
     if (顯示等級) {
       displayLevel = Number(顯示等級);
+    }
+    const 小數位數 = localStorage.getItem(CalculatorConstant.儲存鍵.小數位數);
+    if (小數位數) {
+      fractionDigitCount = Number(小數位數);
     }
   });
 
@@ -50,20 +55,25 @@
     <div class="d-flex align-items-center justify-content-between">
       <AppTitle title="試算結果" />
       <CalculatorMenu
-        {outputCount}
-        onOutputCountChange={(v) => {
-          outputCount = v;
-          localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(v));
-        }}
         {sort}
         onSortChange={(v) => {
           sort = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.排序, String(v));
         }}
+        {outputCount}
+        onOutputCountChange={(v) => {
+          outputCount = v;
+          localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(v));
+        }}
         {displayLevel}
         onDisplayLevelChange={(v) => {
           displayLevel = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.顯示等級, String(v));
+        }}
+        {fractionDigitCount}
+        onFractionDigitCountChange={(v) => {
+          fractionDigitCount = v;
+          localStorage.setItem(CalculatorConstant.儲存鍵.小數位數, String(v));
         }}
       />
     </div>
@@ -94,6 +104,7 @@
             )}
             highlighted={Number(calculatorInput.賣出價格).toFixed(2) === price.toFixed(2)}
             {displayLevel}
+            {fractionDigitCount}
           />
         {/each}
       </tbody>
