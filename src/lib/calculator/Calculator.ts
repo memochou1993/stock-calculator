@@ -21,9 +21,9 @@ class Calculator {
 
   get output(): CalculatorOutput {
     return new CalculatorOutput({
-      成交價格: this.成交價格,
-      成本: this.成本,
-      市值: this.市值,
+      賣出價格: this.賣出價格,
+      股票成本: this.股票成本,
+      股票市值: this.股票市值,
       原始買入手續費: this.原始買入手續費,
       原始賣出手續費: this.原始賣出手續費,
       買入手續費: this.買入手續費,
@@ -35,24 +35,20 @@ class Calculator {
     });
   }
 
-  private get 成交價格(): number {
-    return this.賣出價格;
-  }
-
-  private get 成本(): number {
+  private get 股票成本(): number {
     return this.買入價格 * this.交易股數;
   }
 
-  private get 市值(): number {
-    return this.成交價格 * this.交易股數;
+  private get 股票市值(): number {
+    return this.賣出價格 * this.交易股數;
   }
 
   private get 原始買入手續費(): number {
-    return this.成本 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣;
+    return this.股票成本 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣;
   }
 
   private get 原始賣出手續費(): number {
-    return this.市值 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣;
+    return this.股票市值 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣;
   }
 
   private get 買入手續費(): number {
@@ -64,15 +60,15 @@ class Calculator {
   }
 
   private get 證券交易稅(): number {
-    return this.市值 * this.計算證券交易稅稅率(this.交易類別);
+    return this.股票市值 * this.計算證券交易稅稅率(this.交易類別);
   }
 
   private get 投資成本(): number {
-    return this.成本 + this.買入手續費 + this.賣出手續費 + this.證券交易稅;
+    return this.股票成本 + this.買入手續費 + this.賣出手續費 + this.證券交易稅;
   }
 
   private get 損益金額(): number {
-    return this.市值 - this.投資成本;
+    return this.股票市值 - this.投資成本;
   }
 
   private get 報酬率(): number {

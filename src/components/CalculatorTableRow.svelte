@@ -8,13 +8,13 @@
 
 <tr class={highlighted ? 'highlighted' : ''}>
   <td>
-    {CalculatorOutput.toLocaleString(calculatorOutput.成交價格, 2)}
+    {CalculatorOutput.toLocaleString(calculatorOutput.賣出價格, 2)}
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.中}>
-    {CalculatorOutput.toLocaleString(calculatorOutput.成本, 1)}
+    {CalculatorOutput.toLocaleString(calculatorOutput.股票成本, 1)}
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.中}>
-    {CalculatorOutput.toLocaleString(calculatorOutput.市值, 1)}
+    {CalculatorOutput.toLocaleString(calculatorOutput.股票市值, 1)}
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
     {CalculatorOutput.toLocaleString(calculatorOutput.買入手續費, 1)}
@@ -60,8 +60,5 @@
   }
   .negative {
     color: red;
-  }
-  .warning {
-    color: gray;
   }
 </style>

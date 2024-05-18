@@ -71,7 +71,7 @@
     <table class="table table-bordered table-striped table-light align-middle text-center mb-0">
       <thead class="table-dark">
         <tr>
-          <th>成交價格</th>
+          <th>賣出價格</th>
           <th hidden={displayLevel <= CalculatorConstant.顯示等級.中}>股票成本</th>
           <th hidden={displayLevel <= CalculatorConstant.顯示等級.中}>股票市值</th>
           <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>買入手續費</th>

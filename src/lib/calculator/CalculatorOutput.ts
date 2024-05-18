@@ -1,7 +1,7 @@
 interface CalculatorOutputArgs {
-  成交價格: number;
-  成本: number;
-  市值: number;
+  賣出價格: number;
+  股票成本: number;
+  股票市值: number;
   原始買入手續費: number;
   原始賣出手續費: number;
   買入手續費: number;
@@ -13,9 +13,9 @@ interface CalculatorOutputArgs {
 }
 
 class CalculatorOutput {
-  成交價格: number;
-  成本: number;
-  市值: number;
+  賣出價格: number;
+  股票成本: number;
+  股票市值: number;
   原始買入手續費: number;
   原始賣出手續費: number;
   買入手續費: number;
@@ -26,9 +26,9 @@ class CalculatorOutput {
   報酬率: number;
 
   constructor(args: CalculatorOutputArgs) {
-    this.成交價格 = args.成交價格;
-    this.成本 = args.成本;
-    this.市值 = args.市值;
+    this.賣出價格 = args.賣出價格;
+    this.股票成本 = args.股票成本;
+    this.股票市值 = args.股票市值;
     this.原始買入手續費 = args.原始買入手續費;
     this.原始賣出手續費 = args.原始賣出手續費;
     this.買入手續費 = args.買入手續費;
