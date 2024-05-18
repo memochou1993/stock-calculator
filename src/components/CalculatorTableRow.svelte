@@ -9,7 +9,7 @@
 
 <tr class={highlighted ? 'highlighted' : ''}>
   <td>
-    {CalculatorOutput.toLocaleString(calculatorOutput.賣出價格, fractionDigitCount)}
+    {CalculatorOutput.toLocaleString(calculatorOutput.賣出價格, Math.max(fractionDigitCount, 2))}
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.中}>
     {CalculatorOutput.toLocaleString(calculatorOutput.股票成本, fractionDigitCount)}

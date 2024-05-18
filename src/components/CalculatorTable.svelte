@@ -46,7 +46,7 @@
     ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), -outputCount).reverse(),
     Number(calculatorInput.賣出價格),
     ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount),
-  ];
+  ].filter((price) => price >= 0);
   $: sortedPrices = sort === CalculatorConstant.排序.由小到大 ? prices : [...prices].reverse();
 </script>
 

@@ -40,7 +40,7 @@ class CalculatorOutput {
   }
 
   public static toLocaleString(value: number, fractionDigits: number): string {
-    return value.toLocaleString('zh-TW', { minimumFractionDigits: 0, maximumFractionDigits: fractionDigits });
+    return value.toLocaleString('zh-TW', { minimumFractionDigits: fractionDigits, maximumFractionDigits: fractionDigits });
   }
 }
 
