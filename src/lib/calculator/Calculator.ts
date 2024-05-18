@@ -26,6 +26,8 @@ class Calculator {
       市值: this.市值,
       支付總金額: this.支付總金額,
       實收總金額: this.實收總金額,
+      原始買入手續費: this.原始買入手續費,
+      原始賣出手續費: this.原始賣出手續費,
       買入手續費: this.買入手續費,
       賣出手續費: this.賣出手續費,
       證券交易稅: this.證券交易稅,
@@ -54,12 +56,20 @@ class Calculator {
     return this.市值 - this.賣出手續費 - this.證券交易稅;
   }
 
+  private get 原始買入手續費(): number {
+    return this.成本 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣;
+  }
+
+  private get 原始賣出手續費(): number {
+    return this.市值 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣;
+  }
+
   private get 買入手續費(): number {
-    return Math.max(this.最低手續費, this.成本 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣);
+    return Math.max(this.最低手續費, this.原始買入手續費);
   }
 
   private get 賣出手續費(): number {
-    return Math.max(this.最低手續費, this.市值 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣);
+    return Math.max(this.最低手續費, this.原始賣出手續費);
   }
 
   private get 證券交易稅(): number {

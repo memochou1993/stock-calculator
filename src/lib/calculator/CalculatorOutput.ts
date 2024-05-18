@@ -4,6 +4,8 @@ interface CalculatorOutputArgs {
   市值: number;
   支付總金額: number;
   實收總金額: number;
+  原始買入手續費: number;
+  原始賣出手續費: number;
   買入手續費: number;
   賣出手續費: number;
   證券交易稅: number;
@@ -17,6 +19,8 @@ class CalculatorOutput {
   市值: number;
   支付總金額: number;
   實收總金額: number;
+  原始買入手續費: number;
+  原始賣出手續費: number;
   買入手續費: number;
   賣出手續費: number;
   證券交易稅: number;
@@ -29,6 +33,8 @@ class CalculatorOutput {
     this.市值 = args.市值;
     this.支付總金額 = args.支付總金額;
     this.實收總金額 = args.實收總金額;
+    this.原始買入手續費 = args.原始買入手續費;
+    this.原始賣出手續費 = args.原始賣出手續費;
     this.買入手續費 = args.買入手續費;
     this.賣出手續費 = args.賣出手續費;
     this.證券交易稅 = args.證券交易稅;

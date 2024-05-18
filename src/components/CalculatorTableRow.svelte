@@ -24,9 +24,19 @@
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
     {CalculatorOutput.toLocaleString(calculatorOutput.買入手續費, 1)}
+    {#if calculatorOutput.原始買入手續費 && calculatorOutput.原始買入手續費 < calculatorOutput.買入手續費}
+      <span class="text-secondary">
+        ({CalculatorOutput.toLocaleString(calculatorOutput.原始買入手續費, 2)})
+      </span>
+    {/if}
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
     {CalculatorOutput.toLocaleString(calculatorOutput.賣出手續費, 1)}
+    {#if calculatorOutput.原始賣出手續費 && calculatorOutput.原始賣出手續費 < calculatorOutput.賣出手續費}
+      <span class="text-secondary">
+        ({CalculatorOutput.toLocaleString(calculatorOutput.原始賣出手續費, 2)})
+      </span>
+    {/if}
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
     {CalculatorOutput.toLocaleString(calculatorOutput.證券交易稅, 1)}
@@ -53,5 +63,8 @@
   }
   .negative {
     color: red;
+  }
+  .warning {
+    color: gray;
   }
 </style>

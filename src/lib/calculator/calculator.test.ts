@@ -16,6 +16,8 @@ test('試算：股票', () => {
   const output = calculate(input);
 
   expect(output.成交價格.toFixed(1)).toBe('456.0');
+  expect(output.成本.toFixed(1)).toBe('123000.0');
+  expect(output.市值.toFixed(1)).toBe('456000.0');
   expect(output.支付總金額.toFixed(1)).toBe('123105.2');
   expect(output.實收總金額.toFixed(1)).toBe('454242.1');
   expect(output.買入手續費.toFixed(1)).toBe('105.2');
@@ -38,8 +40,12 @@ test('試算：股票（最低手續費）', () => {
   const output = calculate(input);
 
   expect(output.成交價格.toFixed(1)).toBe('3.4');
+  expect(output.成本.toFixed(1)).toBe('1200.0');
+  expect(output.市值.toFixed(1)).toBe('3400.0');
   expect(output.支付總金額.toFixed(1)).toBe('1220.0');
   expect(output.實收總金額.toFixed(1)).toBe('3369.8');
+  expect(output.原始買入手續費.toFixed(1)).toBe('1.0');
+  expect(output.原始賣出手續費.toFixed(1)).toBe('2.9');
   expect(output.買入手續費.toFixed(1)).toBe('20.0');
   expect(output.賣出手續費.toFixed(1)).toBe('20.0');
   expect(output.證券交易稅.toFixed(1)).toBe('10.2');
@@ -60,8 +66,12 @@ test('試算：股票當日沖銷', () => {
   const output = calculate(input);
 
   expect(output.成交價格.toFixed(1)).toBe('456.0');
+  expect(output.成本.toFixed(1)).toBe('123000.0');
+  expect(output.市值.toFixed(1)).toBe('456000.0');
   expect(output.支付總金額.toFixed(1)).toBe('123105.2');
   expect(output.實收總金額.toFixed(1)).toBe('454926.1');
+  expect(output.原始買入手續費.toFixed(1)).toBe('105.2');
+  expect(output.原始賣出手續費.toFixed(1)).toBe('389.9');
   expect(output.買入手續費.toFixed(1)).toBe('105.2');
   expect(output.賣出手續費.toFixed(1)).toBe('389.9');
   expect(output.證券交易稅.toFixed(1)).toBe('684.0');
@@ -82,8 +92,12 @@ test('試算：股票當日沖銷（最低手續費）', () => {
   const output = calculate(input);
 
   expect(output.成交價格.toFixed(1)).toBe('3.4');
+  expect(output.成本.toFixed(1)).toBe('1200.0');
+  expect(output.市值.toFixed(1)).toBe('3400.0');
   expect(output.支付總金額.toFixed(1)).toBe('1220.0');
   expect(output.實收總金額.toFixed(1)).toBe('3374.9');
+  expect(output.原始買入手續費.toFixed(1)).toBe('1.0');
+  expect(output.原始賣出手續費.toFixed(1)).toBe('2.9');
   expect(output.買入手續費.toFixed(1)).toBe('20.0');
   expect(output.賣出手續費.toFixed(1)).toBe('20.0');
   expect(output.證券交易稅.toFixed(1)).toBe('5.1');
@@ -104,8 +118,12 @@ test('試算：ETF', () => {
   const output = calculate(input);
 
   expect(output.成交價格.toFixed(1)).toBe('456.0');
+  expect(output.成本.toFixed(1)).toBe('123000.0');
+  expect(output.市值.toFixed(1)).toBe('456000.0');
   expect(output.支付總金額.toFixed(1)).toBe('123105.2');
   expect(output.實收總金額.toFixed(1)).toBe('455154.1');
+  expect(output.原始買入手續費.toFixed(1)).toBe('105.2');
+  expect(output.原始賣出手續費.toFixed(1)).toBe('389.9');
   expect(output.買入手續費.toFixed(1)).toBe('105.2');
   expect(output.賣出手續費.toFixed(1)).toBe('389.9');
   expect(output.證券交易稅.toFixed(1)).toBe('456.0');
@@ -126,8 +144,12 @@ test('試算：ETF（最低手續費）', () => {
   const output = calculate(input);
 
   expect(output.成交價格.toFixed(1)).toBe('3.4');
+  expect(output.成本.toFixed(1)).toBe('1200.0');
+  expect(output.市值.toFixed(1)).toBe('3400.0');
   expect(output.支付總金額.toFixed(1)).toBe('1220.0');
   expect(output.實收總金額.toFixed(1)).toBe('3376.6');
+  expect(output.原始買入手續費.toFixed(1)).toBe('1.0');
+  expect(output.原始賣出手續費.toFixed(1)).toBe('2.9');
   expect(output.買入手續費.toFixed(1)).toBe('20.0');
   expect(output.賣出手續費.toFixed(1)).toBe('20.0');
   expect(output.證券交易稅.toFixed(1)).toBe('3.4');
