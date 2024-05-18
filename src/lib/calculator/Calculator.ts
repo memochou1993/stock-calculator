@@ -72,7 +72,7 @@ class Calculator {
   }
 
   private get 報酬率(): number {
-    return this.損益金額 / this.投資成本;
+    return this.投資成本 > 0 ? this.損益金額 / this.投資成本 : 0;
   }
 
   private 計算證券交易稅稅率(交易類別: string): number {

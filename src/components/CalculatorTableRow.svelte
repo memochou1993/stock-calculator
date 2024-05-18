@@ -38,10 +38,10 @@
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
     {CalculatorOutput.toLocaleString(calculatorOutput.投資成本, 1)}
   </td>
-  <td class={calculatorOutput.損益金額 > 0 ? 'positive' : 'negative'}>
+  <td class={calculatorOutput.損益金額 >= 0 ? 'positive' : 'negative'}>
     {CalculatorOutput.toLocaleString(calculatorOutput.損益金額, 1)}
   </td>
-  <td class={calculatorOutput.報酬率 > 0 ? 'positive' : 'negative'}>
+  <td class={calculatorOutput.報酬率 >= 0 ? 'positive' : 'negative'}>
     {CalculatorOutput.toLocaleString(calculatorOutput.報酬率 * 100, 2)}%
   </td>
 </tr>
