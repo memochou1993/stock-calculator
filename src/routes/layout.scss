@@ -10,7 +10,8 @@ $btn-light-bg-active: $gray-400;
 
 html {
   body {
-    --bs-body-font-family: 'Microsoft JhengHei', 'Helvetica Neue', Arial, sans-serif;
+    --bs-body-font-family: 'Roboto', 'Noto Serif TC', 'Noto Color Emoji', Arial, sans-serif;
+    font-optical-sizing: auto;
   }
   &[data-bs-theme='light'] {
     --navbar-bg: #{$navbar-bg-light};
