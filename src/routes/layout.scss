@@ -9,10 +9,6 @@ $btn-light-bg-hover: $gray-300;
 $btn-light-bg-active: $gray-400;
 
 html {
-  body {
-    --bs-body-font-family: 'Roboto', 'Noto Serif TC', 'Noto Color Emoji', Arial, sans-serif;
-    font-optical-sizing: auto;
-  }
   &[data-bs-theme='light'] {
     --navbar-bg: #{$navbar-bg-light};
     --btn-bg-hover: #{$btn-light-bg-hover};
@@ -35,6 +31,14 @@ html {
     --tooltip-bg: #{$gray-200};
     --tooltip-color: #{$black};
   }
+}
+
+body {
+  --bs-body-font-family: 'Microsoft JhengHei', sans-serif;
+}
+
+table > thead > tr > th {
+  font-weight: 400;
 }
 
 .btn-variant {

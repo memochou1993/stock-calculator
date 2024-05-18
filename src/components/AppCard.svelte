@@ -1,4 +1,6 @@
 <script lang="ts">
+  import AppTitle from './AppTitle.svelte';
+
   export let title: string = '';
 </script>
 
@@ -8,9 +10,7 @@
       <slot name="title" />
       <hr />
     {:else if title}
-      <p class="fs-4 fw-medium mb-0">
-        {title}
-      </p>
+      <AppTitle {title} />
       <hr />
     {/if}
     <slot />

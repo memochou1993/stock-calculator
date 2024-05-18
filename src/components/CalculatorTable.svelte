@@ -2,6 +2,7 @@
   import { CalculatorConstant, CalculatorInput, calculate, calculateStep } from '$lib';
   import { onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
+  import AppTitle from './AppTitle.svelte';
   import CalculatorMenu from './CalculatorMenu.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
 
@@ -47,7 +48,7 @@
 <AppCard>
   <div slot="title">
     <div class="d-flex align-items-center justify-content-between">
-      <p class="fs-4 fw-medium mb-0">試算結果</p>
+      <AppTitle title="試算結果" />
       <CalculatorMenu
         {outputCount}
         onOutputCountChange={(v) => {

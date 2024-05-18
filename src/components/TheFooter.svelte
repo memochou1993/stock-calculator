@@ -5,6 +5,7 @@
 
 <style lang="scss">
   footer {
+    font-family: 'Noto Color Emoji', sans-serif;
     font-size: 0.875rem;
   }
 </style>
