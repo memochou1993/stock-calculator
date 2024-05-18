@@ -29,7 +29,9 @@
   <div class="row">
     <div class="col-12">
       <div class="form-group mb-4">
-        <label for="交易類別" class="mb-1">交易類別</label>
+        <div class="d-flex align-items-center mb-1">
+          <label for="交易類別" class="me-1">交易類別</label>
+        </div>
         <select bind:value={calculatorInput.交易類別} class="form-control form-control-md" id="交易類別">
           <option value={CalculatorConstant.交易類別.股票}>{CalculatorConstant.交易類別.股票}</option>
           <option value={CalculatorConstant.交易類別.股票當日沖銷}>{CalculatorConstant.交易類別.股票當日沖銷}</option>
@@ -39,7 +41,9 @@
     </div>
     <div class="col-12">
       <div class="form-group mb-4">
-        <label for="買入價格" class="mb-1">買入價格</label>
+        <div class="d-flex align-items-center mb-1">
+          <label for="買入價格" class="me-1">買入價格</label>
+        </div>
         <!-- svelte-ignore a11y-autofocus -->
         <input
           autocomplete="off"
@@ -63,7 +67,9 @@
     </div>
     <div class="col-12">
       <div class="form-group mb-4">
-        <label for="賣出價格" class="mb-1">賣出價格</label>
+        <div class="d-flex align-items-center mb-1">
+          <label for="賣出價格" class="me-1">賣出價格</label>
+        </div>
         <input
           autocomplete="off"
           bind:value={calculatorInput.賣出價格}
@@ -85,7 +91,9 @@
     </div>
     <div class="col-12">
       <div class="form-group mb-4">
-        <label for="交易股數" class="mb-1">交易股數</label>
+        <div class="d-flex align-items-center mb-1">
+          <label for="交易股數" class="me-1">交易股數</label>
+        </div>
         <input
           autocomplete="off"
           bind:value={calculatorInput.交易股數}
@@ -107,7 +115,21 @@
     </div>
     <div class="col-12">
       <div class="form-group mb-4">
-        <label for="手續費折扣" class="mb-1">手續費折扣</label>
+        <div class="d-flex align-items-center mb-1">
+          <label for="手續費折扣" class="me-1">手續費折扣</label>
+          <button
+            class="btn btn-variant p-0"
+            data-bs-custom-class="tooltip-variant"
+            data-bs-placement="right"
+            data-bs-toggle="tooltip"
+            title="買入股票和賣出股票時，券商所提供的手續費折扣。"
+            type="button"
+          >
+            <div class="d-flex align-items-center">
+              <span class="material-symbols-outlined" style="font-size: 20px;">info</span>
+            </div>
+          </button>
+        </div>
         <input
           autocomplete="off"
           bind:value={calculatorInput.手續費折扣}
@@ -131,7 +153,21 @@
       </div>
       <div class="col-12">
         <div class="form-group mb-4">
-          <label for="最低手續費" class="mb-1">最低手續費</label>
+          <div class="d-flex align-items-center mb-1">
+            <label for="最低手續費" class="me-1">最低手續費</label>
+            <button
+              class="btn btn-variant p-0"
+              data-bs-custom-class="tooltip-variant"
+              data-bs-placement="right"
+              data-bs-toggle="tooltip"
+              title="買入股票和賣出股票時，券商所收取的最低手續費。"
+              type="button"
+            >
+              <div class="d-flex align-items-center">
+                <span class="material-symbols-outlined" style="font-size: 20px;">info</span>
+              </div>
+            </button>
+          </div>
           <input
             autocomplete="off"
             bind:value={calculatorInput.最低手續費}

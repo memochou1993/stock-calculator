@@ -3,8 +3,9 @@
   import { onMount } from 'svelte';
   import './layout.scss';
 
-  onMount(() => {
-    import('bootstrap');
+  onMount(async () => {
+    const bootstrap = await import('bootstrap');
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => new bootstrap.Tooltip(el));
   });
 </script>
 
