@@ -3,8 +3,9 @@ import AppCard from './AppCard.svelte';
 import AppThemeSwitch from './AppThemeSwitch.svelte';
 import CalculatorForm from './CalculatorForm.svelte';
 import CalculatorTable from './CalculatorTable.svelte';
-import CalculatorUsage from './CalculatorUsage.svelte';
+import CalculatorUsageFormula from './CalculatorUsageFormula.svelte';
+import CalculatorUsageRate from './CalculatorUsageRate.svelte';
 import TheFooter from './TheFooter.svelte';
 import TheHeader from './TheHeader.svelte';
 
-export { AppCard, AppThemeSwitch, CalculatorForm, CalculatorTable, CalculatorUsage, TheFooter, TheHeader };
+export { AppCard, AppThemeSwitch, CalculatorForm, CalculatorTable, CalculatorUsageFormula, CalculatorUsageRate, TheFooter, TheHeader };

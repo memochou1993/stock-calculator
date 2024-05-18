@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CalculatorForm, CalculatorTable, CalculatorUsage } from '$components';
+  import { CalculatorForm, CalculatorTable, CalculatorUsageFormula, CalculatorUsageRate } from '$components';
   import { CalculatorConstant, CalculatorInput } from '$lib';
 
   let calculatorInput = new CalculatorInput({
@@ -23,7 +23,10 @@
           <CalculatorTable {calculatorInput} />
         </div>
         <div class="col-12">
-          <CalculatorUsage />
+          <CalculatorUsageFormula />
+        </div>
+        <div class="col-12">
+          <CalculatorUsageRate />
         </div>
       </div>
     </div>
