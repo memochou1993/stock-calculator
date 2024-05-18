@@ -8,7 +8,7 @@
     <table class="table table-bordered table-striped table-light align-middle text-center mb-0">
       <thead class="table-dark">
         <tr>
-          <th style="width:75%;">交易類別</th>
+          <th style="width:50%;">交易類別</th>
           <th>稅率</th>
         </tr>
       </thead>

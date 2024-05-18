@@ -24,13 +24,12 @@ class Calculator {
       成交價格: this.成交價格,
       成本: this.成本,
       市值: this.市值,
-      支付總金額: this.支付總金額,
-      實收總金額: this.實收總金額,
       原始買入手續費: this.原始買入手續費,
       原始賣出手續費: this.原始賣出手續費,
       買入手續費: this.買入手續費,
       賣出手續費: this.賣出手續費,
       證券交易稅: this.證券交易稅,
+      投資成本: this.投資成本,
       損益金額: this.損益金額,
       報酬率: this.報酬率,
     });
@@ -46,14 +45,6 @@ class Calculator {
 
   private get 市值(): number {
     return this.成交價格 * this.交易股數;
-  }
-
-  private get 支付總金額(): number {
-    return this.成本 + this.買入手續費;
-  }
-
-  private get 實收總金額(): number {
-    return this.市值 - this.賣出手續費 - this.證券交易稅;
   }
 
   private get 原始買入手續費(): number {
@@ -76,12 +67,16 @@ class Calculator {
     return this.市值 * this.計算證券交易稅稅率(this.交易類別);
   }
 
+  private get 投資成本(): number {
+    return this.成本 + this.買入手續費 + this.賣出手續費 + this.證券交易稅;
+  }
+
   private get 損益金額(): number {
-    return this.實收總金額 - this.支付總金額;
+    return this.市值 - this.投資成本;
   }
 
   private get 報酬率(): number {
-    return this.損益金額 / this.成本;
+    return this.損益金額 / this.投資成本;
   }
 
   private 計算證券交易稅稅率(交易類別: string): number {

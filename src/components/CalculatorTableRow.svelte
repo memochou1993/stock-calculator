@@ -17,12 +17,6 @@
     {CalculatorOutput.toLocaleString(calculatorOutput.市值, 1)}
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
-    {CalculatorOutput.toLocaleString(calculatorOutput.支付總金額, 1)}
-  </td>
-  <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
-    {CalculatorOutput.toLocaleString(calculatorOutput.實收總金額, 1)}
-  </td>
-  <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
     {CalculatorOutput.toLocaleString(calculatorOutput.買入手續費, 1)}
     {#if calculatorOutput.原始買入手續費 && calculatorOutput.原始買入手續費 < calculatorOutput.買入手續費}
       <span class="text-secondary">
@@ -40,6 +34,9 @@
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
     {CalculatorOutput.toLocaleString(calculatorOutput.證券交易稅, 1)}
+  </td>
+  <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
+    {CalculatorOutput.toLocaleString(calculatorOutput.投資成本, 1)}
   </td>
   <td class={calculatorOutput.損益金額 > 0 ? 'positive' : 'negative'}>
     {CalculatorOutput.toLocaleString(calculatorOutput.損益金額, 1)}

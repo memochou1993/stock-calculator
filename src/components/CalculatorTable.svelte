@@ -74,11 +74,10 @@
           <th>成交價格</th>
           <th hidden={displayLevel <= CalculatorConstant.顯示等級.中}>股票成本</th>
           <th hidden={displayLevel <= CalculatorConstant.顯示等級.中}>股票市值</th>
-          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>支付總金額</th>
-          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>實收總金額</th>
           <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>買入手續費</th>
           <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>賣出手續費</th>
-          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>交易稅</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>證券交易稅</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>投資成本</th>
           <th>損益金額</th>
           <th>報酬率</th>
         </tr>
