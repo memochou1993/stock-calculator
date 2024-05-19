@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import AppIcon from './AppIcon.svelte';
 
   const THEME_LIGHT = 'light';
   const THEME_DARK = 'dark';
@@ -27,9 +28,5 @@
 </script>
 
 <button type="button" class="btn btn-dark-variant px-2" on:click={() => setTheme(isDarkTheme ? THEME_LIGHT : THEME_DARK)}>
-  <div class="d-flex align-items-center">
-    <span class="material-symbols-outlined">
-      {isDarkTheme ? 'light_mode' : 'dark_mode'}
-    </span>
-  </div>
+  <AppIcon icon={isDarkTheme ? 'light_mode' : 'dark_mode'} />
 </button>

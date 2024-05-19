@@ -1,4 +1,5 @@
 <script lang="ts">
+  import AppIcon from './AppIcon.svelte';
   import AppThemeSwitch from './AppThemeSwitch.svelte';
 </script>
 
@@ -13,9 +14,7 @@
           window.open('https://www.facebook.com/profile.php?id=61560002601019', '_blank', 'noopener noreferrer');
         }}
       >
-        <div class="d-flex align-items-center">
-          <span class="material-symbols-outlined">thumb_up</span>
-        </div>
+        <AppIcon icon="thumb_up" />
       </button>
       <AppThemeSwitch />
     </div>

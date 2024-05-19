@@ -1,5 +1,6 @@
 <script lang="ts">
   import { CalculatorConstant } from '$lib';
+  import AppIcon from './AppIcon.svelte';
 
   export let sort: string;
   export let onSortChange = (_v: string) => {};
@@ -19,9 +20,7 @@
 
 <div class="dropdown">
   <button type="button" class="btn btn-variant px-2" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-    <div class="d-flex align-items-center">
-      <span class="material-symbols-outlined">tune</span>
-    </div>
+    <AppIcon icon="tune" />
   </button>
   <ul class="dropdown-menu">
     <button
@@ -31,7 +30,7 @@
       type="button"
     >
       <div class="d-flex align-items-center">
-        <span class="material-symbols-outlined">arrow_downward_alt</span>
+        <AppIcon icon="arrow_downward_alt" />
         <span class="px-2">價格由低至高</span>
       </div>
     </button>
@@ -42,7 +41,7 @@
       type="button"
     >
       <div class="d-flex align-items-center">
-        <span class="material-symbols-outlined">arrow_upward_alt</span>
+        <AppIcon icon="arrow_upward_alt" />
         <span class="px-2">價格由高至低</span>
       </div>
     </button>
@@ -54,7 +53,7 @@
       type="button"
     >
       <div class="d-flex align-items-center">
-        <span class="material-symbols-outlined">unfold_less</span>
+        <AppIcon icon="unfold_less" />
         <span class="px-2">減少試算結果</span>
       </div>
     </button>
@@ -65,7 +64,7 @@
       type="button"
     >
       <div class="d-flex align-items-center">
-        <span class="material-symbols-outlined">unfold_more</span>
+        <AppIcon icon="unfold_more" />
         <span class="px-2">增加試算結果</span>
       </div>
     </button>
@@ -77,7 +76,7 @@
       type="button"
     >
       <div class="d-flex align-items-center">
-        <span class="material-symbols-outlined">zoom_out</span>
+        <AppIcon icon="zoom_out" />
         <span class="px-2">減少顯示欄位</span>
       </div>
     </button>
@@ -88,7 +87,7 @@
       type="button"
     >
       <div class="d-flex align-items-center">
-        <span class="material-symbols-outlined">zoom_in</span>
+        <AppIcon icon="zoom_in" />
         <span class="px-2">增加顯示欄位</span>
       </div>
     </button>
@@ -100,7 +99,7 @@
       type="button"
     >
       <div class="d-flex align-items-center">
-        <span class="material-symbols-outlined">decimal_decrease</span>
+        <AppIcon icon="decimal_decrease" />
         <span class="px-2">減少小數位數</span>
       </div>
     </button>
@@ -111,20 +110,20 @@
       type="button"
     >
       <div class="d-flex align-items-center">
-        <span class="material-symbols-outlined">decimal_increase</span>
+        <AppIcon icon="decimal_increase" />
         <span class="px-2">增加小數位數</span>
       </div>
     </button>
     <hr class="my-1" />
     <button class="btn dropdown-item" disabled={fontSize <= CalculatorConstant.字體大小.最小} on:click={() => onFontSizeChange(fontSize - 0.125)} type="button">
       <div class="d-flex align-items-center">
-        <span class="material-symbols-outlined">text_decrease</span>
+        <AppIcon icon="text_decrease" />
         <span class="px-2">減少字體大小</span>
       </div>
     </button>
     <button class="btn dropdown-item" disabled={fontSize >= CalculatorConstant.字體大小.最大} on:click={() => onFontSizeChange(fontSize + 0.125)} type="button">
       <div class="d-flex align-items-center">
-        <span class="material-symbols-outlined">text_increase</span>
+        <AppIcon icon="text_increase" />
         <span class="px-2">增加字體大小</span>
       </div>
     </button>

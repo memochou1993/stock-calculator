@@ -4,6 +4,7 @@
   import { CalculatorConstant, CalculatorInput, calculateStep, validate } from '$lib';
   import { afterUpdate, onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
+  import AppIcon from './AppIcon.svelte';
 
   export let calculatorInput: CalculatorInput;
   export let onUpdate: (calculatorInput: CalculatorInput) => void;
@@ -148,9 +149,7 @@
             title="買入股票和賣出股票時，券商所提供的手續費折扣。"
             type="button"
           >
-            <div class="d-flex align-items-center">
-              <span class="material-symbols-outlined" style="font-size: 20px;">info</span>
-            </div>
+            <AppIcon fontSize={20} icon="info" />
           </button>
         </div>
         <input
@@ -186,9 +185,7 @@
               title="買入股票和賣出股票時，券商所收取的最低手續費。"
               type="button"
             >
-              <div class="d-flex align-items-center">
-                <span class="material-symbols-outlined" style="font-size: 20px;">info</span>
-              </div>
+              <AppIcon fontSize={20} icon="info" />
             </button>
           </div>
           <input

@@ -2,6 +2,7 @@
   import { delay } from '$lib';
   import type { Modal, Tooltip } from 'bootstrap';
   import { onMount } from 'svelte';
+  import AppIcon from './AppIcon.svelte';
 
   export let url: string;
 
@@ -48,9 +49,7 @@
 </script>
 
 <button type="button" class="btn btn-variant px-2" data-bs-target="#modal-share" on:click={() => modal.show()}>
-  <div class="d-flex align-items-center">
-    <span class="material-symbols-outlined">share</span>
-  </div>
+  <AppIcon icon="share" />
 </button>
 
 <div class="modal fade" id="modal-share" tabindex="-1" aria-labelledby="modal-share-label" aria-hidden="true">
