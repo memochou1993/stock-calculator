@@ -15,13 +15,13 @@
   <td>
     {CalculatorOutput.toLocaleString(calculatorOutput.賣出價格, Math.max(fractionDigitCount, 2))}
   </td>
-  <td hidden={displayLevel <= CalculatorConstant.顯示等級.中}>
+  <td hidden={displayLevel <= CalculatorConstant.顯示等級.預設}>
     {CalculatorOutput.toLocaleString(calculatorOutput.股票成本, fractionDigitCount)}
   </td>
-  <td hidden={displayLevel <= CalculatorConstant.顯示等級.中}>
+  <td hidden={displayLevel <= CalculatorConstant.顯示等級.預設}>
     {CalculatorOutput.toLocaleString(calculatorOutput.股票市值, fractionDigitCount)}
   </td>
-  <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
+  <td hidden={displayLevel <= CalculatorConstant.顯示等級.最小}>
     {CalculatorOutput.toLocaleString(calculatorOutput.買入手續費, fractionDigitCount)}
     {#if calculatorOutput.原始買入手續費 < calculatorOutput.買入手續費}
       <span class="text-secondary">
@@ -29,7 +29,7 @@
       </span>
     {/if}
   </td>
-  <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
+  <td hidden={displayLevel <= CalculatorConstant.顯示等級.最小}>
     {CalculatorOutput.toLocaleString(calculatorOutput.賣出手續費, fractionDigitCount)}
     {#if calculatorOutput.原始賣出手續費 < calculatorOutput.賣出手續費}
       <span class="text-secondary">
@@ -37,10 +37,10 @@
       </span>
     {/if}
   </td>
-  <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
+  <td hidden={displayLevel <= CalculatorConstant.顯示等級.最小}>
     {CalculatorOutput.toLocaleString(calculatorOutput.證券交易稅, fractionDigitCount)}
   </td>
-  <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
+  <td hidden={displayLevel <= CalculatorConstant.顯示等級.最小}>
     {CalculatorOutput.toLocaleString(calculatorOutput.投資成本, fractionDigitCount)}
   </td>
   <td class={calculatorOutput.損益金額 >= 0 ? 'positive' : 'negative'}>

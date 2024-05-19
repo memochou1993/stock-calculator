@@ -12,7 +12,7 @@
 
   let outputCount = CalculatorConstant.試算結果.預設;
   let sort = CalculatorConstant.排序.由小到大;
-  let displayLevel = CalculatorConstant.顯示等級.中;
+  let displayLevel = CalculatorConstant.顯示等級.預設;
   let fractionDigitCount = CalculatorConstant.小數位數.預設;
   let fontSize = CalculatorConstant.字體大小.預設;
 
@@ -67,19 +67,19 @@
     const params = new URLSearchParams({
       交易類別: calculatorInput.交易類別,
     });
-    if (calculatorInput.買入價格) {
+    if (calculatorInput.買入價格 !== null) {
       params.append('買入價格', String(calculatorInput.買入價格));
     }
-    if (calculatorInput.賣出價格) {
+    if (calculatorInput.賣出價格 !== null) {
       params.append('賣出價格', String(calculatorInput.賣出價格));
     }
-    if (calculatorInput.交易股數) {
+    if (calculatorInput.交易股數 !== null) {
       params.append('交易股數', String(calculatorInput.交易股數));
     }
-    if (calculatorInput.手續費折扣) {
+    if (calculatorInput.手續費折扣 !== null) {
       params.append('手續費折扣', String(calculatorInput.手續費折扣));
     }
-    if (calculatorInput.最低手續費) {
+    if (calculatorInput.最低手續費 !== null) {
       params.append('最低手續費', String(calculatorInput.最低手續費));
     }
     return decodeURIComponent(params.toString());
@@ -130,12 +130,12 @@
         <tr>
           <th>買入價格</th>
           <th>賣出價格</th>
-          <th hidden={displayLevel <= CalculatorConstant.顯示等級.中}>股票成本</th>
-          <th hidden={displayLevel <= CalculatorConstant.顯示等級.中}>股票市值</th>
-          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>買入手續費</th>
-          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>賣出手續費</th>
-          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>證券交易稅</th>
-          <th hidden={displayLevel <= CalculatorConstant.顯示等級.少}>投資成本</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.預設}>股票成本</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.預設}>股票市值</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.最小}>買入手續費</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.最小}>賣出手續費</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.最小}>證券交易稅</th>
+          <th hidden={displayLevel <= CalculatorConstant.顯示等級.最小}>投資成本</th>
           <th>損益金額</th>
           <th>報酬率</th>
         </tr>

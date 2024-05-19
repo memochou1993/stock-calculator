@@ -72,7 +72,7 @@
     <hr class="my-1" />
     <button
       class="btn dropdown-item"
-      disabled={displayLevel <= CalculatorConstant.顯示等級.少}
+      disabled={displayLevel <= CalculatorConstant.顯示等級.最小}
       on:click={() => onDisplayLevelChange(displayLevel - 1)}
       type="button"
     >
@@ -83,7 +83,7 @@
     </button>
     <button
       class="btn dropdown-item"
-      disabled={displayLevel >= CalculatorConstant.顯示等級.多}
+      disabled={displayLevel >= CalculatorConstant.顯示等級.最大}
       on:click={() => onDisplayLevelChange(displayLevel + 1)}
       type="button"
     >

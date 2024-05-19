@@ -32,14 +32,14 @@
       console.error(err);
       showTooltip(tooltip, '複製失敗！');
     }
-    await delay(1000);
+    await delay(750);
     modal.hide();
   };
 
   const showTooltip = async (tooltip: Tooltip, content: string) => {
     tooltip.setContent({ '.tooltip-inner': content });
     tooltip.show();
-    await delay(1000);
+    await delay(500);
     tooltip.hide();
   };
 
