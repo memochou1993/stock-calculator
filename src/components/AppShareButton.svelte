@@ -47,7 +47,7 @@
   $: tooltip = bootstrap?.Tooltip.getOrCreateInstance('#tooltip-share') as Tooltip;
 </script>
 
-<button type="button" class="btn btn-variant" data-bs-target="#modal-share" on:click={() => modal.show()}>
+<button type="button" class="btn btn-variant px-2" data-bs-target="#modal-share" on:click={() => modal.show()}>
   <div class="d-flex align-items-center">
     <span class="material-symbols-outlined">share</span>
   </div>

@@ -26,7 +26,7 @@
   $: isDarkTheme = theme === THEME_DARK;
 </script>
 
-<button type="button" class="btn btn-dark-variant" on:click={() => setTheme(isDarkTheme ? THEME_LIGHT : THEME_DARK)}>
+<button type="button" class="btn btn-dark-variant px-2" on:click={() => setTheme(isDarkTheme ? THEME_LIGHT : THEME_DARK)}>
   <div class="d-flex align-items-center">
     <span class="material-symbols-outlined">
       {isDarkTheme ? 'light_mode' : 'dark_mode'}

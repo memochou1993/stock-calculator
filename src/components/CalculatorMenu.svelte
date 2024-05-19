@@ -18,7 +18,7 @@
 </script>
 
 <div class="dropdown">
-  <button type="button" class="btn btn-variant" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+  <button type="button" class="btn btn-variant px-2" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
     <div class="d-flex align-items-center">
       <span class="material-symbols-outlined">tune</span>
     </div>

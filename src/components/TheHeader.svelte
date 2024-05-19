@@ -6,6 +6,17 @@
   <div class="container-fluid">
     <a class="navbar-brand text-light fs-4 py-0" href="/">台股交易試算器</a>
     <div>
+      <button
+        type="button"
+        class="btn btn-dark-variant px-2 me-2"
+        on:click={() => {
+          window.open('https://www.facebook.com/profile.php?id=61560002601019', '_blank', 'noopener noreferrer');
+        }}
+      >
+        <div class="d-flex align-items-center">
+          <span class="material-symbols-outlined">thumb_up</span>
+        </div>
+      </button>
       <AppThemeSwitch />
     </div>
   </div>
