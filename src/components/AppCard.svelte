@@ -1,5 +1,5 @@
 <script lang="ts">
-  import AppTitle from './AppTitle.svelte';
+  import AppCardTitle from './AppCardTitle.svelte';
 
   export let title: string = '';
 </script>
@@ -10,7 +10,7 @@
       <slot name="title" />
       <hr />
     {:else if title}
-      <AppTitle {title} />
+      <AppCardTitle {title} />
       <hr />
     {/if}
     <slot />
