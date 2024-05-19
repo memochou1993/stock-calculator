@@ -8,10 +8,11 @@
 
   export let calculatorInput: CalculatorInput;
 
-  let outputCount = CalculatorConstant.試算結果.預設數量;
+  let outputCount = CalculatorConstant.試算結果.預設;
   let sort = CalculatorConstant.排序.由小到大;
   let displayLevel = CalculatorConstant.顯示等級.中;
-  let fractionDigitCount = CalculatorConstant.小數位數.預設數量;
+  let fractionDigitCount = CalculatorConstant.小數位數.預設;
+  let fontSize = CalculatorConstant.字體大小.預設;
 
   onMount(() => {
     const 試算結果數量 = localStorage.getItem(CalculatorConstant.儲存鍵.試算結果數量);
@@ -29,6 +30,10 @@
     const 小數位數 = localStorage.getItem(CalculatorConstant.儲存鍵.小數位數);
     if (小數位數) {
       fractionDigitCount = Number(小數位數);
+    }
+    const 字體大小 = localStorage.getItem(CalculatorConstant.儲存鍵.字體大小);
+    if (字體大小) {
+      fontSize = Number(字體大小);
     }
   });
 
@@ -75,6 +80,11 @@
           fractionDigitCount = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.小數位數, String(v));
         }}
+        {fontSize}
+        onFontSizeChange={(v) => {
+          fontSize = v;
+          localStorage.setItem(CalculatorConstant.儲存鍵.字體大小, String(v));
+        }}
       />
     </div>
   </div>
@@ -106,6 +116,7 @@
             highlighted={Number(calculatorInput.賣出價格).toFixed(2) === price.toFixed(2)}
             {displayLevel}
             {fractionDigitCount}
+            {fontSize}
           />
         {/each}
       </tbody>

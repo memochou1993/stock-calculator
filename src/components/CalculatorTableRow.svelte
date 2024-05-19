@@ -5,9 +5,10 @@
   export let highlighted: boolean;
   export let displayLevel: number;
   export let fractionDigitCount: number;
+  export let fontSize: number;
 </script>
 
-<tr class={highlighted ? 'highlighted' : ''}>
+<tr class={highlighted ? 'highlighted' : ''} style="font-size: {fontSize}rem">
   <td>
     {CalculatorOutput.toLocaleString(calculatorOutput.買入價格, Math.max(fractionDigitCount, 2))}
   </td>
@@ -22,7 +23,7 @@
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
     {CalculatorOutput.toLocaleString(calculatorOutput.買入手續費, fractionDigitCount)}
-    {#if calculatorOutput.原始買入手續費 && calculatorOutput.原始買入手續費 < calculatorOutput.買入手續費}
+    {#if calculatorOutput.原始買入手續費 < calculatorOutput.買入手續費}
       <span class="text-secondary">
         ({CalculatorOutput.toLocaleString(calculatorOutput.原始買入手續費, fractionDigitCount)})
       </span>
@@ -30,7 +31,7 @@
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.少}>
     {CalculatorOutput.toLocaleString(calculatorOutput.賣出手續費, fractionDigitCount)}
-    {#if calculatorOutput.原始賣出手續費 && calculatorOutput.原始賣出手續費 < calculatorOutput.賣出手續費}
+    {#if calculatorOutput.原始賣出手續費 < calculatorOutput.賣出手續費}
       <span class="text-secondary">
         ({CalculatorOutput.toLocaleString(calculatorOutput.原始賣出手續費, fractionDigitCount)})
       </span>

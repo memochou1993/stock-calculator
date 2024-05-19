@@ -12,6 +12,9 @@
 
   export let fractionDigitCount: number;
   export let onFractionDigitCountChange = (_v: number) => {};
+
+  export let fontSize: number;
+  export let onFontSizeChange = (_v: number) => {};
 </script>
 
 <div class="dropdown">
@@ -46,7 +49,7 @@
     <hr class="my-1" />
     <button
       class="btn dropdown-item"
-      disabled={outputCount <= CalculatorConstant.試算結果.最小數量}
+      disabled={outputCount <= CalculatorConstant.試算結果.最小}
       on:click={() => onOutputCountChange(outputCount - 1)}
       type="button"
     >
@@ -57,7 +60,7 @@
     </button>
     <button
       class="btn dropdown-item"
-      disabled={outputCount >= CalculatorConstant.試算結果.最大數量}
+      disabled={outputCount >= CalculatorConstant.試算結果.最大}
       on:click={() => onOutputCountChange(outputCount + 1)}
       type="button"
     >
@@ -92,7 +95,7 @@
     <hr class="my-1" />
     <button
       class="btn dropdown-item"
-      disabled={fractionDigitCount <= CalculatorConstant.小數位數.最小數量}
+      disabled={fractionDigitCount <= CalculatorConstant.小數位數.最小}
       on:click={() => onFractionDigitCountChange(fractionDigitCount - 1)}
       type="button"
     >
@@ -103,13 +106,26 @@
     </button>
     <button
       class="btn dropdown-item"
-      disabled={fractionDigitCount >= CalculatorConstant.小數位數.最大數量}
+      disabled={fractionDigitCount >= CalculatorConstant.小數位數.最大}
       on:click={() => onFractionDigitCountChange(fractionDigitCount + 1)}
       type="button"
     >
       <div class="d-flex align-items-center">
         <span class="material-symbols-outlined">decimal_increase</span>
         <span class="px-2">增加小數位數</span>
+      </div>
+    </button>
+    <hr class="my-1" />
+    <button class="btn dropdown-item" disabled={fontSize <= CalculatorConstant.字體大小.最小} on:click={() => onFontSizeChange(fontSize - 0.125)} type="button">
+      <div class="d-flex align-items-center">
+        <span class="material-symbols-outlined">text_decrease</span>
+        <span class="px-2">減少字體大小</span>
+      </div>
+    </button>
+    <button class="btn dropdown-item" disabled={fontSize >= CalculatorConstant.字體大小.最大} on:click={() => onFontSizeChange(fontSize + 0.125)} type="button">
+      <div class="d-flex align-items-center">
+        <span class="material-symbols-outlined">text_increase</span>
+        <span class="px-2">增加字體大小</span>
       </div>
     </button>
   </ul>

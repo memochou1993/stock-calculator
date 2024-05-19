@@ -6,6 +6,7 @@ export const CalculatorConstant = Object.freeze({
     排序: '排序',
     顯示等級: '顯示等級',
     小數位數: '小數位數',
+    字體大小: '字體大小',
   },
   交易類別: {
     股票: '股票',
@@ -37,9 +38,9 @@ export const CalculatorConstant = Object.freeze({
     由大到小: 'desc',
   },
   試算結果: {
-    預設數量: 5,
-    最小數量: 0,
-    最大數量: 100,
+    預設: 5,
+    最小: 0,
+    最大: 100,
   },
   顯示等級: {
     少: 1,
@@ -47,9 +48,14 @@ export const CalculatorConstant = Object.freeze({
     多: 3,
   },
   小數位數: {
-    預設數量: 1,
-    最小數量: 0,
-    最大數量: 2,
+    預設: 0,
+    最小: 0,
+    最大: 2,
+  },
+  字體大小: {
+    預設: 1,
+    最小: 1,
+    最大: 1.25,
   },
 });
 
