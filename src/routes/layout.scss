@@ -10,6 +10,7 @@ $btn-light-bg-active: $gray-400;
 
 html {
   &[data-bs-theme='light'] {
+    --modal-color: #{$dark};
     --navbar-bg: #{$navbar-bg-light};
     --btn-bg-hover: #{$btn-light-bg-hover};
     --btn-bg-active: #{$btn-light-bg-active};
@@ -18,9 +19,10 @@ html {
     --btn-light-bg-hover: #{$btn-light-bg-hover};
     --btn-light-bg-active: #{$btn-light-bg-active};
     --tooltip-bg: #{$gray-800};
-    --tooltip-color: #{$white};
+    --tooltip-color: #{$light};
   }
   &[data-bs-theme='dark'] {
+    --modal-color: #{$light};
     --navbar-bg: #{$navbar-bg-dark};
     --btn-bg-hover: #{$btn-dark-bg-hover};
     --btn-bg-active: #{$btn-dark-bg-active};
@@ -29,7 +31,7 @@ html {
     --btn-light-bg-hover: #{$btn-light-bg-hover};
     --btn-light-bg-active: #{$btn-light-bg-active};
     --tooltip-bg: #{$gray-200};
-    --tooltip-color: #{$black};
+    --tooltip-color: #{$dark};
   }
 }
 
@@ -39,6 +41,14 @@ body {
 
 table > thead > tr > th {
   font-weight: 400;
+}
+
+.modal {
+  --bs-modal-color: var(--modal-color);
+}
+
+.btn-close:focus {
+  box-shadow: none;
 }
 
 .btn-variant {

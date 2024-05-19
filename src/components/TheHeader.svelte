@@ -1,12 +1,13 @@
 <script lang="ts">
+  import AppShareButton from './AppShareButton.svelte';
   import AppThemeSwitch from './AppThemeSwitch.svelte';
 </script>
 
 <nav class="navbar text-light px-2 py-3">
   <div class="container-fluid">
-    <a class="navbar-brand text-light fs-4 py-0" href="/">台股交易試算</a>
+    <a class="navbar-brand text-light fs-4 py-0" href="/">台股交易試算器</a>
     <div>
-      <button type="button" class="btn btn-md btn-dark-variant mx-2">分享</button>
+      <AppShareButton />
       <AppThemeSwitch />
     </div>
   </div>
