@@ -1,8 +1,10 @@
 <script lang="ts">
+  import { page } from '$app/stores';
   import { CalculatorConstant, CalculatorInput, calculate, calculateStep } from '$lib';
   import { onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
   import AppCardTitle from './AppCardTitle.svelte';
+  import AppShareButton from './AppShareButton.svelte';
   import CalculatorMenu from './CalculatorMenu.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
 
@@ -15,6 +17,10 @@
   let fontSize = CalculatorConstant.字體大小.預設;
 
   onMount(() => {
+    recover();
+  });
+
+  const recover = () => {
     const 試算結果數量 = localStorage.getItem(CalculatorConstant.儲存鍵.試算結果數量);
     if (試算結果數量) {
       outputCount = Number(試算結果數量);
@@ -35,7 +41,7 @@
     if (字體大小) {
       fontSize = Number(字體大小);
     }
-  });
+  };
 
   const generatePrices = (type: string, price: number, outputCount: number): number[] => {
     const prices = [];
@@ -52,40 +58,70 @@
     Number(calculatorInput.賣出價格),
     ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount),
   ].filter((price) => price >= 0);
+
   $: sortedPrices = sort === CalculatorConstant.排序.由小到大 ? prices : [...prices].reverse();
+
+  $: url = $page.url.origin;
+
+  $: params = (() => {
+    const params = new URLSearchParams({
+      交易類別: calculatorInput.交易類別,
+    });
+    if (calculatorInput.買入價格) {
+      params.append('買入價格', String(calculatorInput.買入價格));
+    }
+    if (calculatorInput.賣出價格) {
+      params.append('賣出價格', String(calculatorInput.賣出價格));
+    }
+    if (calculatorInput.交易股數) {
+      params.append('交易股數', String(calculatorInput.交易股數));
+    }
+    if (calculatorInput.手續費折扣) {
+      params.append('手續費折扣', String(calculatorInput.手續費折扣));
+    }
+    if (calculatorInput.最低手續費) {
+      params.append('最低手續費', String(calculatorInput.最低手續費));
+    }
+    return decodeURIComponent(params.toString());
+  })();
 </script>
 
 <AppCard>
   <div slot="title">
     <div class="d-flex align-items-center justify-content-between">
       <AppCardTitle title="試算結果" />
-      <CalculatorMenu
-        {sort}
-        onSortChange={(v) => {
-          sort = v;
-          localStorage.setItem(CalculatorConstant.儲存鍵.排序, String(v));
-        }}
-        {outputCount}
-        onOutputCountChange={(v) => {
-          outputCount = v;
-          localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(v));
-        }}
-        {displayLevel}
-        onDisplayLevelChange={(v) => {
-          displayLevel = v;
-          localStorage.setItem(CalculatorConstant.儲存鍵.顯示等級, String(v));
-        }}
-        {fractionDigitCount}
-        onFractionDigitCountChange={(v) => {
-          fractionDigitCount = v;
-          localStorage.setItem(CalculatorConstant.儲存鍵.小數位數, String(v));
-        }}
-        {fontSize}
-        onFontSizeChange={(v) => {
-          fontSize = v;
-          localStorage.setItem(CalculatorConstant.儲存鍵.字體大小, String(v));
-        }}
-      />
+      <div class="d-flex">
+        <div class="me-1">
+          <AppShareButton url={`${url}?${params}`} />
+        </div>
+        <CalculatorMenu
+          {sort}
+          onSortChange={(v) => {
+            sort = v;
+            localStorage.setItem(CalculatorConstant.儲存鍵.排序, String(v));
+          }}
+          {outputCount}
+          onOutputCountChange={(v) => {
+            outputCount = v;
+            localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(v));
+          }}
+          {displayLevel}
+          onDisplayLevelChange={(v) => {
+            displayLevel = v;
+            localStorage.setItem(CalculatorConstant.儲存鍵.顯示等級, String(v));
+          }}
+          {fractionDigitCount}
+          onFractionDigitCountChange={(v) => {
+            fractionDigitCount = v;
+            localStorage.setItem(CalculatorConstant.儲存鍵.小數位數, String(v));
+          }}
+          {fontSize}
+          onFontSizeChange={(v) => {
+            fontSize = v;
+            localStorage.setItem(CalculatorConstant.儲存鍵.字體大小, String(v));
+          }}
+        />
+      </div>
     </div>
   </div>
   <div class="table-responsive">

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { goto } from '$app/navigation';
+  import { page } from '$app/stores';
   import { CalculatorConstant, CalculatorInput, calculateStep, validate } from '$lib';
   import { afterUpdate, onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
@@ -7,15 +9,36 @@
   export let onUpdate: (calculatorInput: CalculatorInput) => void;
 
   onMount(() => {
-    const 手續費折扣 = localStorage.getItem(CalculatorConstant.儲存鍵.手續費折扣);
+    recover();
+    goto('/', { replaceState: true });
+  });
+
+  const recover = () => {
+    const 交易類別 = $page.url.searchParams.get('交易類別');
+    if (交易類別) {
+      calculatorInput.交易類別 = 交易類別;
+    }
+    const 買入價格 = $page.url.searchParams.get('買入價格');
+    if (買入價格) {
+      calculatorInput.買入價格 = Number(買入價格);
+    }
+    const 賣出價格 = $page.url.searchParams.get('賣出價格');
+    if (賣出價格) {
+      calculatorInput.賣出價格 = Number(賣出價格);
+    }
+    const 交易股數 = $page.url.searchParams.get('交易股數');
+    if (交易股數) {
+      calculatorInput.交易股數 = Number(交易股數);
+    }
+    const 手續費折扣 = $page.url.searchParams.get('手續費折扣') ?? localStorage.getItem(CalculatorConstant.儲存鍵.手續費折扣);
     if (手續費折扣) {
       calculatorInput.手續費折扣 = Number(手續費折扣);
     }
-    const 最低手續費 = localStorage.getItem(CalculatorConstant.儲存鍵.最低手續費);
+    const 最低手續費 = $page.url.searchParams.get('最低手續費') ?? localStorage.getItem(CalculatorConstant.儲存鍵.最低手續費);
     if (最低手續費) {
       calculatorInput.最低手續費 = Number(最低手續費);
     }
-  });
+  };
 
   afterUpdate(() => {
     if (document.getElementsByClassName('is-invalid').length > 0) {
