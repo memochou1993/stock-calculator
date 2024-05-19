@@ -33,8 +33,6 @@
       console.error(err);
       showTooltip(tooltip, '複製失敗！');
     }
-    await delay(750);
-    modal.hide();
   };
 
   const showTooltip = async (tooltip: Tooltip, content: string) => {
