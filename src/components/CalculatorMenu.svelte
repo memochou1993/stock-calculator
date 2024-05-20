@@ -19,7 +19,7 @@
 </script>
 
 <div class="dropdown">
-  <button type="button" class="btn btn-variant px-2" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+  <button type="button" class="btn btn-variant px-2" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-offset="4,4" aria-expanded="false">
     <AppIcon icon="tune" />
   </button>
   <ul class="dropdown-menu">
@@ -45,7 +45,7 @@
         <span class="px-2">價格由高至低</span>
       </div>
     </button>
-    <hr class="my-1" />
+    <hr class="dropdown-divider" />
     <button
       class="btn dropdown-item"
       disabled={outputCount <= CalculatorConstant.試算結果.最小}
@@ -68,7 +68,7 @@
         <span class="px-2">增加試算結果</span>
       </div>
     </button>
-    <hr class="my-1" />
+    <hr class="dropdown-divider" />
     <button
       class="btn dropdown-item"
       disabled={displayLevel <= CalculatorConstant.顯示等級.最小}
@@ -91,7 +91,7 @@
         <span class="px-2">增加顯示欄位</span>
       </div>
     </button>
-    <hr class="my-1" />
+    <hr class="dropdown-divider" />
     <button
       class="btn dropdown-item"
       disabled={fractionDigitCount <= CalculatorConstant.小數位數.最小}
@@ -114,7 +114,7 @@
         <span class="px-2">增加小數位數</span>
       </div>
     </button>
-    <hr class="my-1" />
+    <hr class="dropdown-divider" />
     <button class="btn dropdown-item" disabled={fontSize <= CalculatorConstant.字體大小.最小} on:click={() => onFontSizeChange(fontSize - 0.125)} type="button">
       <div class="d-flex align-items-center">
         <AppIcon icon="text_decrease" />
