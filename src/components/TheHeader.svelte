@@ -5,7 +5,10 @@
 
 <nav class="navbar text-light px-2 py-3">
   <div class="container-fluid">
-    <a class="navbar-brand text-light fs-4 py-0" href="/">台股交易試算器</a>
+    <div class="d-flex align-items-center">
+      <img src="/favicon.png" alt="logo" class="me-2" width="24" height="24" />
+      <a class="navbar-brand text-light fs-4 py-0" href="/">台股交易試算器</a>
+    </div>
     <div>
       <button
         type="button"

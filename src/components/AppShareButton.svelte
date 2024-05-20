@@ -62,7 +62,7 @@
           <input type="text" name="url" class="form-control form-control-md mb-3" bind:value={url} readonly />
           <div class="d-grid">
             <button
-              class="btn btn-block btn-warning"
+              class="btn bg-primary-variant text-white"
               data-bs-custom-class="tooltip-variant"
               data-bs-placement="bottom"
               data-bs-toggle="tooltip"

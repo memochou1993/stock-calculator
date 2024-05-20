@@ -1,35 +1,23 @@
 @import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/variables';
 
-$navbar-bg-light: $gray-800;
-$navbar-bg-dark: $gray-800;
-
-$btn-dark-bg-hover: $gray-700;
-$btn-dark-bg-active: $gray-600;
-$btn-light-bg-hover: $gray-300;
-$btn-light-bg-active: $gray-400;
+$primary: #395664;
 
 html {
+  --navbar-bg: #{$primary};
   &[data-bs-theme='light'] {
     --modal-color: #{$dark};
-    --navbar-bg: #{$navbar-bg-light};
-    --btn-bg-hover: #{$btn-light-bg-hover};
-    --btn-bg-active: #{$btn-light-bg-active};
-    --btn-dark-bg-hover: #{$btn-dark-bg-hover};
-    --btn-dark-bg-active: #{$btn-dark-bg-active};
-    --btn-light-bg-hover: #{$btn-light-bg-hover};
-    --btn-light-bg-active: #{$btn-light-bg-active};
+    --btn-color: #{$primary};
+    --btn-bg-hover: #{$gray-300};
+    --btn-bg-active: #{$gray-400};
     --tooltip-bg: #{$gray-800};
     --tooltip-color: #{$light};
   }
   &[data-bs-theme='dark'] {
     --modal-color: #{$light};
-    --navbar-bg: #{$navbar-bg-dark};
-    --btn-bg-hover: #{$btn-dark-bg-hover};
-    --btn-bg-active: #{$btn-dark-bg-active};
-    --btn-dark-bg-hover: #{$btn-dark-bg-hover};
-    --btn-dark-bg-active: #{$btn-dark-bg-active};
-    --btn-light-bg-hover: #{$btn-light-bg-hover};
-    --btn-light-bg-active: #{$btn-light-bg-active};
+    --btn-color: #{$gray-400};
+    --btn-bg-hover: #{$gray-700};
+    --btn-bg-active: #{$gray-600};
     --tooltip-bg: #{$gray-200};
     --tooltip-color: #{$dark};
   }
@@ -45,6 +33,7 @@ body {
 
 table > thead > tr > th {
   font-weight: 400;
+  background-color: #{$primary} !important;
 }
 
 .modal {
@@ -55,10 +44,15 @@ table > thead > tr > th {
   box-shadow: none;
 }
 
+.bg-primary-variant {
+  background-color: #{$primary} !important;
+}
+
 .btn-variant {
   --bs-btn-padding-x: 0.25rem;
   --bs-btn-padding-y: 0.25rem;
   border: 0;
+  color: var(--btn-color) !important;
   &:hover {
     background-color: var(--btn-bg-hover);
   }
@@ -71,12 +65,12 @@ table > thead > tr > th {
   --bs-btn-padding-x: 0.25rem;
   --bs-btn-padding-y: 0.25rem;
   border: 0;
-  color: var(--bs-gray-400);
+  color: var(--bs-light) !important;
   &:hover {
-    background-color: var(--btn-dark-bg-hover);
+    background-color: rgba(255, 255, 255, 0.2);
   }
   &:active {
-    background-color: var(--btn-dark-bg-active) !important;
+    background-color: rgba(255, 255, 255, 0.4) !important;
   }
 }
 
