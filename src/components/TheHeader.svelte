@@ -9,10 +9,10 @@
       <img src="/favicon.png" alt="logo" class="me-2" width="24" height="24" />
       <a class="navbar-brand text-light fs-4 py-0" href="/">台股交易試算器</a>
     </div>
-    <div>
+    <div class="d-flex">
       <button
         type="button"
-        class="btn btn-dark-variant px-2 me-2"
+        class="btn btn-dark-variant px-2 me-1"
         on:click={() => {
           window.open('https://www.facebook.com/profile.php?id=61560002601019', '_blank', 'noopener noreferrer');
         }}
