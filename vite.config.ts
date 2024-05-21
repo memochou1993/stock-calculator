@@ -35,8 +35,8 @@ const config: UserConfig = {
         ],
         screenshots: [
           {
-            src: '/favicon-620x300.png',
-            sizes: '620x300',
+            src: '/favicon-1240x600.png',
+            sizes: '1240x600',
             type: 'image/png',
             form_factor: 'wide',
             label: '台股交易試算器',
