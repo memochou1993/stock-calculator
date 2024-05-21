@@ -6,6 +6,14 @@
   export let calculatorInput: CalculatorInput;
   export let onUpdate: (calculatorInput: CalculatorInput) => void;
 
+  onMount(() => {
+    const modal = document.getElementById('modal-configure') as HTMLDivElement;
+    modal.addEventListener('shown.bs.modal', () => {
+      const [input] = document.getElementsByTagName('input') as HTMLCollectionOf<HTMLInputElement>;
+      input.focus();
+    });
+  });
+
   afterUpdate(() => {
     if (document.getElementsByClassName('is-invalid').length > 0) {
       return;
@@ -63,6 +71,7 @@
                     localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(手續費折扣));
                   }
                 }}
+                placeholder="0.6"
                 step="0.05"
                 type="number"
               />
@@ -107,6 +116,7 @@
                     localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費 ?? 0));
                   }
                 }}
+                placeholder="20"
                 step="1"
                 type="number"
               />

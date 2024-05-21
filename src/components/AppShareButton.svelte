@@ -13,6 +13,9 @@
   });
 
   const copy = async () => {
+    const input = document.getElementById('url') as HTMLInputElement;
+    input.select();
+
     if (navigator.share) {
       try {
         await navigator.share({
@@ -59,7 +62,7 @@
       </div>
       <div class="modal-body">
         <div class="form-group mb-0">
-          <input type="text" name="url" class="form-control form-control-md mb-3" bind:value={url} readonly />
+          <input type="text" id="url" class="form-control form-control-md mb-3" bind:value={url} readonly />
           <div class="d-grid">
             <button
               class="btn bg-primary-variant text-white"
