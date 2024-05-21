@@ -14,10 +14,10 @@
 
 <div class="container">
   <div class="row g-4">
-    <div class="col-12 col-lg-3">
+    <div class="col-12 col-md-4 col-lg-3">
       <CalculatorForm {calculatorInput} onUpdate={(v) => (calculatorInput = v)} />
     </div>
-    <div class="col-12 col-lg-9">
+    <div class="col-12 col-md-8 col-lg-9">
       <div class="row g-4">
         <div class="col-12">
           <CalculatorTable {calculatorInput} />

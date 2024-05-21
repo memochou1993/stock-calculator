@@ -4,7 +4,8 @@
   import { CalculatorConstant, CalculatorInput, calculateStep, validate } from '$lib';
   import { afterUpdate, onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
-  import AppIcon from './AppIcon.svelte';
+  import AppCardTitle from './AppCardTitle.svelte';
+  import AppConfigureButton from './AppConfigureButton.svelte';
 
   export let calculatorInput: CalculatorInput;
   export let onUpdate: (calculatorInput: CalculatorInput) => void;
@@ -49,9 +50,15 @@
   });
 </script>
 
-<AppCard title="交易參數">
+<AppCard>
+  <div slot="title" class="d-flex align-items-center justify-content-between">
+    <AppCardTitle title="交易參數" />
+    <div class="d-flex">
+      <AppConfigureButton {calculatorInput} onUpdate={(v) => (calculatorInput = v)} />
+    </div>
+  </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-6 col-md-12">
       <div class="form-group mb-4">
         <div class="d-flex align-items-center mb-1">
           <label for="交易類別" class="me-1">交易類別</label>
@@ -63,7 +70,7 @@
         </select>
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-6 col-md-12">
       <div class="form-group mb-4">
         <div class="d-flex align-items-center mb-1">
           <label for="買入價格" class="me-1">買入價格</label>
@@ -89,7 +96,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-6 col-md-12">
       <div class="form-group mb-4">
         <div class="d-flex align-items-center mb-1">
           <label for="賣出價格" class="me-1">賣出價格</label>
@@ -113,7 +120,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-6 col-md-12">
       <div class="form-group mb-4">
         <div class="d-flex align-items-center mb-1">
           <label for="交易股數" class="me-1">交易股數</label>
@@ -134,80 +141,6 @@
         />
         <div class="invalid-feedback">
           請輸入 {CalculatorConstant.交易參數.最小交易股數.toLocaleString()} 到 {CalculatorConstant.交易參數.最大交易股數.toLocaleString()} 之間的數字
-        </div>
-      </div>
-    </div>
-    <div class="col-12">
-      <div class="form-group mb-4">
-        <div class="d-flex align-items-center mb-1">
-          <label for="手續費折扣" class="me-1">手續費折扣</label>
-          <button
-            class="btn btn-variant p-0"
-            data-bs-custom-class="tooltip-variant"
-            data-bs-placement="right"
-            data-bs-toggle="tooltip"
-            title="買入股票和賣出股票時，券商所提供的手續費折扣。"
-            type="button"
-          >
-            <AppIcon fontSize={20} icon="info" />
-          </button>
-        </div>
-        <input
-          autocomplete="off"
-          bind:value={calculatorInput.手續費折扣}
-          class="form-control form-control-md {!validate(calculatorInput.手續費折扣).isBetween(
-            CalculatorConstant.交易參數.最小手續費折扣,
-            CalculatorConstant.交易參數.最大手續費折扣,
-          ) && 'is-invalid'}"
-          id="手續費折扣"
-          inputmode="decimal"
-          max={CalculatorConstant.交易參數.最大手續費折扣}
-          min={CalculatorConstant.交易參數.最小手續費折扣}
-          on:input={() => {
-            localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(calculatorInput.手續費折扣 ?? 0));
-          }}
-          step="0.05"
-          type="number"
-        />
-        <div class="invalid-feedback">
-          請輸入 {CalculatorConstant.交易參數.最小手續費折扣.toLocaleString()} 到 {CalculatorConstant.交易參數.最大手續費折扣.toLocaleString()} 之間的數字
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="form-group mb-4">
-          <div class="d-flex align-items-center mb-1">
-            <label for="最低手續費" class="me-1">最低手續費</label>
-            <button
-              class="btn btn-variant p-0"
-              data-bs-custom-class="tooltip-variant"
-              data-bs-placement="right"
-              data-bs-toggle="tooltip"
-              title="買入股票和賣出股票時，券商所收取的最低手續費。"
-              type="button"
-            >
-              <AppIcon fontSize={20} icon="info" />
-            </button>
-          </div>
-          <input
-            autocomplete="off"
-            bind:value={calculatorInput.最低手續費}
-            class="form-control form-control-md {!validate(calculatorInput.最低手續費).isBetween(
-              CalculatorConstant.交易參數.最小最低手續費,
-              CalculatorConstant.交易參數.最大最低手續費,
-            ) && 'is-invalid'}"
-            id="最低手續費"
-            inputmode="numeric"
-            max={CalculatorConstant.交易參數.最大最低手續費}
-            min={CalculatorConstant.交易參數.最小最低手續費}
-            on:input={() => {
-              localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費 ?? 0));
-            }}
-            step="1"
-            type="number"
-          />
-          <div class="invalid-feedback">
-            請輸入 {CalculatorConstant.交易參數.最小最低手續費.toLocaleString()} 到 {CalculatorConstant.交易參數.最大最低手續費.toLocaleString()} 之間的數字
-          </div>
         </div>
       </div>
     </div>

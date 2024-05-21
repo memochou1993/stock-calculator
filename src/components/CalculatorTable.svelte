@@ -87,41 +87,37 @@
 </script>
 
 <AppCard>
-  <div slot="title">
-    <div class="d-flex align-items-center justify-content-between">
-      <AppCardTitle title="試算結果" />
-      <div class="d-flex">
-        <div class="me-1">
-          <AppShareButton url={`${url}?${params}`} />
-        </div>
-        <CalculatorMenu
-          {sort}
-          onSortChange={(v) => {
-            sort = v;
-            localStorage.setItem(CalculatorConstant.儲存鍵.排序, String(v));
-          }}
-          {outputCount}
-          onOutputCountChange={(v) => {
-            outputCount = v;
-            localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(v));
-          }}
-          {displayLevel}
-          onDisplayLevelChange={(v) => {
-            displayLevel = v;
-            localStorage.setItem(CalculatorConstant.儲存鍵.顯示等級, String(v));
-          }}
-          {fractionDigitCount}
-          onFractionDigitCountChange={(v) => {
-            fractionDigitCount = v;
-            localStorage.setItem(CalculatorConstant.儲存鍵.小數位數, String(v));
-          }}
-          {fontSize}
-          onFontSizeChange={(v) => {
-            fontSize = v;
-            localStorage.setItem(CalculatorConstant.儲存鍵.字體大小, String(v));
-          }}
-        />
-      </div>
+  <div slot="title" class="d-flex align-items-center justify-content-between">
+    <AppCardTitle title="試算結果" />
+    <div class="d-flex">
+      <AppShareButton url={`${url}?${params}`} />
+      <CalculatorMenu
+        {sort}
+        onSortChange={(v) => {
+          sort = v;
+          localStorage.setItem(CalculatorConstant.儲存鍵.排序, String(v));
+        }}
+        {outputCount}
+        onOutputCountChange={(v) => {
+          outputCount = v;
+          localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(v));
+        }}
+        {displayLevel}
+        onDisplayLevelChange={(v) => {
+          displayLevel = v;
+          localStorage.setItem(CalculatorConstant.儲存鍵.顯示等級, String(v));
+        }}
+        {fractionDigitCount}
+        onFractionDigitCountChange={(v) => {
+          fractionDigitCount = v;
+          localStorage.setItem(CalculatorConstant.儲存鍵.小數位數, String(v));
+        }}
+        {fontSize}
+        onFontSizeChange={(v) => {
+          fontSize = v;
+          localStorage.setItem(CalculatorConstant.儲存鍵.字體大小, String(v));
+        }}
+      />
     </div>
   </div>
   <div class="table-responsive">

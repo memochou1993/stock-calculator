@@ -12,7 +12,7 @@
     <div class="d-flex">
       <button
         type="button"
-        class="btn btn-dark-variant px-2 me-1"
+        class="btn btn-dark-variant px-2"
         on:click={() => {
           window.open('https://www.facebook.com/profile.php?id=61560002601019', '_blank', 'noopener noreferrer');
         }}
