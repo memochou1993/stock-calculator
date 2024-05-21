@@ -20,7 +20,7 @@
 
 <div class="dropdown">
   <button type="button" class="btn btn-variant px-2" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-offset="4,4" aria-expanded="false">
-    <AppIcon icon="tune" />
+    <AppIcon icon="more_vert" />
   </button>
   <ul class="dropdown-menu">
     <button

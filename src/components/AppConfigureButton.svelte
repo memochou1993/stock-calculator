@@ -23,7 +23,7 @@
 </script>
 
 <button type="button" class="btn btn-variant px-2" data-bs-toggle="modal" data-bs-target="#modal-configure">
-  <AppIcon icon="more_vert" />
+  <AppIcon icon="tune" />
 </button>
 
 <div class="modal fade" id="modal-configure" tabindex="-1" aria-labelledby="modal-configure-label" aria-hidden="true">
