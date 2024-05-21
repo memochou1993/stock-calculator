@@ -67,14 +67,14 @@
     const params = new URLSearchParams({
       交易類別: calculatorInput.交易類別,
     });
+    if (calculatorInput.交易股數 !== null) {
+      params.append('交易股數', String(calculatorInput.交易股數));
+    }
     if (calculatorInput.買入價格 !== null) {
       params.append('買入價格', String(calculatorInput.買入價格));
     }
     if (calculatorInput.賣出價格 !== null) {
       params.append('賣出價格', String(calculatorInput.賣出價格));
-    }
-    if (calculatorInput.交易股數 !== null) {
-      params.append('交易股數', String(calculatorInput.交易股數));
     }
     if (calculatorInput.手續費折扣 !== null) {
       params.append('手續費折扣', String(calculatorInput.手續費折扣));
