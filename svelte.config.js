@@ -15,6 +15,9 @@ const config = {
     alias: {
       $components: 'src/components',
     },
+    serviceWorker: {
+      register: false,
+    },
   },
 };
 

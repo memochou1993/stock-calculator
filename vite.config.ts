@@ -1,9 +1,62 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vitest/config';
+import { SvelteKitPWA } from '@vite-pwa/sveltekit';
+import type { UserConfig } from 'vite';
 
-export default defineConfig({
-	plugins: [sveltekit()],
-	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
-	}
-});
+const config: UserConfig = {
+  plugins: [
+    sveltekit(),
+    SvelteKitPWA({
+      srcDir: './src',
+      manifest: {
+        short_name: '台股交易試算器',
+        name: '台股交易試算器',
+        start_url: '/',
+        scope: '/',
+        display: 'standalone',
+        theme_color: '#ffffff',
+        background_color: '#ffffff',
+        icons: [
+          {
+            src: '/favicon-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: '/favicon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: '/favicon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable',
+          },
+        ],
+        screenshots: [
+          {
+            src: '/favicon-620x300.png',
+            sizes: '620x300',
+            type: 'image/png',
+            form_factor: 'wide',
+            label: '台股交易試算器',
+          },
+        ],
+      },
+      injectManifest: {
+        globPatterns: ['client/**/*.{js,css,ico,png,svg,webp,woff,woff2}'],
+      },
+      workbox: {
+        globPatterns: ['client/**/*.{js,css,ico,png,svg,webp,woff,woff2}'],
+      },
+      devOptions: {
+        enabled: true,
+        suppressWarnings: process.env.SUPPRESS_WARNING === 'true',
+        type: 'module',
+        navigateFallback: '/',
+      },
+    }),
+  ],
+};
+
+export default config;

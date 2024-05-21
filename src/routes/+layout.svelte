@@ -1,6 +1,7 @@
 <script lang="ts">
   import { TheFooter, TheHeader } from '$components';
   import { onMount } from 'svelte';
+  import { pwaInfo } from 'virtual:pwa-info';
   import './layout.scss';
 
   onMount(async () => {
@@ -11,6 +12,8 @@
   const title = '台股交易試算器 - 投資成本、損益金額、報酬率計算工具';
   const description = `台股交易試算器提供股票、股票當日沖銷、指數股票型基金（ETF）交易試算。藉由輸入交易類別、買入價格、賣出價格、交易股數、手續費折扣、最低手續費，可根據不同的成交價格，自動計算出股票成本、股票市值、買入手續費、賣出手續費、證券交易稅、交易成本、損益金額、報酬率。`;
   const domain = 'https://stock.epoch.tw';
+
+  $: webManifest = pwaInfo ? pwaInfo.webManifest.linkTag : '';
 </script>
 
 <svelte:head>
@@ -28,6 +31,7 @@
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content="{domain}/cover.png" />
   <meta name="twitter:card" content="summary_large_image" />
+  {@html webManifest}
 </svelte:head>
 
 <div class="app">
