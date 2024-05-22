@@ -34,6 +34,11 @@ body {
 table > thead > tr > th {
   font-weight: 400;
   background-color: #{$primary} !important;
+  white-space: nowrap;
+}
+
+table > tbody > tr > td {
+  white-space: nowrap;
 }
 
 .modal {
