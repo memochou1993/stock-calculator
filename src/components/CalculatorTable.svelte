@@ -65,24 +65,11 @@
   $: calculatorOutputs = sortedPrices.map((price) => calculate(new CalculatorInput({ ...calculatorInput, 賣出價格: price })));
 
   $: params = (() => {
-    const params = new URLSearchParams({
-      交易類別: calculatorInput.交易類別,
-    });
-    if (calculatorInput.交易股數 !== null) {
-      params.append('交易股數', String(calculatorInput.交易股數));
-    }
-    if (calculatorInput.買入價格 !== null) {
-      params.append('買入價格', String(calculatorInput.買入價格));
-    }
-    if (calculatorInput.賣出價格 !== null) {
-      params.append('賣出價格', String(calculatorInput.賣出價格));
-    }
-    if (calculatorInput.手續費折扣 !== null) {
-      params.append('手續費折扣', String(calculatorInput.手續費折扣));
-    }
-    if (calculatorInput.最低手續費 !== null) {
-      params.append('最低手續費', String(calculatorInput.最低手續費));
-    }
+    const params = new URLSearchParams(
+      Object.entries(calculatorInput)
+        .filter(([key, value]) => value !== null)
+        .map(([key, value]) => [key, String(value)]),
+    );
     return decodeURIComponent(params.toString());
   })();
 </script>
@@ -126,7 +113,6 @@
     <table class="table table-bordered table-striped table-light align-middle text-center mb-0">
       <thead class="table-dark">
         <tr>
-          <th>買入價格</th>
           <th>賣出價格</th>
           <th hidden={displayLevel <= CalculatorConstant.顯示等級.預設}>股票成本</th>
           <th hidden={displayLevel <= CalculatorConstant.顯示等級.預設}>股票市值</th>

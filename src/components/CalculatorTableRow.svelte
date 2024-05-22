@@ -10,9 +10,6 @@
 
 <tr class={highlighted ? 'highlighted' : ''} style="font-size: {fontSize}rem">
   <td>
-    {CalculatorOutput.toLocaleString(calculatorOutput.買入價格, Math.max(fractionDigitCount, 2))}
-  </td>
-  <td>
     {CalculatorOutput.toLocaleString(calculatorOutput.賣出價格, Math.max(fractionDigitCount, 2))}
   </td>
   <td hidden={displayLevel <= CalculatorConstant.顯示等級.預設}>

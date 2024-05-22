@@ -71,7 +71,7 @@
                     localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(手續費折扣));
                   }
                 }}
-                placeholder="0.6"
+                placeholder="請輸入 {CalculatorConstant.交易參數.最小手續費折扣.toLocaleString()} 到 {CalculatorConstant.交易參數.最大手續費折扣.toLocaleString()} 之間的數字"
                 step="0.05"
                 type="number"
               />
@@ -116,7 +116,7 @@
                     localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費 ?? 0));
                   }
                 }}
-                placeholder="20"
+                placeholder="請輸入 {CalculatorConstant.交易參數.最小最低手續費.toLocaleString()} 到 {CalculatorConstant.交易參數.最大最低手續費.toLocaleString()} 之間的數字"
                 step="1"
                 type="number"
               />
