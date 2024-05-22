@@ -14,35 +14,35 @@
       <tbody>
         <tr>
           <td>股票成本</td>
-          <td class="formula">買入價格 × 交易股數 </td>
+          <td class="text-math">買入價格 × 交易股數 </td>
         </tr>
         <tr>
           <td>股票市值</td>
-          <td class="formula">賣出價格 × 交易股數</td>
+          <td class="text-math">賣出價格 × 交易股數</td>
         </tr>
         <tr>
           <td>買入手續費</td>
-          <td class="formula">max(股票成本 × 公定手續費費率 (1.425‰) × 手續費折扣, 最低手續費)</td>
+          <td class="text-math">max(股票成本 × 公定手續費費率 (1.425‰) × 手續費折扣, 最低手續費)</td>
         </tr>
         <tr>
           <td>賣出手續費</td>
-          <td class="formula">max(股票市值 × 公定手續費費率 (1.425‰) × 手續費折扣, 最低手續費)</td>
+          <td class="text-math">max(股票市值 × 公定手續費費率 (1.425‰) × 手續費折扣, 最低手續費)</td>
         </tr>
         <tr>
           <td>證券交易稅</td>
-          <td class="formula">股票市值 × 證券交易稅稅率</td>
+          <td class="text-math">股票市值 × 證券交易稅稅率</td>
         </tr>
         <tr>
           <td>投資成本</td>
-          <td class="formula">股票成本 + 買入手續費 + 賣出手續費 + 證券交易稅</td>
+          <td class="text-math">股票成本 + 買入手續費 + 賣出手續費 + 證券交易稅</td>
         </tr>
         <tr>
           <td>損益金額</td>
-          <td class="formula">股票市值 - 投資成本</td>
+          <td class="text-math">股票市值 - 投資成本</td>
         </tr>
         <tr>
           <td>報酬率</td>
-          <td class="formula">損益金額 ÷ 投資成本</td>
+          <td class="text-math">損益金額 ÷ 投資成本</td>
         </tr>
       </tbody>
     </table>
