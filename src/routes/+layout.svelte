@@ -2,8 +2,9 @@
   import { page } from '$app/stores';
   import { TheFooter, TheHeader } from '$components';
   import { onMount } from 'svelte';
-  import { pwaInfo } from 'virtual:pwa-info';
   import './layout.scss';
+  // @ts-expect-error
+  import { pwaInfo } from 'virtual:pwa-info';
 
   onMount(async () => {
     const bootstrap = await import('bootstrap');

@@ -2,13 +2,14 @@ FROM oven/bun:1 as base
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json bun.lockb ./
 
 RUN bun install
 
 COPY . .
 
-RUN bun run build
+RUN bun run check \
+  && bun run build
 
 FROM nginx:stable-alpine
 
