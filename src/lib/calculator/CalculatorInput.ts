@@ -8,6 +8,8 @@ interface CalculatorInputArgs {
 }
 
 class CalculatorInput {
+  [key: string]: unknown;
+
   交易類別: string;
   交易股數: number | null;
   買入價格: number | null;

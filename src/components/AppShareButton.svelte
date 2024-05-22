@@ -12,7 +12,7 @@
     bootstrap = await import('bootstrap');
   });
 
-  const copy = async () => {
+  const copyUrl = async () => {
     const input = document.getElementById('url') as HTMLInputElement;
     input.select();
 
@@ -71,7 +71,7 @@
               data-bs-toggle="tooltip"
               data-bs-trigger="manual"
               id="tooltip-share"
-              on:click={copy}
+              on:click={copyUrl}
               title="複製成功！"
               type="button"
             >

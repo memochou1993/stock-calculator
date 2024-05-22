@@ -5,6 +5,7 @@
   import AppCard from './AppCard.svelte';
   import AppCardTitle from './AppCardTitle.svelte';
   import AppShareButton from './AppShareButton.svelte';
+  import CalculatorDownloadButton from './CalculatorDownloadButton.svelte';
   import CalculatorMenu from './CalculatorMenu.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
 
@@ -61,7 +62,7 @@
 
   $: sortedPrices = sort === CalculatorConstant.排序.由小到大 ? prices : [...prices].reverse();
 
-  $: url = $page.url.origin;
+  $: calculatorOutputs = sortedPrices.map((price) => calculate(new CalculatorInput({ ...calculatorInput, 賣出價格: price })));
 
   $: params = (() => {
     const params = new URLSearchParams({
@@ -90,7 +91,8 @@
   <div slot="title" class="d-flex align-items-center justify-content-between">
     <AppCardTitle title="試算結果" />
     <div class="d-flex">
-      <AppShareButton url={`${url}?${params}`} />
+      <CalculatorDownloadButton {calculatorOutputs} />
+      <AppShareButton url={`${$page.url.origin}?${params}`} />
       <CalculatorMenu
         {sort}
         onSortChange={(v) => {
@@ -137,15 +139,10 @@
         </tr>
       </thead>
       <tbody>
-        {#each sortedPrices as price}
+        {#each calculatorOutputs as calculatorOutput}
           <CalculatorTableRow
-            calculatorOutput={calculate(
-              new CalculatorInput({
-                ...calculatorInput,
-                賣出價格: price,
-              }),
-            )}
-            highlighted={Number(calculatorInput.賣出價格).toFixed(2) === price.toFixed(2)}
+            {calculatorOutput}
+            highlighted={Number(calculatorInput.賣出價格).toFixed(2) === calculatorOutput.賣出價格.toFixed(2)}
             {displayLevel}
             {fractionDigitCount}
             {fontSize}

@@ -14,6 +14,8 @@ interface CalculatorOutputArgs {
 }
 
 class CalculatorOutput {
+  [key: string]: unknown;
+
   買入價格: number;
   賣出價格: number;
   股票成本: number;
