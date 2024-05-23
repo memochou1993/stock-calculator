@@ -48,7 +48,7 @@ export const CalculatorConstant = Object.freeze({
     最大: 3,
   },
   小數位數: {
-    預設: 0,
+    預設: 1,
     最小: 0,
     最大: 2,
   },
