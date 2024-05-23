@@ -17,7 +17,7 @@
           window.open('https://www.facebook.com/profile.php?id=61559734063696', '_blank', 'noopener noreferrer');
         }}
       >
-        <AppIcon icon="flag" />
+        <AppIcon icon="home" />
       </button>
       <AppThemeSwitch />
     </div>
