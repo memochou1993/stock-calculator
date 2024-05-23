@@ -8,8 +8,10 @@ const config: UserConfig = {
     SvelteKitPWA({
       srcDir: './src',
       manifest: {
-        short_name: '台股交易試算器',
+        id: '/',
+        short_name: '台股試算器',
         name: '台股交易試算器',
+        description: '投資成本、損益金額、報酬率計算工具',
         start_url: '/',
         scope: '/',
         display: 'standalone',
@@ -30,10 +32,17 @@ const config: UserConfig = {
             src: '/favicon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any maskable',
+            purpose: 'maskable',
           },
         ],
         screenshots: [
+          {
+            src: '/favicon-600x600.png',
+            sizes: '600x600',
+            type: 'image/png',
+            form_factor: 'narrow',
+            label: '台股交易試算器',
+          },
           {
             src: '/favicon-1240x600.png',
             sizes: '1240x600',
