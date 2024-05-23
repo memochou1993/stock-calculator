@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('basic test', async ({ page }) => {
   await page.goto('/');
 
-  expect(await page.locator('a.navbar-brand').textContent()).toBe('台股交易試算器');
+  expect(await page.locator('a.navbar-brand').textContent()).toBe('股票交易計算器');
 
   await page.getByLabel('交易類別').selectOption('ETF');
   await page.getByLabel('交易股數').fill('100');
@@ -23,10 +23,10 @@ test('basic test', async ({ page }) => {
   expect(await columns.nth(0).textContent()).toContain('34.00');
   expect(await columns.nth(1).textContent()).toContain('1,200');
   expect(await columns.nth(2).textContent()).toContain('3,400');
-  expect(await columns.nth(3).textContent()).toContain('10.0 (1.0)');
-  expect(await columns.nth(4).textContent()).toContain('10.0 (2.9)');
-  expect(await columns.nth(5).textContent()).toContain('3.4');
-  expect(await columns.nth(6).textContent()).toContain('1,223.4');
-  expect(await columns.nth(7).textContent()).toContain('2,176.6');
-  expect(await columns.nth(8).textContent()).toContain('177.9%');
+  expect(await columns.nth(3).textContent()).toContain('10.00 (1.03)');
+  expect(await columns.nth(4).textContent()).toContain('10.00 (2.91)');
+  expect(await columns.nth(5).textContent()).toContain('3.40');
+  expect(await columns.nth(6).textContent()).toContain('1,223.40');
+  expect(await columns.nth(7).textContent()).toContain('2,176.60');
+  expect(await columns.nth(8).textContent()).toContain('177.91%');
 });
