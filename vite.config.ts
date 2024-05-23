@@ -9,9 +9,9 @@ const config: UserConfig = {
       srcDir: './src',
       manifest: {
         id: '/',
-        short_name: '台股試算器',
+        short_name: '股票試算器',
         name: '台股交易試算器',
-        description: '投資成本、損益金額、報酬率計算工具',
+        description: '手續費、損益金額、報酬率計算工具',
         start_url: '/',
         scope: '/',
         display: 'standalone',
