@@ -7,9 +7,14 @@
   import { pwaInfo } from 'virtual:pwa-info';
 
   onMount(async () => {
+    await initBootstrap();
+  });
+
+  const initBootstrap = async () => {
     const bootstrap = await import('bootstrap');
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => new bootstrap.Tooltip(el));
-  });
+    document.querySelectorAll('[data-bs-toggle="popover"]').forEach((el) => new bootstrap.Popover(el));
+  };
 
   const title = '股票交易計算器｜手續費、損益金額、報酬率計算工具';
   const description = `股票交易計算器，提供股票、股票當日沖銷、指數股票型基金（ETF）交易試算。輸入交易類別、交易股數、買入價格、賣出價格、手續費折扣、最低手續費，可根據不同的成交價格，自動計算出股票成本、股票市值、買入手續費、賣出手續費、證券交易稅、交易成本、損益金額、報酬率。`;

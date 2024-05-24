@@ -11,11 +11,11 @@
     </div>
     <div class="d-flex">
       <button
-        type="button"
         class="btn btn-dark-variant px-2"
         on:click={() => {
           window.open('https://www.facebook.com/profile.php?id=61559734063696', '_blank', 'noopener noreferrer');
         }}
+        type="button"
       >
         <AppIcon icon="home" />
       </button>

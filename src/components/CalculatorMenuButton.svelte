@@ -19,7 +19,7 @@
 </script>
 
 <div class="dropdown">
-  <button type="button" class="btn btn-variant px-2" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-offset="4,4" aria-expanded="false">
+  <button type="button" aria-expanded="false" class="btn btn-variant px-2" data-bs-auto-close="outside" data-bs-offset="4,4" data-bs-toggle="dropdown">
     <AppIcon icon="more_vert" />
   </button>
   <ul class="dropdown-menu">
