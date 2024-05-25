@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
-  import { CalculatorConstant, CalculatorInput, calculateStep, validate } from '$lib';
+  import { CalculatorConstant, CalculatorInput, GTM, calculateStep, validate } from '$lib';
   import { afterUpdate, onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
   import AppCardTitle from './AppCardTitle.svelte';
@@ -63,7 +63,14 @@
         <div class="d-flex align-items-center mb-1">
           <label for="交易類別" class="me-1">交易類別</label>
         </div>
-        <select bind:value={calculatorInput.交易類別} class="form-control form-control-md" id="交易類別">
+        <select
+          bind:value={calculatorInput.交易類別}
+          class="form-control form-control-md"
+          id="交易類別"
+          on:blur={() => {
+            GTM.pushEvent('changeTransactionType', { value: calculatorInput.交易類別 });
+          }}
+        >
           <option value={CalculatorConstant.交易類別.股票}>{CalculatorConstant.交易類別.股票}</option>
           <option value={CalculatorConstant.交易類別.股票當日沖銷}>{CalculatorConstant.交易類別.股票當日沖銷}</option>
           <option value={CalculatorConstant.交易類別.ETF}>{CalculatorConstant.交易類別.ETF}</option>
@@ -86,6 +93,9 @@
           inputmode="numeric"
           max={CalculatorConstant.交易參數.最大交易股數}
           min={CalculatorConstant.交易參數.最小交易股數}
+          on:blur={() => {
+            GTM.pushEvent('changeShares', { value: calculatorInput.交易股數 });
+          }}
           step="1000"
           type="number"
         />
@@ -112,6 +122,9 @@
           inputmode="decimal"
           max={CalculatorConstant.交易參數.最大買入價格}
           min={CalculatorConstant.交易參數.最小買入價格}
+          on:blur={() => {
+            GTM.pushEvent('changePurchasePrice', { value: calculatorInput.買入價格 });
+          }}
           step={calculateStep(calculatorInput.交易類別, calculatorInput.買入價格)}
           type="number"
         />
@@ -136,6 +149,9 @@
           inputmode="decimal"
           max={CalculatorConstant.交易參數.最大賣出價格}
           min={CalculatorConstant.交易參數.最小賣出價格}
+          on:blur={() => {
+            GTM.pushEvent('changeSellingPrice', { value: calculatorInput.賣出價格 });
+          }}
           step={calculateStep(calculatorInput.交易類別, calculatorInput.賣出價格)}
           type="number"
         />

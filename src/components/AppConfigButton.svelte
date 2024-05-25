@@ -69,6 +69,9 @@
                 inputmode="decimal"
                 max={CalculatorConstant.交易參數.最大手續費折扣}
                 min={CalculatorConstant.交易參數.最小手續費折扣}
+                on:blur={() => {
+                  GTM.pushEvent('changeCommissionRate', { value: calculatorInput.手續費折扣 });
+                }}
                 on:input={() => {
                   const 手續費折扣 = calculatorInput.手續費折扣;
                   if (
@@ -114,6 +117,9 @@
                 inputmode="numeric"
                 max={CalculatorConstant.交易參數.最大最低手續費}
                 min={CalculatorConstant.交易參數.最小最低手續費}
+                on:blur={() => {
+                  GTM.pushEvent('changeMinimumCommission', { value: calculatorInput.最低手續費 });
+                }}
                 on:input={() => {
                   const 最低手續費 = calculatorInput.最低手續費;
                   if (
