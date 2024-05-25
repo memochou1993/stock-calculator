@@ -119,12 +119,12 @@
       <thead class="table-dark">
         <tr>
           <th>賣出價格</th>
-          <th hidden={displayLevel < CalculatorConstant.顯示等級.最大}>股票成本</th>
-          <th hidden={displayLevel < CalculatorConstant.顯示等級.最大}>股票市值</th>
-          <th hidden={displayLevel < CalculatorConstant.顯示等級.預設}>買入手續費</th>
-          <th hidden={displayLevel < CalculatorConstant.顯示等級.預設}>賣出手續費</th>
-          <th hidden={displayLevel < CalculatorConstant.顯示等級.預設}>證券交易稅</th>
-          <th>投資成本</th>
+          <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 2}>股票成本</th>
+          <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 2}>股票市值</th>
+          <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 1}>買入手續費</th>
+          <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 1}>賣出手續費</th>
+          <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 1}>證券交易稅</th>
+          <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 1}>投資成本</th>
           <th>損益金額</th>
           <th>報酬率</th>
         </tr>
