@@ -27,7 +27,7 @@
   data-bs-target="#modal-config"
   data-bs-toggle="modal"
   on:click={() => {
-    GTM.pushEvent('openConfigModal');
+    GTM.pushEvent('open_config_modal');
   }}
   type="button"
 >
@@ -70,7 +70,7 @@
                 max={CalculatorConstant.交易參數.最大手續費折扣}
                 min={CalculatorConstant.交易參數.最小手續費折扣}
                 on:blur={() => {
-                  GTM.pushEvent('changeCommissionRate', { value: calculatorInput.手續費折扣 });
+                  GTM.pushEvent('change_commission_rate', { value: calculatorInput.手續費折扣 });
                 }}
                 on:input={() => {
                   const 手續費折扣 = calculatorInput.手續費折扣;
@@ -118,7 +118,7 @@
                 max={CalculatorConstant.交易參數.最大最低手續費}
                 min={CalculatorConstant.交易參數.最小最低手續費}
                 on:blur={() => {
-                  GTM.pushEvent('changeMinimumCommission', { value: calculatorInput.最低手續費 });
+                  GTM.pushEvent('change_minimum_commission', { value: calculatorInput.最低手續費 });
                 }}
                 on:input={() => {
                   const 最低手續費 = calculatorInput.最低手續費;

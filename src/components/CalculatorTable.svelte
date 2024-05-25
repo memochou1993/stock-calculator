@@ -85,31 +85,31 @@
         onSortChange={(v) => {
           sort = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.排序, String(v));
-          GTM.pushEvent('changeSort', { value: v });
+          GTM.pushEvent('change_sort', { value: v });
         }}
         {outputCount}
         onOutputCountChange={(v) => {
           outputCount = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(v));
-          GTM.pushEvent('changeOutputCount', { value: v });
+          GTM.pushEvent('change_output_count', { value: v });
         }}
         {displayLevel}
         onDisplayLevelChange={(v) => {
           displayLevel = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.顯示等級, String(v));
-          GTM.pushEvent('changeDisplayLevel', { value: v });
+          GTM.pushEvent('change_display_level', { value: v });
         }}
         {fractionDigitCount}
         onFractionDigitCountChange={(v) => {
           fractionDigitCount = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.小數位數, String(v));
-          GTM.pushEvent('changeFractionDigitCount', { value: v });
+          GTM.pushEvent('change_fraction_digit_count', { value: v });
         }}
         {fontSize}
         onFontSizeChange={(v) => {
           fontSize = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.字體大小, String(v));
-          GTM.pushEvent('changeFontSize', { value: v });
+          GTM.pushEvent('change_font_size', { value: v });
         }}
       />
     </div>

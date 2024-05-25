@@ -12,7 +12,7 @@
         class="navbar-brand text-light fs-4 py-0"
         href="/"
         on:click={() => {
-          GTM.pushEvent('refreshPage');
+          GTM.pushEvent('refresh_page');
         }}
       >
         股票交易計算器
@@ -23,7 +23,7 @@
         class="btn btn-dark-variant px-2"
         on:click={() => {
           window.open('https://www.facebook.com/profile.php?id=61559734063696', '_blank', 'noopener noreferrer');
-          GTM.pushEvent('visitFacebook');
+          GTM.pushEvent('visit_facebook_page');
         }}
         type="button"
       >

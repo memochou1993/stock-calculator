@@ -7,7 +7,7 @@
   <a
     href="https://profile.epoch.tw/"
     on:click={() => {
-      GTM.pushEvent('visitAuthorProfile');
+      GTM.pushEvent('visit_author_profile');
     }}
     rel="noopener noreferrer"
     target="_blank"

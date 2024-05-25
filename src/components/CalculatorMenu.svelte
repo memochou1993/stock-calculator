@@ -27,7 +27,7 @@
     data-bs-offset="4,4"
     data-bs-toggle="dropdown"
     on:click={() => {
-      GTM.pushEvent('toggleCalculatorMenu');
+      GTM.pushEvent('toggle_calculator_menu');
     }}
   >
     <AppIcon icon="more_vert" />

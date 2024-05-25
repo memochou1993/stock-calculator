@@ -68,7 +68,7 @@
           class="form-control form-control-md"
           id="交易類別"
           on:blur={() => {
-            GTM.pushEvent('changeTransactionType', { value: calculatorInput.交易類別 });
+            GTM.pushEvent('change_transaction_type', { value: calculatorInput.交易類別 });
           }}
         >
           <option value={CalculatorConstant.交易類別.股票}>{CalculatorConstant.交易類別.股票}</option>
@@ -94,7 +94,7 @@
           max={CalculatorConstant.交易參數.最大交易股數}
           min={CalculatorConstant.交易參數.最小交易股數}
           on:blur={() => {
-            GTM.pushEvent('changeShares', { value: calculatorInput.交易股數 });
+            GTM.pushEvent('change_shares', { value: calculatorInput.交易股數 });
           }}
           step="1000"
           type="number"
@@ -123,7 +123,7 @@
           max={CalculatorConstant.交易參數.最大買入價格}
           min={CalculatorConstant.交易參數.最小買入價格}
           on:blur={() => {
-            GTM.pushEvent('changePurchasePrice', { value: calculatorInput.買入價格 });
+            GTM.pushEvent('change_purchase_price', { value: calculatorInput.買入價格 });
           }}
           step={calculateStep(calculatorInput.交易類別, calculatorInput.買入價格)}
           type="number"
@@ -150,7 +150,7 @@
           max={CalculatorConstant.交易參數.最大賣出價格}
           min={CalculatorConstant.交易參數.最小賣出價格}
           on:blur={() => {
-            GTM.pushEvent('changeSellingPrice', { value: calculatorInput.賣出價格 });
+            GTM.pushEvent('change_selling_price', { value: calculatorInput.賣出價格 });
           }}
           step={calculateStep(calculatorInput.交易類別, calculatorInput.賣出價格)}
           type="number"

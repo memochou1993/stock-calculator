@@ -54,7 +54,7 @@
   data-bs-target="#modal-share"
   data-bs-toggle="modal"
   on:click={() => {
-    GTM.pushEvent('openShareModal');
+    GTM.pushEvent('open_share_modal');
   }}
   type="button"
 >
@@ -81,7 +81,7 @@
               id="tooltip-share"
               on:click={() => {
                 copyUrl();
-                GTM.pushEvent('copyUrl');
+                GTM.pushEvent('copy_url');
               }}
               title="複製成功！"
               type="button"

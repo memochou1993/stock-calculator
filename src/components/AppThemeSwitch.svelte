@@ -27,7 +27,7 @@
 
   const toggleTheme = () => {
     setTheme(isDarkTheme ? THEME_LIGHT : THEME_DARK);
-    GTM.pushEvent('toggleTheme', { value: theme });
+    GTM.pushEvent('toggle_theme', { value: theme });
   };
 
   $: isDarkTheme = theme === THEME_DARK;

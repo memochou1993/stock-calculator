@@ -19,7 +19,7 @@
   class="btn btn-variant px-2"
   on:click={() => {
     downloadFile();
-    GTM.pushEvent('downloadFile');
+    GTM.pushEvent('download_file');
   }}
   type="button"
 >
