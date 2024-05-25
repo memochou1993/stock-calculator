@@ -52,7 +52,7 @@
                   data-bs-custom-class="tooltip-variant"
                   data-bs-placement="right"
                   data-bs-toggle="tooltip"
-                  title="買入股票和賣出股票時，券商所提供的手續費折扣。"
+                  title="股票交易時，券商所提供的手續費折扣，例如：0.6。"
                   type="button"
                 >
                   <AppIcon fontSize={20} icon="info" />
@@ -82,7 +82,6 @@
                     localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(手續費折扣));
                   }
                 }}
-                placeholder="請輸入 {CalculatorConstant.交易參數.最小手續費折扣.toLocaleString()} 到 {CalculatorConstant.交易參數.最大手續費折扣.toLocaleString()} 之間的數字"
                 step="0.05"
                 type="number"
               />
@@ -100,7 +99,7 @@
                   data-bs-custom-class="tooltip-variant"
                   data-bs-placement="right"
                   data-bs-toggle="tooltip"
-                  title="買入股票和賣出股票時，券商所收取的最低手續費。"
+                  title="股票交易時，券商所收取的最低手續費，例如：20。"
                   type="button"
                 >
                   <AppIcon fontSize={20} icon="info" />
@@ -130,7 +129,6 @@
                     localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費 ?? 0));
                   }
                 }}
-                placeholder="請輸入 {CalculatorConstant.交易參數.最小最低手續費.toLocaleString()} 到 {CalculatorConstant.交易參數.最大最低手續費.toLocaleString()} 之間的數字"
                 step="1"
                 type="number"
               />
