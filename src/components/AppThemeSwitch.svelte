@@ -9,6 +9,8 @@
 
   let theme: string;
 
+  $: isDarkTheme = theme === THEME_DARK;
+
   onMount(() => {
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -29,8 +31,6 @@
     setTheme(isDarkTheme ? THEME_LIGHT : THEME_DARK);
     GTM.pushEvent('toggle_theme', { value: theme });
   };
-
-  $: isDarkTheme = theme === THEME_DARK;
 </script>
 
 <button type="button" class="btn btn-dark-variant px-2" on:click={toggleTheme}>

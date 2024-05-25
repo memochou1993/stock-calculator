@@ -17,6 +17,25 @@
   let fractionDigitCount = CalculatorConstant.小數位數.預設;
   let fontSize = CalculatorConstant.字體大小.預設;
 
+  $: prices = [
+    ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), -outputCount).reverse(),
+    Number(calculatorInput.賣出價格),
+    ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount),
+  ].filter((price) => price >= 0);
+
+  $: sortedPrices = sort === CalculatorConstant.排序.由小到大 ? prices : [...prices].reverse();
+
+  $: calculatorOutputs = sortedPrices.map((price) => calculate(new CalculatorInput({ ...calculatorInput, 賣出價格: price })));
+
+  $: params = (() => {
+    const params = new URLSearchParams(
+      Object.entries(calculatorInput)
+        .filter(([key, value]) => value !== null)
+        .map(([key, value]) => [key, String(value)]),
+    );
+    return decodeURIComponent(params.toString());
+  })();
+
   onMount(() => {
     recover();
   });
@@ -53,25 +72,6 @@
     }
     return prices;
   };
-
-  $: prices = [
-    ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), -outputCount).reverse(),
-    Number(calculatorInput.賣出價格),
-    ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount),
-  ].filter((price) => price >= 0);
-
-  $: sortedPrices = sort === CalculatorConstant.排序.由小到大 ? prices : [...prices].reverse();
-
-  $: calculatorOutputs = sortedPrices.map((price) => calculate(new CalculatorInput({ ...calculatorInput, 賣出價格: price })));
-
-  $: params = (() => {
-    const params = new URLSearchParams(
-      Object.entries(calculatorInput)
-        .filter(([key, value]) => value !== null)
-        .map(([key, value]) => [key, String(value)]),
-    );
-    return decodeURIComponent(params.toString());
-  })();
 </script>
 
 <AppCard>

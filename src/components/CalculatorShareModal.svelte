@@ -8,6 +8,9 @@
 
   let bootstrap: typeof import('bootstrap');
 
+  $: modal = bootstrap?.Modal.getOrCreateInstance('#modal-share') as Modal;
+  $: tooltip = bootstrap?.Tooltip.getOrCreateInstance('#tooltip-share') as Tooltip;
+
   onMount(async () => {
     bootstrap = await import('bootstrap');
   });
@@ -44,9 +47,6 @@
     await delay(500);
     tooltip.hide();
   };
-
-  $: modal = bootstrap?.Modal.getOrCreateInstance('#modal-share') as Modal;
-  $: tooltip = bootstrap?.Tooltip.getOrCreateInstance('#tooltip-share') as Tooltip;
 </script>
 
 <button
