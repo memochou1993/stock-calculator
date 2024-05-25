@@ -12,7 +12,7 @@
   export let calculatorInput: CalculatorInput;
 
   let outputCount = CalculatorConstant.試算結果.預設;
-  let sort = CalculatorConstant.排序.由大到小;
+  let sort = CalculatorConstant.排序.由小到大;
   let displayLevel = CalculatorConstant.顯示等級.預設;
   let fractionDigitCount = CalculatorConstant.小數位數.預設;
   let fontSize = CalculatorConstant.字體大小.預設;
