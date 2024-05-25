@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CalculatorOutput } from '$lib';
+  import { CalculatorOutput, GTM } from '$lib';
   import { download } from '$lib/utils';
   import AppIcon from './AppIcon.svelte';
 
@@ -15,6 +15,13 @@
   };
 </script>
 
-<button type="button" class="btn btn-variant px-2" on:click={downloadFile}>
+<button
+  class="btn btn-variant px-2"
+  on:click={() => {
+    downloadFile();
+    GTM.pushEvent('downloadFile');
+  }}
+  type="button"
+>
   <AppIcon icon="download" />
 </button>

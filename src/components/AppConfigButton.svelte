@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CalculatorConstant, CalculatorInput, validate } from '$lib';
+  import { CalculatorConstant, CalculatorInput, GTM, validate } from '$lib';
   import { afterUpdate, onMount } from 'svelte';
   import AppIcon from './AppIcon.svelte';
 
@@ -7,7 +7,7 @@
   export let onUpdate: (calculatorInput: CalculatorInput) => void;
 
   onMount(() => {
-    const modal = document.getElementById('modal-configure') as HTMLDivElement;
+    const modal = document.getElementById('modal-config') as HTMLDivElement;
     modal.addEventListener('shown.bs.modal', () => {
       const [input] = document.getElementsByTagName('input') as HTMLCollectionOf<HTMLInputElement>;
       input.focus();
@@ -22,15 +22,23 @@
   });
 </script>
 
-<button type="button" class="btn btn-variant px-2" data-bs-toggle="modal" data-bs-target="#modal-configure">
+<button
+  class="btn btn-variant px-2"
+  data-bs-target="#modal-config"
+  data-bs-toggle="modal"
+  on:click={() => {
+    GTM.pushEvent('openConfigModal');
+  }}
+  type="button"
+>
   <AppIcon icon="tune" />
 </button>
 
-<div class="modal fade" id="modal-configure" tabindex="-1" aria-labelledby="modal-configure-label" aria-hidden="true">
+<div class="modal fade" id="modal-config" tabindex="-1" aria-labelledby="modal-config-label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-body-secondary">
       <div class="modal-header">
-        <h1 class="modal-title text-variant fs-5" id="modal-configure-label">設定</h1>
+        <h1 class="modal-title text-variant fs-5" id="modal-config-label">設定</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

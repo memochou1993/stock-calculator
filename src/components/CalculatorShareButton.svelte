@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { delay } from '$lib';
+  import { GTM, delay } from '$lib';
   import type { Modal, Tooltip } from 'bootstrap';
   import { onMount } from 'svelte';
   import AppIcon from './AppIcon.svelte';
@@ -49,7 +49,15 @@
   $: tooltip = bootstrap?.Tooltip.getOrCreateInstance('#tooltip-share') as Tooltip;
 </script>
 
-<button type="button" class="btn btn-variant px-2" data-bs-toggle="modal" data-bs-target="#modal-share">
+<button
+  class="btn btn-variant px-2"
+  data-bs-target="#modal-share"
+  data-bs-toggle="modal"
+  on:click={() => {
+    GTM.pushEvent('openShareModal');
+  }}
+  type="button"
+>
   <AppIcon icon="share" />
 </button>
 
@@ -71,7 +79,10 @@
               data-bs-toggle="tooltip"
               data-bs-trigger="manual"
               id="tooltip-share"
-              on:click={copyUrl}
+              on:click={() => {
+                copyUrl();
+                GTM.pushEvent('copyUrl');
+              }}
               title="複製成功！"
               type="button"
             >

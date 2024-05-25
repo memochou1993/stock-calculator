@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { GTM } from '$lib';
   import AppIcon from './AppIcon.svelte';
   import AppThemeSwitch from './AppThemeSwitch.svelte';
 </script>
@@ -7,13 +8,22 @@
   <div class="container-fluid">
     <div class="d-flex align-items-center">
       <img src="/favicon.png" alt="logo" class="me-2" width="24" height="24" />
-      <a class="navbar-brand text-light fs-4 py-0" href="/">股票交易計算器</a>
+      <a
+        class="navbar-brand text-light fs-4 py-0"
+        href="/"
+        on:click={() => {
+          GTM.pushEvent('refreshPage');
+        }}
+      >
+        股票交易計算器
+      </a>
     </div>
     <div class="d-flex">
       <button
         class="btn btn-dark-variant px-2"
         on:click={() => {
           window.open('https://www.facebook.com/profile.php?id=61559734063696', '_blank', 'noopener noreferrer');
+          GTM.pushEvent('visitFacebook');
         }}
         type="button"
       >

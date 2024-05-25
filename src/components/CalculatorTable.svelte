@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { CalculatorConstant, CalculatorInput, calculate, calculateStep } from '$lib';
+  import { CalculatorConstant, CalculatorInput, GTM, calculate, calculateStep } from '$lib';
   import { onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
   import AppCardTitle from './AppCardTitle.svelte';
@@ -85,26 +85,31 @@
         onSortChange={(v) => {
           sort = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.排序, String(v));
+          GTM.pushEvent('changeSort', { value: v });
         }}
         {outputCount}
         onOutputCountChange={(v) => {
           outputCount = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.試算結果數量, String(v));
+          GTM.pushEvent('changeOutputCount', { value: v });
         }}
         {displayLevel}
         onDisplayLevelChange={(v) => {
           displayLevel = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.顯示等級, String(v));
+          GTM.pushEvent('changeDisplayLevel', { value: v });
         }}
         {fractionDigitCount}
         onFractionDigitCountChange={(v) => {
           fractionDigitCount = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.小數位數, String(v));
+          GTM.pushEvent('changeFractionDigitCount', { value: v });
         }}
         {fontSize}
         onFontSizeChange={(v) => {
           fontSize = v;
           localStorage.setItem(CalculatorConstant.儲存鍵.字體大小, String(v));
+          GTM.pushEvent('changeFontSize', { value: v });
         }}
       />
     </div>

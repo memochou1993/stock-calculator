@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CalculatorConstant } from '$lib';
+  import { CalculatorConstant, GTM } from '$lib';
   import AppIcon from './AppIcon.svelte';
 
   export let sort: string;
@@ -19,7 +19,17 @@
 </script>
 
 <div class="dropdown">
-  <button type="button" aria-expanded="false" class="btn btn-variant px-2" data-bs-auto-close="outside" data-bs-offset="4,4" data-bs-toggle="dropdown">
+  <button
+    type="button"
+    aria-expanded="false"
+    class="btn btn-variant px-2"
+    data-bs-auto-close="outside"
+    data-bs-offset="4,4"
+    data-bs-toggle="dropdown"
+    on:click={() => {
+      GTM.pushEvent('toggleCalculatorMenu');
+    }}
+  >
     <AppIcon icon="more_vert" />
   </button>
   <ul class="dropdown-menu">

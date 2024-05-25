@@ -1,6 +1,19 @@
+<script>
+  import { GTM } from '$lib';
+</script>
+
 <footer class="text-center py-5">
   Built with ❤️ by
-  <a href="https://profile.epoch.tw/" rel="noopener noreferrer" target="_blank">Memo Chou</a>
+  <a
+    href="https://profile.epoch.tw/"
+    on:click={() => {
+      GTM.pushEvent('visitAuthorProfile');
+    }}
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    Memo Chou
+  </a>
 </footer>
 
 <style lang="scss">
