@@ -5,8 +5,8 @@
   import AppCard from './AppCard.svelte';
   import AppCardTitle from './AppCardTitle.svelte';
   import CalculatorDownloadButton from './CalculatorDownloadButton.svelte';
-  import CalculatorMenuButton from './CalculatorMenuButton.svelte';
-  import CalculatorShareButton from './CalculatorShareButton.svelte';
+  import CalculatorMenu from './CalculatorMenu.svelte';
+  import CalculatorShareModal from './CalculatorShareModal.svelte';
   import CalculatorTableRow from './CalculatorTableRow.svelte';
 
   export let calculatorInput: CalculatorInput;
@@ -79,8 +79,8 @@
     <AppCardTitle title="試算結果" />
     <div class="d-flex">
       <CalculatorDownloadButton {calculatorOutputs} />
-      <CalculatorShareButton url={`${$page.url.origin}?${params}`} />
-      <CalculatorMenuButton
+      <CalculatorShareModal url={`${$page.url.origin}?${params}`} />
+      <CalculatorMenu
         {sort}
         onSortChange={(v) => {
           sort = v;

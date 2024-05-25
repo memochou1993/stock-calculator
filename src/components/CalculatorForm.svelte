@@ -5,7 +5,7 @@
   import { afterUpdate, onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
   import AppCardTitle from './AppCardTitle.svelte';
-  import AppConfigButton from './AppConfigButton.svelte';
+  import AppConfigModal from './AppConfigModal.svelte';
 
   export let calculatorInput: CalculatorInput;
   export let onUpdate: (calculatorInput: CalculatorInput) => void;
@@ -54,7 +54,7 @@
   <div slot="title" class="d-flex align-items-center justify-content-between">
     <AppCardTitle title="交易參數" />
     <div class="d-flex">
-      <AppConfigButton {calculatorInput} onUpdate={(v) => (calculatorInput = v)} />
+      <AppConfigModal {calculatorInput} onUpdate={(v) => (calculatorInput = v)} />
     </div>
   </div>
   <div class="row">
