@@ -7,7 +7,7 @@ class Calculator {
   交易股數: number;
   買入價格: number;
   賣出價格: number;
-  手續費折扣: number;
+  手續費折扣率: number;
   最低手續費: number;
 
   constructor(args: CalculatorInput) {
@@ -15,7 +15,7 @@ class Calculator {
     this.交易股數 = Number(args.交易股數);
     this.買入價格 = Number(args.買入價格);
     this.賣出價格 = Number(args.賣出價格);
-    this.手續費折扣 = Number(args.手續費折扣);
+    this.手續費折扣率 = Number(args.手續費折扣) / 10;
     this.最低手續費 = Number(args.最低手續費);
   }
 
@@ -45,11 +45,11 @@ class Calculator {
   }
 
   private get 原始買入手續費(): number {
-    return this.股票成本 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣;
+    return this.股票成本 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣率;
   }
 
   private get 原始賣出手續費(): number {
-    return this.股票市值 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣;
+    return this.股票市值 * CalculatorConstant.手續費費率.證券經紀商 * this.手續費折扣率;
   }
 
   private get 買入手續費(): number {

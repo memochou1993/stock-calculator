@@ -11,11 +11,12 @@ test('basic test', async ({ page }) => {
   await page.getByLabel('賣出價格').fill('34');
 
   await page.getByRole('button', { name: 'tune' }).click();
-  await page.getByLabel('手續費折扣').fill('0.6');
+  await page.getByLabel('手續費折扣').fill('6');
   await page.getByLabel('最低手續費').fill('10');
   await page.getByRole('button', { name: 'close' }).click();
 
   await page.getByRole('button', { name: 'more_vert' }).click();
+  await page.getByRole('button', { name: '增加小數位數' }).click();
   await page.getByRole('button', { name: '增加小數位數' }).click();
   await page.locator('body').click();
 

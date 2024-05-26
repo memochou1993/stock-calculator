@@ -52,42 +52,47 @@
                   data-bs-custom-class="tooltip-variant"
                   data-bs-placement="right"
                   data-bs-toggle="tooltip"
-                  title="股票交易時，券商所提供的手續費折扣，例如：0.6。"
+                  title="股票交易時，券商所提供的手續費折扣，例如「2.8」折。"
                   type="button"
                 >
                   <AppIcon fontSize={20} icon="info" />
                 </button>
               </div>
-              <input
-                autocomplete="off"
-                bind:value={calculatorInput.手續費折扣}
-                class="form-control form-control-md {!validate(calculatorInput.手續費折扣).isBetween(
-                  CalculatorConstant.交易參數.最小手續費折扣,
-                  CalculatorConstant.交易參數.最大手續費折扣,
-                ) && 'is-invalid'}"
-                id="手續費折扣"
-                inputmode="decimal"
-                max={CalculatorConstant.交易參數.最大手續費折扣}
-                min={CalculatorConstant.交易參數.最小手續費折扣}
-                on:blur={() => {
-                  GTM.pushEvent('change_commission_rate', { value: calculatorInput.手續費折扣 });
-                }}
-                on:input={() => {
-                  const 手續費折扣 = calculatorInput.手續費折扣;
-                  if (
-                    手續費折扣 !== null &&
-                    手續費折扣 >= CalculatorConstant.交易參數.最小手續費折扣 &&
-                    手續費折扣 <= CalculatorConstant.交易參數.最大手續費折扣
-                  ) {
-                    localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(手續費折扣));
-                  }
-                }}
-                step="0.05"
-                type="number"
-              />
-              <span class="invalid-feedback">
-                請輸入 {CalculatorConstant.交易參數.最小手續費折扣.toLocaleString()} 至 {CalculatorConstant.交易參數.最大手續費折扣.toLocaleString()} 之間的數字
-              </span>
+              <div class="input-group">
+                <input
+                  aria-describedby="手續費折扣單位"
+                  aria-label="手續費折扣"
+                  autocomplete="off"
+                  bind:value={calculatorInput.手續費折扣}
+                  class="form-control form-control-md {!validate(calculatorInput.手續費折扣).isBetween(
+                    CalculatorConstant.交易參數.最小手續費折扣,
+                    CalculatorConstant.交易參數.最大手續費折扣,
+                  ) && 'is-invalid'}"
+                  id="手續費折扣"
+                  inputmode="decimal"
+                  max={CalculatorConstant.交易參數.最大手續費折扣}
+                  min={CalculatorConstant.交易參數.最小手續費折扣}
+                  on:blur={() => {
+                    GTM.pushEvent('change_commission_rate', { value: Number(calculatorInput.手續費折扣) / 10 });
+                  }}
+                  on:input={() => {
+                    const 手續費折扣 = calculatorInput.手續費折扣;
+                    if (
+                      手續費折扣 !== null &&
+                      手續費折扣 >= CalculatorConstant.交易參數.最小手續費折扣 &&
+                      手續費折扣 <= CalculatorConstant.交易參數.最大手續費折扣
+                    ) {
+                      localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(手續費折扣));
+                    }
+                  }}
+                  step="0.5"
+                  type="number"
+                />
+                <span class="input-group-text fw-light rounded-end" id="手續費折扣單位">折</span>
+                <span class="invalid-feedback">
+                  {`請輸入 ${CalculatorConstant.交易參數.最小手續費折扣.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大手續費折扣.toLocaleString()} 之間的數字`}
+                </span>
+              </div>
             </div>
           </div>
           <div class="col-12">
@@ -99,13 +104,13 @@
                   data-bs-custom-class="tooltip-variant"
                   data-bs-placement="right"
                   data-bs-toggle="tooltip"
-                  title="股票交易時，券商所收取的最低手續費，例如：20。"
+                  title="股票交易時，券商所收取的最低手續費，例如「1」元。"
                   type="button"
                 >
                   <AppIcon fontSize={20} icon="info" />
                 </button>
               </div>
-              <div class="input-group mb-3">
+              <div class="input-group">
                 <input
                   aria-describedby="最低手續費單位"
                   aria-label="最低手續費"
@@ -137,7 +142,7 @@
                 />
                 <span class="input-group-text fw-light rounded-end" id="最低手續費單位">元</span>
                 <span class="invalid-feedback">
-                  請輸入 {CalculatorConstant.交易參數.最小最低手續費.toLocaleString()} 至 {CalculatorConstant.交易參數.最大最低手續費.toLocaleString()} 之間的數字
+                  {`請輸入 ${CalculatorConstant.交易參數.最小最低手續費.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大最低手續費.toLocaleString()} 之間的數字`}
                 </span>
               </div>
             </div>
