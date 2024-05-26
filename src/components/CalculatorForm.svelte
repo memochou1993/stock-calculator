@@ -22,10 +22,6 @@
     if (交易類別) {
       calculatorInput.交易類別 = 交易類別;
     }
-    const 交易股數 = $page.url.searchParams.get('交易股數');
-    if (交易股數) {
-      calculatorInput.交易股數 = Number(交易股數);
-    }
     const 買入價格 = $page.url.searchParams.get('買入價格');
     if (買入價格) {
       calculatorInput.買入價格 = Number(買入價格);
@@ -33,6 +29,10 @@
     const 賣出價格 = $page.url.searchParams.get('賣出價格');
     if (賣出價格) {
       calculatorInput.賣出價格 = Number(賣出價格);
+    }
+    const 交易股數 = $page.url.searchParams.get('交易股數');
+    if (交易股數) {
+      calculatorInput.交易股數 = Number(交易股數);
     }
     const 手續費折扣 = $page.url.searchParams.get('手續費折扣') ?? localStorage.getItem(CalculatorConstant.儲存鍵.手續費折扣);
     if (手續費折扣) {
@@ -77,38 +77,6 @@
           <option value={CalculatorConstant.交易類別.股票當沖}>{CalculatorConstant.交易類別.股票當沖}</option>
           <option value={CalculatorConstant.交易類別.ETF}>{CalculatorConstant.交易類別.ETF}</option>
         </select>
-      </div>
-    </div>
-    <div class="col-12">
-      <div class="form-group mb-2 mb-sm-4">
-        <div class="d-flex align-items-center mb-1">
-          <label for="交易股數">交易股數</label>
-        </div>
-        <div class="input-group">
-          <input
-            aria-describedby="交易股數單位"
-            aria-label="交易股數"
-            autocomplete="off"
-            bind:value={calculatorInput.交易股數}
-            class="form-control form-control-md {!validate(calculatorInput.交易股數).isBetween(
-              CalculatorConstant.交易參數.最小交易股數,
-              CalculatorConstant.交易參數.最大交易股數,
-            ) && 'is-invalid'}"
-            id="交易股數"
-            inputmode="numeric"
-            max={CalculatorConstant.交易參數.最大交易股數}
-            min={CalculatorConstant.交易參數.最小交易股數}
-            on:blur={() => {
-              GTM.pushEvent('change_shares', { value: calculatorInput.交易股數 });
-            }}
-            step="1000"
-            type="number"
-          />
-          <span class="input-group-text rounded-end" id="交易股數單位">股</span>
-          <span class="invalid-feedback">
-            {`請輸入 ${CalculatorConstant.交易參數.最小交易股數.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大交易股數.toLocaleString()} 之間的數字`}
-          </span>
-        </div>
       </div>
     </div>
     <div class="col-12">
@@ -174,6 +142,38 @@
           <div class="invalid-feedback">
             {`請輸入 ${CalculatorConstant.交易參數.最小賣出價格.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大賣出價格.toLocaleString()} 之間的數字`}
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group mb-2 mb-sm-4">
+        <div class="d-flex align-items-center mb-1">
+          <label for="交易股數">交易股數</label>
+        </div>
+        <div class="input-group">
+          <input
+            aria-describedby="交易股數單位"
+            aria-label="交易股數"
+            autocomplete="off"
+            bind:value={calculatorInput.交易股數}
+            class="form-control form-control-md {!validate(calculatorInput.交易股數).isBetween(
+              CalculatorConstant.交易參數.最小交易股數,
+              CalculatorConstant.交易參數.最大交易股數,
+            ) && 'is-invalid'}"
+            id="交易股數"
+            inputmode="numeric"
+            max={CalculatorConstant.交易參數.最大交易股數}
+            min={CalculatorConstant.交易參數.最小交易股數}
+            on:blur={() => {
+              GTM.pushEvent('change_shares', { value: calculatorInput.交易股數 });
+            }}
+            step="1000"
+            type="number"
+          />
+          <span class="input-group-text rounded-end" id="交易股數單位">股</span>
+          <span class="invalid-feedback">
+            {`請輸入 ${CalculatorConstant.交易參數.最小交易股數.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大交易股數.toLocaleString()} 之間的數字`}
+          </span>
         </div>
       </div>
     </div>

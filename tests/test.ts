@@ -6,9 +6,9 @@ test('basic test', async ({ page }) => {
   expect(await page.locator('a.navbar-brand').textContent()).toBe('股票交易計算器');
 
   await page.getByLabel('交易類別').selectOption('ETF');
-  await page.getByLabel('交易股數').fill('100');
   await page.getByLabel('買入價格').fill('12');
   await page.getByLabel('賣出價格').fill('34');
+  await page.getByLabel('交易股數').fill('100');
 
   await page.getByRole('button', { name: 'tune' }).click();
   await page.getByLabel('手續費折扣').fill('6');

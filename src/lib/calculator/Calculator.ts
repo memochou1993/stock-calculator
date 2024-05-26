@@ -4,17 +4,17 @@ import CalculatorOutput from './CalculatorOutput';
 
 class Calculator {
   交易類別: string;
-  交易股數: number;
   買入價格: number;
   賣出價格: number;
+  交易股數: number;
   手續費折扣率: number;
   最低手續費: number;
 
   constructor(args: CalculatorInput) {
     this.交易類別 = args.交易類別;
-    this.交易股數 = Number(args.交易股數);
     this.買入價格 = Number(args.買入價格);
     this.賣出價格 = Number(args.賣出價格);
+    this.交易股數 = Number(args.交易股數);
     this.手續費折扣率 = Number(args.手續費折扣) / 10;
     this.最低手續費 = Number(args.最低手續費);
   }
