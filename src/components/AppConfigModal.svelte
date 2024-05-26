@@ -44,9 +44,9 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-12">
-            <div class="form-group mb-4">
+            <div class="form-group mb-2 mb-sm-4">
               <div class="d-flex align-items-center mb-1">
-                <label for="手續費折扣" class="me-1">手續費折扣</label>
+                <label for="手續費折扣">手續費折扣</label>
                 <button
                   class="btn btn-variant p-0"
                   data-bs-custom-class="tooltip-variant"
@@ -85,15 +85,15 @@
                 step="0.05"
                 type="number"
               />
-              <div class="invalid-feedback">
-                請輸入 {CalculatorConstant.交易參數.最小手續費折扣.toLocaleString()} 到 {CalculatorConstant.交易參數.最大手續費折扣.toLocaleString()} 之間的數字
-              </div>
+              <span class="invalid-feedback">
+                請輸入 {CalculatorConstant.交易參數.最小手續費折扣.toLocaleString()} 至 {CalculatorConstant.交易參數.最大手續費折扣.toLocaleString()} 之間的數字
+              </span>
             </div>
           </div>
           <div class="col-12">
-            <div class="form-group mb-4">
+            <div class="form-group mb-2 mb-sm-4">
               <div class="d-flex align-items-center mb-1">
-                <label for="最低手續費" class="me-1">最低手續費</label>
+                <label for="最低手續費">最低手續費</label>
                 <button
                   class="btn btn-variant p-0"
                   data-bs-custom-class="tooltip-variant"
@@ -105,35 +105,40 @@
                   <AppIcon fontSize={20} icon="info" />
                 </button>
               </div>
-              <input
-                autocomplete="off"
-                bind:value={calculatorInput.最低手續費}
-                class="form-control form-control-md {!validate(calculatorInput.最低手續費).isBetween(
-                  CalculatorConstant.交易參數.最小最低手續費,
-                  CalculatorConstant.交易參數.最大最低手續費,
-                ) && 'is-invalid'}"
-                id="最低手續費"
-                inputmode="numeric"
-                max={CalculatorConstant.交易參數.最大最低手續費}
-                min={CalculatorConstant.交易參數.最小最低手續費}
-                on:blur={() => {
-                  GTM.pushEvent('change_minimum_commission', { value: calculatorInput.最低手續費 });
-                }}
-                on:input={() => {
-                  const 最低手續費 = calculatorInput.最低手續費;
-                  if (
-                    最低手續費 !== null &&
-                    最低手續費 >= CalculatorConstant.交易參數.最小最低手續費 &&
-                    最低手續費 <= CalculatorConstant.交易參數.最大最低手續費
-                  ) {
-                    localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費 ?? 0));
-                  }
-                }}
-                step="1"
-                type="number"
-              />
-              <div class="invalid-feedback">
-                請輸入 {CalculatorConstant.交易參數.最小最低手續費.toLocaleString()} 到 {CalculatorConstant.交易參數.最大最低手續費.toLocaleString()} 之間的數字
+              <div class="input-group mb-3">
+                <input
+                  aria-describedby="最低手續費單位"
+                  aria-label="最低手續費"
+                  autocomplete="off"
+                  bind:value={calculatorInput.最低手續費}
+                  class="form-control form-control-md {!validate(calculatorInput.最低手續費).isBetween(
+                    CalculatorConstant.交易參數.最小最低手續費,
+                    CalculatorConstant.交易參數.最大最低手續費,
+                  ) && 'is-invalid'}"
+                  id="最低手續費"
+                  inputmode="numeric"
+                  max={CalculatorConstant.交易參數.最大最低手續費}
+                  min={CalculatorConstant.交易參數.最小最低手續費}
+                  on:blur={() => {
+                    GTM.pushEvent('change_minimum_commission', { value: calculatorInput.最低手續費 });
+                  }}
+                  on:input={() => {
+                    const 最低手續費 = calculatorInput.最低手續費;
+                    if (
+                      最低手續費 !== null &&
+                      最低手續費 >= CalculatorConstant.交易參數.最小最低手續費 &&
+                      最低手續費 <= CalculatorConstant.交易參數.最大最低手續費
+                    ) {
+                      localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費 ?? 0));
+                    }
+                  }}
+                  step="1"
+                  type="number"
+                />
+                <span class="input-group-text fw-light rounded-end" id="最低手續費單位">元</span>
+                <span class="invalid-feedback">
+                  請輸入 {CalculatorConstant.交易參數.最小最低手續費.toLocaleString()} 至 {CalculatorConstant.交易參數.最大最低手續費.toLocaleString()} 之間的數字
+                </span>
               </div>
             </div>
           </div>

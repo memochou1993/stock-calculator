@@ -58,10 +58,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-6 col-md-12">
-      <div class="form-group mb-4">
+    <div class="col-12">
+      <div class="form-group mb-2 mb-sm-4">
         <div class="d-flex align-items-center mb-1">
-          <label for="交易類別" class="me-1">交易類別</label>
+          <label for="交易類別">交易類別</label>
         </div>
         <select
           bind:value={calculatorInput.交易類別}
@@ -77,86 +77,101 @@
         </select>
       </div>
     </div>
-    <div class="col-6 col-md-12">
-      <div class="form-group mb-4">
+    <div class="col-12">
+      <div class="form-group mb-2 mb-sm-4">
         <div class="d-flex align-items-center mb-1">
-          <label for="交易股數" class="me-1">交易股數</label>
+          <label for="交易股數">交易股數</label>
         </div>
-        <input
-          autocomplete="off"
-          bind:value={calculatorInput.交易股數}
-          class="form-control form-control-md {!validate(calculatorInput.交易股數).isBetween(
-            CalculatorConstant.交易參數.最小交易股數,
-            CalculatorConstant.交易參數.最大交易股數,
-          ) && 'is-invalid'}"
-          id="交易股數"
-          inputmode="numeric"
-          max={CalculatorConstant.交易參數.最大交易股數}
-          min={CalculatorConstant.交易參數.最小交易股數}
-          on:blur={() => {
-            GTM.pushEvent('change_shares', { value: calculatorInput.交易股數 });
-          }}
-          step="1000"
-          type="number"
-        />
-        <div class="invalid-feedback">
-          請輸入 {CalculatorConstant.交易參數.最小交易股數.toLocaleString()} 到 {CalculatorConstant.交易參數.最大交易股數.toLocaleString()} 之間的數字
+        <div class="input-group">
+          <input
+            aria-describedby="交易股數單位"
+            aria-label="交易股數"
+            autocomplete="off"
+            bind:value={calculatorInput.交易股數}
+            class="form-control form-control-md {!validate(calculatorInput.交易股數).isBetween(
+              CalculatorConstant.交易參數.最小交易股數,
+              CalculatorConstant.交易參數.最大交易股數,
+            ) && 'is-invalid'}"
+            id="交易股數"
+            inputmode="numeric"
+            max={CalculatorConstant.交易參數.最大交易股數}
+            min={CalculatorConstant.交易參數.最小交易股數}
+            on:blur={() => {
+              GTM.pushEvent('change_shares', { value: calculatorInput.交易股數 });
+            }}
+            step="1000"
+            type="number"
+          />
+          <span class="input-group-text fw-light rounded-end" id="交易股數單位">股</span>
+          <span class="invalid-feedback">
+            請輸入 {CalculatorConstant.交易參數.最小交易股數.toLocaleString()} 至 {CalculatorConstant.交易參數.最大交易股數.toLocaleString()} 之間的數字
+          </span>
         </div>
       </div>
     </div>
-    <div class="col-6 col-md-12">
-      <div class="form-group mb-4">
+    <div class="col-12">
+      <div class="form-group mb-2 mb-sm-4">
         <div class="d-flex align-items-center mb-1">
-          <label for="買入價格" class="me-1">買入價格</label>
+          <label for="買入價格">買入價格</label>
         </div>
         <!-- svelte-ignore a11y-autofocus -->
-        <input
-          autocomplete="off"
-          autofocus
-          bind:value={calculatorInput.買入價格}
-          class="form-control form-control-md {!validate(calculatorInput.買入價格).isBetween(
-            CalculatorConstant.交易參數.最小買入價格,
-            CalculatorConstant.交易參數.最大買入價格,
-          ) && 'is-invalid'}"
-          id="買入價格"
-          inputmode="decimal"
-          max={CalculatorConstant.交易參數.最大買入價格}
-          min={CalculatorConstant.交易參數.最小買入價格}
-          on:blur={() => {
-            GTM.pushEvent('change_purchase_price', { value: calculatorInput.買入價格 });
-          }}
-          step={calculateStep(calculatorInput.交易類別, calculatorInput.買入價格)}
-          type="number"
-        />
-        <div class="invalid-feedback">
-          請輸入 {CalculatorConstant.交易參數.最小買入價格.toLocaleString()} 到 {CalculatorConstant.交易參數.最大買入價格.toLocaleString()} 之間的數字
+        <div class="input-group">
+          <input
+            autocomplete="off"
+            autofocus
+            aria-describedby="買入價格單位"
+            aria-label="買入價格"
+            bind:value={calculatorInput.買入價格}
+            class="form-control form-control-md {!validate(calculatorInput.買入價格).isBetween(
+              CalculatorConstant.交易參數.最小買入價格,
+              CalculatorConstant.交易參數.最大買入價格,
+            ) && 'is-invalid'}"
+            id="買入價格"
+            inputmode="decimal"
+            max={CalculatorConstant.交易參數.最大買入價格}
+            min={CalculatorConstant.交易參數.最小買入價格}
+            on:blur={() => {
+              GTM.pushEvent('change_purchase_price', { value: calculatorInput.買入價格 });
+            }}
+            step={calculateStep(calculatorInput.交易類別, calculatorInput.買入價格)}
+            type="number"
+          />
+          <span class="input-group-text fw-light rounded-end" id="買入價格單位">元</span>
+          <div class="invalid-feedback">
+            請輸入 {CalculatorConstant.交易參數.最小買入價格.toLocaleString()} 至 {CalculatorConstant.交易參數.最大買入價格.toLocaleString()} 之間的數字
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-6 col-md-12">
-      <div class="form-group mb-4">
+    <div class="col-12">
+      <div class="form-group mb-2 mb-sm-4">
         <div class="d-flex align-items-center mb-1">
-          <label for="賣出價格" class="me-1">賣出價格</label>
+          <label for="賣出價格">賣出價格</label>
         </div>
-        <input
-          autocomplete="off"
-          bind:value={calculatorInput.賣出價格}
-          class="form-control form-control-md {!validate(calculatorInput.賣出價格).isBetween(
-            CalculatorConstant.交易參數.最小賣出價格,
-            CalculatorConstant.交易參數.最大賣出價格,
-          ) && 'is-invalid'}"
-          id="賣出價格"
-          inputmode="decimal"
-          max={CalculatorConstant.交易參數.最大賣出價格}
-          min={CalculatorConstant.交易參數.最小賣出價格}
-          on:blur={() => {
-            GTM.pushEvent('change_selling_price', { value: calculatorInput.賣出價格 });
-          }}
-          step={calculateStep(calculatorInput.交易類別, calculatorInput.賣出價格)}
-          type="number"
-        />
-        <div class="invalid-feedback">
-          請輸入 {CalculatorConstant.交易參數.最小賣出價格.toLocaleString()} 到 {CalculatorConstant.交易參數.最大賣出價格.toLocaleString()} 之間的數字
+        <div class="input-group">
+          <input
+            autocomplete="off"
+            aria-describedby="賣出價格單位"
+            aria-label="賣出價格"
+            bind:value={calculatorInput.賣出價格}
+            class="form-control form-control-md {!validate(calculatorInput.賣出價格).isBetween(
+              CalculatorConstant.交易參數.最小賣出價格,
+              CalculatorConstant.交易參數.最大賣出價格,
+            ) && 'is-invalid'}"
+            id="賣出價格"
+            inputmode="decimal"
+            max={CalculatorConstant.交易參數.最大賣出價格}
+            min={CalculatorConstant.交易參數.最小賣出價格}
+            on:blur={() => {
+              GTM.pushEvent('change_selling_price', { value: calculatorInput.賣出價格 });
+            }}
+            step={calculateStep(calculatorInput.交易類別, calculatorInput.賣出價格)}
+            type="number"
+          />
+          <span class="input-group-text fw-light rounded-end" id="賣出價格單位">元</span>
+          <div class="invalid-feedback">
+            請輸入 {CalculatorConstant.交易參數.最小賣出價格.toLocaleString()} 至 {CalculatorConstant.交易參數.最大賣出價格.toLocaleString()} 之間的數字
+          </div>
         </div>
       </div>
     </div>

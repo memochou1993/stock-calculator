@@ -86,3 +86,12 @@ table > tbody > tr > td {
     text-align: left;
   }
 }
+
+label {
+  margin: 0 4px;
+}
+
+.invalid-feedback {
+  font-size: 0.75rem;
+  margin: 4px 0 0 4px;
+}
