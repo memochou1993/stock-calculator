@@ -88,7 +88,7 @@
                   step="0.5"
                   type="number"
                 />
-                <span class="input-group-text fw-light rounded-end" id="手續費折扣單位">折</span>
+                <span class="input-group-text rounded-end" id="手續費折扣單位">折</span>
                 <span class="invalid-feedback">
                   {`請輸入 ${CalculatorConstant.交易參數.最小手續費折扣.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大手續費折扣.toLocaleString()} 之間的數字`}
                 </span>
@@ -140,7 +140,7 @@
                   step="1"
                   type="number"
                 />
-                <span class="input-group-text fw-light rounded-end" id="最低手續費單位">元</span>
+                <span class="input-group-text rounded-end" id="最低手續費單位">元</span>
                 <span class="invalid-feedback">
                   {`請輸入 ${CalculatorConstant.交易參數.最小最低手續費.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大最低手續費.toLocaleString()} 之間的數字`}
                 </span>

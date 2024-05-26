@@ -102,7 +102,7 @@
             step="1000"
             type="number"
           />
-          <span class="input-group-text fw-light rounded-end" id="交易股數單位">股</span>
+          <span class="input-group-text rounded-end" id="交易股數單位">股</span>
           <span class="invalid-feedback">
             請輸入 {CalculatorConstant.交易參數.最小交易股數.toLocaleString()} 至 {CalculatorConstant.交易參數.最大交易股數.toLocaleString()} 之間的數字
           </span>
@@ -136,7 +136,7 @@
             step={calculateStep(calculatorInput.交易類別, calculatorInput.買入價格)}
             type="number"
           />
-          <span class="input-group-text fw-light rounded-end" id="買入價格單位">元</span>
+          <span class="input-group-text rounded-end" id="買入價格單位">元</span>
           <div class="invalid-feedback">
             請輸入 {CalculatorConstant.交易參數.最小買入價格.toLocaleString()} 至 {CalculatorConstant.交易參數.最大買入價格.toLocaleString()} 之間的數字
           </div>
@@ -168,7 +168,7 @@
             step={calculateStep(calculatorInput.交易類別, calculatorInput.賣出價格)}
             type="number"
           />
-          <span class="input-group-text fw-light rounded-end" id="賣出價格單位">元</span>
+          <span class="input-group-text rounded-end" id="賣出價格單位">元</span>
           <div class="invalid-feedback">
             請輸入 {CalculatorConstant.交易參數.最小賣出價格.toLocaleString()} 至 {CalculatorConstant.交易參數.最大賣出價格.toLocaleString()} 之間的數字
           </div>
