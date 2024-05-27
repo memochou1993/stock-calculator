@@ -9,10 +9,17 @@
   const downloadFile = () => {
     const [output] = calculatorOutputs;
     const keys = Object.keys(output);
-    const rows = calculatorOutputs.map((output) => keys.map((key) => Number(output[key]).toFixed(2)));
+    const rows = calculatorOutputs.map((output) =>
+      keys.map((key) => {
+        if (key === '報酬率') {
+          return `${Number(output[key] * 100).toFixed(2)}%`;
+        }
+        return Number(output[key]).toFixed(2);
+      }),
+    );
     const content = [keys, ...rows].map((row) => row.join(',')).join('\n');
     const blob = new Blob([content], { type: 'text/csv' });
-    download('prices.csv', blob);
+    download('股票交易計算器試算結果.csv', blob);
   };
 </script>
 
