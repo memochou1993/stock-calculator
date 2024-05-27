@@ -1,5 +1,5 @@
 <script>
-  import { CalculatorConstant } from '$lib';
+  import { CalculatorConstant } from '$lib/calculator';
   import AppCard from './AppCard.svelte';
 </script>
 

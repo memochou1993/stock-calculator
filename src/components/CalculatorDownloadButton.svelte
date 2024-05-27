@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { CalculatorOutput, GTM } from '$lib';
+  import { CalculatorOutput } from '$lib/calculator';
+  import { GTM } from '$lib/gtm';
   import { download } from '$lib/utils';
   import AppIcon from './AppIcon.svelte';
 

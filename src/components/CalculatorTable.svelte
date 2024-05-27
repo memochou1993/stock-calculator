@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { CalculatorConstant, CalculatorInput, GTM, calculate, getNextPrices, getPrevPrices } from '$lib';
+  import { CalculatorConstant, CalculatorInput, calculate, getNextPrices, getPrevPrices } from '$lib/calculator';
+  import { GTM } from '$lib/gtm';
   import { onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
   import AppCardTitle from './AppCardTitle.svelte';

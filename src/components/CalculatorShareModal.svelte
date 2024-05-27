@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { GTM, delay } from '$lib';
+  import { GTM } from '$lib/gtm';
+  import { delay } from '$lib/utils';
   import type { Modal, Tooltip } from 'bootstrap';
   import { onMount } from 'svelte';
   import AppIcon from './AppIcon.svelte';

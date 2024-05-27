@@ -1,5 +1,5 @@
 <script>
-  import { GTM } from '$lib';
+  import { GTM } from '$lib/gtm';
 </script>
 
 <footer class="text-center my-5 py-3">

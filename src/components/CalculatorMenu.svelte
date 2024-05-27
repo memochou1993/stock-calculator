@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { CalculatorConstant, GTM } from '$lib';
+  import { CalculatorConstant } from '$lib/calculator';
+  import { GTM } from '$lib/gtm';
   import AppIcon from './AppIcon.svelte';
 
   export let sort: string;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { GTM } from '$lib';
+  import { GTM } from '$lib/gtm';
   import AppIcon from './AppIcon.svelte';
   import AppThemeSwitch from './AppThemeSwitch.svelte';
 </script>

@@ -1,7 +1,9 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
-  import { CalculatorConstant, CalculatorInput, GTM, getStep, validate } from '$lib';
+  import { CalculatorConstant, CalculatorInput, getStep } from '$lib/calculator';
+  import { GTM } from '$lib/gtm';
+  import { validate } from '$lib/validator';
   import { afterUpdate, onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
   import AppCardTitle from './AppCardTitle.svelte';

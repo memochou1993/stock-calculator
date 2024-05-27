@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CalculatorConstant, CalculatorOutput } from '$lib';
+  import { CalculatorConstant, CalculatorOutput } from '$lib/calculator';
 
   export let calculatorOutput: CalculatorOutput;
   export let highlighted: boolean;

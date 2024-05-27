@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { CalculatorConstant, CalculatorInput, GTM, validate } from '$lib';
+  import { CalculatorConstant, CalculatorInput } from '$lib/calculator';
+  import { GTM } from '$lib/gtm';
+  import { validate } from '$lib/validator';
   import { afterUpdate, onMount } from 'svelte';
   import AppIcon from './AppIcon.svelte';
 
