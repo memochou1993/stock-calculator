@@ -1,7 +1,6 @@
-import calculate from './calculate';
-import calculateStep from './calculate-step';
+import { calculate, getNextPrices, getPrevPrices, getStep } from './calculate';
 import CalculatorConstant from './CalculatorConstant';
 import CalculatorInput from './CalculatorInput';
 import CalculatorOutput from './CalculatorOutput';
 
-export { CalculatorConstant, CalculatorInput, CalculatorOutput, calculate, calculateStep };
+export { calculate, CalculatorConstant, CalculatorInput, CalculatorOutput, getNextPrices, getPrevPrices, getStep };

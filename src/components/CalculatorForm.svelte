@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
-  import { CalculatorConstant, CalculatorInput, GTM, calculateStep, validate } from '$lib';
+  import { CalculatorConstant, CalculatorInput, GTM, getStep, validate } from '$lib';
   import { afterUpdate, onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
   import AppCardTitle from './AppCardTitle.svelte';
@@ -133,7 +133,7 @@
             on:blur={() => {
               GTM.pushEvent('change_purchase_price', { value: calculatorInput.買入價格 });
             }}
-            step={calculateStep(calculatorInput.交易類別, calculatorInput.買入價格)}
+            step={getStep(calculatorInput.交易類別, calculatorInput.買入價格)}
             type="number"
           />
           <span class="input-group-text rounded-end" id="買入價格單位">元</span>
@@ -165,7 +165,7 @@
             on:blur={() => {
               GTM.pushEvent('change_selling_price', { value: calculatorInput.賣出價格 });
             }}
-            step={calculateStep(calculatorInput.交易類別, calculatorInput.賣出價格)}
+            step={getStep(calculatorInput.交易類別, calculatorInput.賣出價格)}
             type="number"
           />
           <span class="input-group-text rounded-end" id="賣出價格單位">元</span>

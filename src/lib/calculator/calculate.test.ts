@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import CalculatorConstant from './CalculatorConstant';
 import CalculatorInput from './CalculatorInput';
-import calculate from './calculate';
+import { calculate } from './calculate';
 
 test('試算：股票', () => {
   const input = new CalculatorInput({

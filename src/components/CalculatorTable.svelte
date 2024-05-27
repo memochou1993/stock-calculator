@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { CalculatorConstant, CalculatorInput, GTM, calculate, calculateStep } from '$lib';
+  import { CalculatorConstant, CalculatorInput, GTM, calculate, getNextPrices, getPrevPrices } from '$lib';
   import { onMount } from 'svelte';
   import AppCard from './AppCard.svelte';
   import AppCardTitle from './AppCardTitle.svelte';
@@ -18,9 +18,9 @@
   let fontSize = CalculatorConstant.字體大小.預設;
 
   $: prices = [
-    ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), -outputCount).reverse(),
+    ...getPrevPrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount).reverse(),
     Number(calculatorInput.賣出價格),
-    ...generatePrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount),
+    ...getNextPrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount),
   ].filter((price) => price >= 0);
 
   $: sortedPrices = sort === CalculatorConstant.排序.由小到大 ? prices : [...prices].reverse();
@@ -61,16 +61,6 @@
     if (字體大小) {
       fontSize = Number(字體大小);
     }
-  };
-
-  const generatePrices = (type: string, price: number, outputCount: number): number[] => {
-    const prices = [];
-    for (let i = 0; i < Math.abs(outputCount); i++) {
-      const step = calculateStep(type, price);
-      price += step * (outputCount > 0 ? 1 : -1);
-      prices.push(price);
-    }
-    return prices;
   };
 </script>
 
