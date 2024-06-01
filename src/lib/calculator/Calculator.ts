@@ -77,8 +77,8 @@ class Calculator {
   }
 
   private 計算證券交易稅稅率(交易類別: string): number {
-    if (交易類別 === CalculatorConstant.交易類別.股票當日沖銷) {
-      return CalculatorConstant.證券交易稅稅率.股票當日沖銷;
+    if (交易類別 === CalculatorConstant.交易類別.股票當沖) {
+      return CalculatorConstant.證券交易稅稅率.股票當沖;
     }
     if (交易類別 === CalculatorConstant.交易類別.ETF) {
       return CalculatorConstant.證券交易稅稅率.指數股票型基金;

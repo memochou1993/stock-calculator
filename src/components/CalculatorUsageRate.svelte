@@ -18,8 +18,8 @@
           <td class="text-math">{CalculatorConstant.證券交易稅稅率.股票 * 1000}‰</td>
         </tr>
         <tr>
-          <td>股票當日沖銷</td>
-          <td class="text-math">{CalculatorConstant.證券交易稅稅率.股票當日沖銷 * 1000}‰</td>
+          <td>股票當沖</td>
+          <td class="text-math">{CalculatorConstant.證券交易稅稅率.股票當沖 * 1000}‰</td>
         </tr>
         <tr>
           <td>指數股票型基金（ETF）</td>

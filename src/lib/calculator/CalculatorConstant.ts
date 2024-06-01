@@ -10,7 +10,7 @@ export const CalculatorConstant = Object.freeze({
   },
   交易類別: {
     股票: '股票',
-    股票當日沖銷: '股票當日沖銷',
+    股票當沖: '股票當沖',
     ETF: 'ETF',
   },
   手續費費率: {
@@ -18,7 +18,7 @@ export const CalculatorConstant = Object.freeze({
   },
   證券交易稅稅率: {
     股票: 3 / 1000,
-    股票當日沖銷: 1.5 / 1000,
+    股票當沖: 1.5 / 1000,
     指數股票型基金: 1 / 1000,
   },
   交易參數: {

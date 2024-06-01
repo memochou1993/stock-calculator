@@ -74,7 +74,7 @@
           }}
         >
           <option value={CalculatorConstant.交易類別.股票}>{CalculatorConstant.交易類別.股票}</option>
-          <option value={CalculatorConstant.交易類別.股票當日沖銷}>{CalculatorConstant.交易類別.股票當日沖銷}</option>
+          <option value={CalculatorConstant.交易類別.股票當沖}>{CalculatorConstant.交易類別.股票當沖}</option>
           <option value={CalculatorConstant.交易類別.ETF}>{CalculatorConstant.交易類別.ETF}</option>
         </select>
       </div>

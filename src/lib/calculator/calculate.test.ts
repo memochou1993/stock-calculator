@@ -53,9 +53,9 @@ test('試算：股票（最低手續費）', () => {
   expect(output.報酬率.toFixed(4)).toBe('1.7196');
 });
 
-test('試算：股票當日沖銷', () => {
+test('試算：股票當沖', () => {
   const input = new CalculatorInput({
-    交易類別: CalculatorConstant.交易類別.股票當日沖銷,
+    交易類別: CalculatorConstant.交易類別.股票當沖,
     交易股數: 1000,
     買入價格: 123,
     賣出價格: 456,
@@ -79,9 +79,9 @@ test('試算：股票當日沖銷', () => {
   expect(output.報酬率.toFixed(4)).toBe('2.6721');
 });
 
-test('試算：股票當日沖銷（最低手續費）', () => {
+test('試算：股票當沖（最低手續費）', () => {
   const input = new CalculatorInput({
-    交易類別: CalculatorConstant.交易類別.股票當日沖銷,
+    交易類別: CalculatorConstant.交易類別.股票當沖,
     交易股數: 1000,
     買入價格: 1.2,
     賣出價格: 3.4,
