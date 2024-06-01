@@ -31,6 +31,7 @@
   />
   <meta name="author" content="Memo Chou" />
   <meta name="robots" content="index, follow" />
+  <meta name="og:site_name" content="股票交易計算器" />
   <meta name="og:title" content={title} />
   <meta name="og:description" content={description} />
   <meta name="og:type" content="website" />
