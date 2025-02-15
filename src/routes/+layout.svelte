@@ -29,15 +29,15 @@
   <meta name="keywords" content={keywords} />
   <meta name="author" content="Memo Chou" />
   <meta name="robots" content="index, follow" />
-  <meta name="og:site_name" content="股票交易計算器" />
-  <meta name="og:title" content={title} />
-  <meta name="og:description" content={description} />
-  <meta name="og:type" content="website" />
-  <meta name="og:url" content={url} />
-  <meta name="og:image" content="{url}/cover.png" />
+  <meta property="og:site_name" content={title} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={url} />
+  <meta property="og:image" content={`${url}/cover.png`} />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content="{url}/cover.png" />
+  <meta name="twitter:image" content={`${url}/cover.png`} />
   <meta name="twitter:card" content="summary_large_image" />
   {@html webManifest}
 </svelte:head>
