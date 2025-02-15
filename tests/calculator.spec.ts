@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('basic test', async ({ page }) => {
+test('calculator', async ({ page }) => {
   await page.goto('/');
 
   expect(await page.locator('a.navbar-brand').textContent()).toBe('股票交易計算器');
