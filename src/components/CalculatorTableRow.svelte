@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { CalculatorConstant, CalculatorOutput } from '$lib/calculator';
+import { CalculatorConstant, CalculatorOutput } from '$lib/calculator';
 
-  export let calculatorOutput: CalculatorOutput;
-  export let highlighted: boolean;
-  export let displayLevel: number;
-  export let fractionDigitCount: number;
-  export let fontSize: number;
+export let calculatorOutput: CalculatorOutput;
+export let highlighted: boolean;
+export let displayLevel: number;
+export let fractionDigitCount: number;
+export let fontSize: number;
 </script>
 
 <tr class={highlighted ? 'highlighted' : ''} style="font-size: {fontSize}rem">
@@ -53,18 +53,18 @@
 </tr>
 
 <style lang="scss">
-  .highlighted {
-    td {
-      --bs-bg-opacity: 1;
-      --bs-table-bg-type: none;
-      background-color: rgba(var(--bs-warning-rgb), var(--bs-bg-opacity)) !important;
-      background-image: var(--bs-gradient) !important;
-    }
+.highlighted {
+  td {
+    --bs-bg-opacity: 1;
+    --bs-table-bg-type: none;
+    background-color: rgba(var(--bs-warning-rgb), var(--bs-bg-opacity)) !important;
+    background-image: var(--bs-gradient) !important;
   }
-  .text-positive {
-    color: blue;
-  }
-  .text-negative {
-    color: red;
-  }
+}
+.text-positive {
+  color: blue;
+}
+.text-negative {
+  color: red;
+}
 </style>

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { GTM } from '$lib/gtm';
-  import AppIcon from './AppIcon.svelte';
-  import AppThemeSwitch from './AppThemeSwitch.svelte';
+import { GTM } from '$lib/gtm';
+import AppIcon from './AppIcon.svelte';
+import AppThemeSwitch from './AppThemeSwitch.svelte';
 </script>
 
 <nav class="navbar text-light px-2 py-3">
@@ -35,7 +35,7 @@
 </nav>
 
 <style lang="scss">
-  nav {
-    background-color: var(--navbar-bg);
-  }
+nav {
+  background-color: var(--navbar-bg);
+}
 </style>

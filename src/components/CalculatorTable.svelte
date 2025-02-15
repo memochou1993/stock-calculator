@@ -1,68 +1,68 @@
 <script lang="ts">
-  import { page } from '$app/stores';
-  import { CalculatorConstant, CalculatorInput, calculate, getNextPrices, getPrevPrices } from '$lib/calculator';
-  import { GTM } from '$lib/gtm';
-  import { onMount } from 'svelte';
-  import AppCard from './AppCard.svelte';
-  import AppCardTitle from './AppCardTitle.svelte';
-  import CalculatorDownloadButton from './CalculatorDownloadButton.svelte';
-  import CalculatorMenu from './CalculatorMenu.svelte';
-  import CalculatorShareModal from './CalculatorShareModal.svelte';
-  import CalculatorTableRow from './CalculatorTableRow.svelte';
+import { page } from '$app/stores';
+import { CalculatorConstant, CalculatorInput, calculate, getNextPrices, getPrevPrices } from '$lib/calculator';
+import { GTM } from '$lib/gtm';
+import { onMount } from 'svelte';
+import AppCard from './AppCard.svelte';
+import AppCardTitle from './AppCardTitle.svelte';
+import CalculatorDownloadButton from './CalculatorDownloadButton.svelte';
+import CalculatorMenu from './CalculatorMenu.svelte';
+import CalculatorShareModal from './CalculatorShareModal.svelte';
+import CalculatorTableRow from './CalculatorTableRow.svelte';
 
-  export let calculatorInput: CalculatorInput;
+export let calculatorInput: CalculatorInput;
 
-  let outputCount = CalculatorConstant.試算結果.預設;
-  let sort = CalculatorConstant.排序.由小到大;
-  let displayLevel = CalculatorConstant.顯示等級.預設;
-  let fractionDigitCount = CalculatorConstant.小數位數.預設;
-  let fontSize = CalculatorConstant.字體大小.預設;
+let outputCount = CalculatorConstant.試算結果.預設;
+let sort = CalculatorConstant.排序.由小到大;
+let displayLevel = CalculatorConstant.顯示等級.預設;
+let fractionDigitCount = CalculatorConstant.小數位數.預設;
+let fontSize = CalculatorConstant.字體大小.預設;
 
-  $: prices = [
-    ...getPrevPrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount).reverse(),
-    Number(calculatorInput.賣出價格),
-    ...getNextPrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount),
-  ].filter((price) => price >= 0);
+$: prices = [
+  ...getPrevPrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount).reverse(),
+  Number(calculatorInput.賣出價格),
+  ...getNextPrices(calculatorInput.交易類別, Number(calculatorInput.賣出價格), outputCount),
+].filter((price) => price >= 0);
 
-  $: sortedPrices = sort === CalculatorConstant.排序.由小到大 ? prices : [...prices].reverse();
+$: sortedPrices = sort === CalculatorConstant.排序.由小到大 ? prices : [...prices].reverse();
 
-  $: calculatorOutputs = sortedPrices.map((price) => calculate(new CalculatorInput({ ...calculatorInput, 賣出價格: price })));
+$: calculatorOutputs = sortedPrices.map((price) => calculate(new CalculatorInput({ ...calculatorInput, 賣出價格: price })));
 
-  $: params = (() => {
-    const params = new URLSearchParams(
-      Object.entries(calculatorInput)
-        .filter(([key, value]) => value !== null)
-        .map(([key, value]) => [key, String(value)]),
-    );
-    return decodeURIComponent(params.toString());
-  })();
+$: params = (() => {
+  const params = new URLSearchParams(
+    Object.entries(calculatorInput)
+      .filter(([key, value]) => value !== null)
+      .map(([key, value]) => [key, String(value)]),
+  );
+  return decodeURIComponent(params.toString());
+})();
 
-  onMount(() => {
-    recover();
-  });
+onMount(() => {
+  recover();
+});
 
-  const recover = () => {
-    const 試算結果數量 = localStorage.getItem(CalculatorConstant.儲存鍵.試算結果數量);
-    if (試算結果數量) {
-      outputCount = Number(試算結果數量);
-    }
-    const 排序 = localStorage.getItem(CalculatorConstant.儲存鍵.排序);
-    if (排序) {
-      sort = 排序;
-    }
-    const 顯示等級 = localStorage.getItem(CalculatorConstant.儲存鍵.顯示等級);
-    if (顯示等級) {
-      displayLevel = Number(顯示等級);
-    }
-    const 小數位數 = localStorage.getItem(CalculatorConstant.儲存鍵.小數位數);
-    if (小數位數) {
-      fractionDigitCount = Number(小數位數);
-    }
-    const 字體大小 = localStorage.getItem(CalculatorConstant.儲存鍵.字體大小);
-    if (字體大小) {
-      fontSize = Number(字體大小);
-    }
-  };
+const recover = () => {
+  const 試算結果數量 = localStorage.getItem(CalculatorConstant.儲存鍵.試算結果數量);
+  if (試算結果數量) {
+    outputCount = Number(試算結果數量);
+  }
+  const 排序 = localStorage.getItem(CalculatorConstant.儲存鍵.排序);
+  if (排序) {
+    sort = 排序;
+  }
+  const 顯示等級 = localStorage.getItem(CalculatorConstant.儲存鍵.顯示等級);
+  if (顯示等級) {
+    displayLevel = Number(顯示等級);
+  }
+  const 小數位數 = localStorage.getItem(CalculatorConstant.儲存鍵.小數位數);
+  if (小數位數) {
+    fractionDigitCount = Number(小數位數);
+  }
+  const 字體大小 = localStorage.getItem(CalculatorConstant.儲存鍵.字體大小);
+  if (字體大小) {
+    fontSize = Number(字體大小);
+  }
+};
 </script>
 
 <AppCard>

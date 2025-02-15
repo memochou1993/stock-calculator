@@ -1,53 +1,53 @@
 <script lang="ts">
-  import { GTM } from '$lib/gtm';
-  import { delay } from '$lib/utils';
-  import type { Modal, Tooltip } from 'bootstrap';
-  import { onMount } from 'svelte';
-  import AppIcon from './AppIcon.svelte';
+import { GTM } from '$lib/gtm';
+import { delay } from '$lib/utils';
+import type { Modal, Tooltip } from 'bootstrap';
+import { onMount } from 'svelte';
+import AppIcon from './AppIcon.svelte';
 
-  export let url: string;
+export let url: string;
 
-  let bootstrap: typeof import('bootstrap');
+let bootstrap: typeof import('bootstrap');
 
-  $: modal = bootstrap?.Modal.getOrCreateInstance('#modal-share') as Modal;
-  $: tooltip = bootstrap?.Tooltip.getOrCreateInstance('#tooltip-share') as Tooltip;
+$: modal = bootstrap?.Modal.getOrCreateInstance('#modal-share') as Modal;
+$: tooltip = bootstrap?.Tooltip.getOrCreateInstance('#tooltip-share') as Tooltip;
 
-  onMount(async () => {
-    bootstrap = await import('bootstrap');
-  });
+onMount(async () => {
+  bootstrap = await import('bootstrap');
+});
 
-  const copyUrl = async () => {
-    const input = document.getElementById('url') as HTMLInputElement;
-    input.select();
+const copyUrl = async () => {
+  const input = document.getElementById('url') as HTMLInputElement;
+  input.select();
 
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: document.title,
-          text: `與你分享好用的${document.title}`,
-          url,
-        });
-      } catch (err) {
-        console.error(err);
-      }
-      modal.hide();
-      return;
-    }
+  if (navigator.share) {
     try {
-      await navigator.clipboard.writeText(url);
-      showTooltip(tooltip, '複製成功！');
+      await navigator.share({
+        title: document.title,
+        text: `與你分享好用的${document.title}`,
+        url,
+      });
     } catch (err) {
       console.error(err);
-      showTooltip(tooltip, '複製失敗！');
     }
-  };
+    modal.hide();
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(url);
+    showTooltip(tooltip, '複製成功！');
+  } catch (err) {
+    console.error(err);
+    showTooltip(tooltip, '複製失敗！');
+  }
+};
 
-  const showTooltip = async (tooltip: Tooltip, content: string) => {
-    tooltip.setContent({ '.tooltip-inner': content });
-    tooltip.show();
-    await delay(500);
-    tooltip.hide();
-  };
+const showTooltip = async (tooltip: Tooltip, content: string) => {
+  tooltip.setContent({ '.tooltip-inner': content });
+  tooltip.show();
+  await delay(500);
+  tooltip.hide();
+};
 </script>
 
 <button

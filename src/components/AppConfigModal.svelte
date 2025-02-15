@@ -1,27 +1,27 @@
 <script lang="ts">
-  import { CalculatorConstant, CalculatorInput } from '$lib/calculator';
-  import { GTM } from '$lib/gtm';
-  import { validate } from '$lib/validator';
-  import { afterUpdate, onMount } from 'svelte';
-  import AppIcon from './AppIcon.svelte';
+import { CalculatorConstant, CalculatorInput } from '$lib/calculator';
+import { GTM } from '$lib/gtm';
+import { validate } from '$lib/validator';
+import { afterUpdate, onMount } from 'svelte';
+import AppIcon from './AppIcon.svelte';
 
-  export let calculatorInput: CalculatorInput;
-  export let onUpdate: (calculatorInput: CalculatorInput) => void;
+export let calculatorInput: CalculatorInput;
+export let onUpdate: (calculatorInput: CalculatorInput) => void;
 
-  onMount(() => {
-    const modal = document.getElementById('modal-config') as HTMLDivElement;
-    modal.addEventListener('shown.bs.modal', () => {
-      const [input] = document.getElementsByTagName('input') as HTMLCollectionOf<HTMLInputElement>;
-      input.focus();
-    });
+onMount(() => {
+  const modal = document.getElementById('modal-config') as HTMLDivElement;
+  modal.addEventListener('shown.bs.modal', () => {
+    const [input] = document.getElementsByTagName('input') as HTMLCollectionOf<HTMLInputElement>;
+    input.focus();
   });
+});
 
-  afterUpdate(() => {
-    if (document.getElementsByClassName('is-invalid').length > 0) {
-      return;
-    }
-    onUpdate(calculatorInput);
-  });
+afterUpdate(() => {
+  if (document.getElementsByClassName('is-invalid').length > 0) {
+    return;
+  }
+  onUpdate(calculatorInput);
+});
 </script>
 
 <button

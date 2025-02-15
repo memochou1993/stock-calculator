@@ -1,6 +1,6 @@
-<script>
-  import { CalculatorConstant } from '$lib/calculator';
-  import AppCard from './AppCard.svelte';
+<script lang="ts">
+import { CalculatorConstant } from '$lib/calculator';
+import AppCard from './AppCard.svelte';
 </script>
 
 <AppCard title="證券交易稅">

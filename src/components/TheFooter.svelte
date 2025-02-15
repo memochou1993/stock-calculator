@@ -1,5 +1,5 @@
-<script>
-  import { GTM } from '$lib/gtm';
+<script lang="ts">
+import { GTM } from '$lib/gtm';
 </script>
 
 <footer class="text-center my-5 py-3">
@@ -20,7 +20,7 @@
 </footer>
 
 <style lang="scss">
-  footer {
-    font-size: 0.875rem;
-  }
+footer {
+  font-size: 0.875rem;
+}
 </style>

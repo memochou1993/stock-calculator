@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { CalculatorForm, CalculatorTable, CalculatorUsageBasic, CalculatorUsageField, CalculatorUsageRate } from '$components';
-  import { CalculatorConstant, CalculatorInput } from '$lib/calculator';
+import { CalculatorForm, CalculatorTable, CalculatorUsageBasic, CalculatorUsageField, CalculatorUsageRate } from '$components';
+import { CalculatorConstant, CalculatorInput } from '$lib/calculator';
 
-  let calculatorInput = new CalculatorInput({
-    交易類別: CalculatorConstant.交易類別.股票,
-    買入價格: null,
-    賣出價格: null,
-    交易股數: 1000,
-    手續費折扣: 10,
-    最低手續費: 20,
-  });
+let calculatorInput = new CalculatorInput({
+  交易類別: CalculatorConstant.交易類別.股票,
+  買入價格: null,
+  賣出價格: null,
+  交易股數: 1000,
+  手續費折扣: 10,
+  最低手續費: 20,
+});
 </script>
 
 <div class="container">

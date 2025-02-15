@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let icon: string;
-  export let fontSize: number = 24;
+export let icon: string;
+export let fontSize: number = 24;
 </script>
 
 <div class="d-flex align-items-center">

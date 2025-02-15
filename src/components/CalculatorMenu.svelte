@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { CalculatorConstant } from '$lib/calculator';
-  import { GTM } from '$lib/gtm';
-  import AppIcon from './AppIcon.svelte';
+import { CalculatorConstant } from '$lib/calculator';
+import { GTM } from '$lib/gtm';
+import AppIcon from './AppIcon.svelte';
 
-  export let sort: string;
-  export let onSortChange = (_v: string) => {};
+export let sort: string;
+export let onSortChange = (_v: string) => {};
 
-  export let outputCount: number;
-  export let onOutputCountChange = (_v: number) => {};
+export let outputCount: number;
+export let onOutputCountChange = (_v: number) => {};
 
-  export let displayLevel: number;
-  export let onDisplayLevelChange = (_v: number) => {};
+export let displayLevel: number;
+export let onDisplayLevelChange = (_v: number) => {};
 
-  export let fractionDigitCount: number;
-  export let onFractionDigitCountChange = (_v: number) => {};
+export let fractionDigitCount: number;
+export let onFractionDigitCountChange = (_v: number) => {};
 
-  export let fontSize: number;
-  export let onFontSizeChange = (_v: number) => {};
+export let fontSize: number;
+export let onFontSizeChange = (_v: number) => {};
 </script>
 
 <div class="dropdown">

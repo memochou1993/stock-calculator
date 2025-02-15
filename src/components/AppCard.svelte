@@ -1,7 +1,7 @@
 <script lang="ts">
-  import AppCardTitle from './AppCardTitle.svelte';
+import AppCardTitle from './AppCardTitle.svelte';
 
-  export let title: string = '';
+export let title: string = '';
 </script>
 
 <div class="bg-body-secondary rounded-3">

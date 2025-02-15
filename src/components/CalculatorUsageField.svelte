@@ -1,5 +1,5 @@
-<script>
-  import AppCard from './AppCard.svelte';
+<script lang="ts">
+import AppCard from './AppCard.svelte';
 </script>
 
 <AppCard title="欄位說明">
