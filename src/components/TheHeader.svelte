@@ -27,7 +27,7 @@ import AppThemeSwitch from './AppThemeSwitch.svelte';
         }}
         type="button"
       >
-        <AppIcon icon="home" />
+        <AppIcon icon="notifications" />
       </button>
       <AppThemeSwitch />
     </div>

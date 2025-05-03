@@ -1,4 +1,3 @@
-// place files you want to import through the `$lib` alias in this folder.
 import AppCard from './AppCard.svelte';
 import AppThemeSwitch from './AppThemeSwitch.svelte';
 import CalculatorForm from './CalculatorForm.svelte';
