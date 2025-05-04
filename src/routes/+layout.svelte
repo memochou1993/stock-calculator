@@ -44,7 +44,7 @@ const initBootstrap = async () => {
 
 <div class="app">
   <TheHeader />
-  <main class="pt-4 pt-sm-5">
+  <main>
     <slot />
   </main>
   <TheFooter />

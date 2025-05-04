@@ -1,4 +1,5 @@
 import AppCard from './AppCard.svelte';
+import AppGoogleAds from './AppGoogleAds.svelte';
 import AppThemeSwitch from './AppThemeSwitch.svelte';
 import CalculatorForm from './CalculatorForm.svelte';
 import CalculatorTable from './CalculatorTable.svelte';
@@ -8,4 +9,15 @@ import CalculatorUsageRate from './CalculatorUsageRate.svelte';
 import TheFooter from './TheFooter.svelte';
 import TheHeader from './TheHeader.svelte';
 
-export { AppCard, AppThemeSwitch, CalculatorForm, CalculatorTable, CalculatorUsageBasic, CalculatorUsageField, CalculatorUsageRate, TheFooter, TheHeader };
+export {
+  AppCard,
+  AppGoogleAds,
+  AppThemeSwitch,
+  CalculatorForm,
+  CalculatorTable,
+  CalculatorUsageBasic,
+  CalculatorUsageField,
+  CalculatorUsageRate,
+  TheFooter,
+  TheHeader,
+};
