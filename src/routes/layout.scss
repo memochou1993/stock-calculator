@@ -27,18 +27,19 @@ body {
   --bs-body-font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
 }
 
-.text-math {
-  font-family: 'Arial', sans-serif;
+table {
+  th {
+    font-weight: 400;
+    background-color: #{$primary} !important;
+    white-space: nowrap;
+  }
+  td {
+    white-space: nowrap;
+  }
 }
 
-table > thead > tr > th {
-  font-weight: 400;
-  background-color: #{$primary} !important;
-  white-space: nowrap;
-}
-
-table > tbody > tr > td {
-  white-space: nowrap;
+label {
+  margin: 0 4px;
 }
 
 .modal {
@@ -87,8 +88,8 @@ table > tbody > tr > td {
   }
 }
 
-label {
-  margin: 0 4px;
+.text-math {
+  font-family: 'Arial', sans-serif;
 }
 
 .invalid-feedback {
