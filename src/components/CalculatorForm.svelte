@@ -61,7 +61,7 @@ afterUpdate(() => {
   </div>
   <div class="row">
     <div class="col-12">
-      <div class="form-group mb-2 mb-sm-4">
+      <div class="form-group mb-2 mb-lg-4">
         <div class="d-flex align-items-center mb-1">
           <label for="交易類別">交易類別</label>
         </div>
@@ -80,7 +80,7 @@ afterUpdate(() => {
       </div>
     </div>
     <div class="col-12">
-      <div class="form-group mb-2 mb-sm-4">
+      <div class="form-group mb-2 mb-lg-4">
         <div class="d-flex align-items-center mb-1">
           <label for="買入價格">買入價格</label>
         </div>
@@ -114,7 +114,7 @@ afterUpdate(() => {
       </div>
     </div>
     <div class="col-12">
-      <div class="form-group mb-2 mb-sm-4">
+      <div class="form-group mb-2 mb-lg-4">
         <div class="d-flex align-items-center mb-1">
           <label for="賣出價格">賣出價格</label>
         </div>
@@ -146,7 +146,7 @@ afterUpdate(() => {
       </div>
     </div>
     <div class="col-12">
-      <div class="form-group mb-2 mb-sm-4">
+      <div class="form-group mb-2 mb-lg-4">
         <div class="d-flex align-items-center mb-1">
           <label for="交易股數">交易股數</label>
         </div>

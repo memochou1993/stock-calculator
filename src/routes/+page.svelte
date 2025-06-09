@@ -16,7 +16,7 @@ let calculatorInput = new CalculatorInput({
 </script>
 
 <div class="container-fluid">
-  <div class="row g-4 mt-4">
+  <div class="row g-2 g-lg-4 mt-4">
     <div class="col-12 col-lg-2 order-2 order-lg-1 mt-lg-0">
       <AppGoogleAds />
     </div>
@@ -29,12 +29,12 @@ let calculatorInput = new CalculatorInput({
           </div>
         </div>
       {/if}
-      <div class="row g-4">
-        <div class="col-12 col-md-4">
+      <div class="row g-2 g-lg-4">
+        <div class="col-12 col-lg-4">
           <CalculatorForm {calculatorInput} onUpdate={(v) => (calculatorInput = v)} />
         </div>
-        <div class="col-12 col-md-8">
-          <div class="row g-4">
+        <div class="col-12 col-lg-8">
+          <div class="row g-2 g-lg-4">
             <div class="col-12">
               <CalculatorTable {calculatorInput} />
             </div>

@@ -12,11 +12,11 @@ export let fontSize: number;
   <td>
     {CalculatorOutput.toLocaleString(calculatorOutput.賣出價格, Math.max(fractionDigitCount, 2))}
   </td>
-  <td hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 2}>
-    {CalculatorOutput.toLocaleString(calculatorOutput.股票成本, fractionDigitCount)}
+  <td class={calculatorOutput.損益金額 >= 0 ? 'text-positive' : 'text-negative'}>
+    {CalculatorOutput.toLocaleString(calculatorOutput.損益金額, fractionDigitCount)}
   </td>
-  <td hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 2}>
-    {CalculatorOutput.toLocaleString(calculatorOutput.股票市值, fractionDigitCount)}
+  <td class={calculatorOutput.報酬率 >= 0 ? 'text-positive' : 'text-negative'}>
+    {CalculatorOutput.toLocaleString(calculatorOutput.報酬率 * 100, Math.max(fractionDigitCount, 1))}%
   </td>
   <td hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 1}>
     <span class={calculatorOutput.原始買入手續費 < calculatorOutput.買入手續費 ? 'text-negative' : ''}>
@@ -44,15 +44,25 @@ export let fontSize: number;
   <td hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 1}>
     {CalculatorOutput.toLocaleString(calculatorOutput.投資成本, fractionDigitCount)}
   </td>
-  <td class={calculatorOutput.損益金額 >= 0 ? 'text-positive' : 'text-negative'}>
-    {CalculatorOutput.toLocaleString(calculatorOutput.損益金額, fractionDigitCount)}
+  <td hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 2}>
+    {CalculatorOutput.toLocaleString(calculatorOutput.股票成本, fractionDigitCount)}
   </td>
-  <td class={calculatorOutput.報酬率 >= 0 ? 'text-positive' : 'text-negative'}>
-    {CalculatorOutput.toLocaleString(calculatorOutput.報酬率 * 100, Math.max(fractionDigitCount, 1))}%
+  <td hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 2}>
+    {CalculatorOutput.toLocaleString(calculatorOutput.股票市值, fractionDigitCount)}
   </td>
 </tr>
 
 <style lang="scss">
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+@include media-breakpoint-down(lg) {
+  td {
+    padding: 4px 2px !important;
+  }
+}
+
 .highlighted {
   td {
     --bs-bg-opacity: 1;

@@ -46,7 +46,7 @@ afterUpdate(() => {
       <div class="modal-body">
         <div class="row">
           <div class="col-12">
-            <div class="form-group mb-2 mb-sm-4">
+            <div class="form-group mb-2 mb-lg-4">
               <div class="d-flex align-items-center mb-1">
                 <label for="手續費折扣">手續費折扣</label>
                 <button
@@ -75,17 +75,12 @@ afterUpdate(() => {
                   max={CalculatorConstant.交易參數.最大手續費折扣}
                   min={CalculatorConstant.交易參數.最小手續費折扣}
                   on:blur={() => {
-                    GTM.pushEvent('change_commission_rate', { value: Number(calculatorInput.手續費折扣) / 10 });
-                  }}
-                  on:input={() => {
                     const 手續費折扣 = calculatorInput.手續費折扣;
-                    if (
-                      手續費折扣 !== null &&
-                      手續費折扣 >= CalculatorConstant.交易參數.最小手續費折扣 &&
-                      手續費折扣 <= CalculatorConstant.交易參數.最大手續費折扣
-                    ) {
-                      localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(手續費折扣));
+                    if (!手續費折扣 || 手續費折扣 < CalculatorConstant.交易參數.最小手續費折扣 || 手續費折扣 > CalculatorConstant.交易參數.最大手續費折扣) {
+                      calculatorInput.手續費折扣 = CalculatorConstant.交易參數.最大手續費折扣;
                     }
+                    localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(calculatorInput.手續費折扣));
+                    GTM.pushEvent('change_commission_rate', { value: Number(calculatorInput.手續費折扣) / 10 });
                   }}
                   step="0.5"
                   type="number"
@@ -98,7 +93,7 @@ afterUpdate(() => {
             </div>
           </div>
           <div class="col-12">
-            <div class="form-group mb-2 mb-sm-4">
+            <div class="form-group mb-2 mb-lg-4">
               <div class="d-flex align-items-center mb-1">
                 <label for="最低手續費">最低手續費</label>
                 <button
@@ -127,17 +122,12 @@ afterUpdate(() => {
                   max={CalculatorConstant.交易參數.最大最低手續費}
                   min={CalculatorConstant.交易參數.最小最低手續費}
                   on:blur={() => {
-                    GTM.pushEvent('change_minimum_commission', { value: calculatorInput.最低手續費 });
-                  }}
-                  on:input={() => {
                     const 最低手續費 = calculatorInput.最低手續費;
-                    if (
-                      最低手續費 !== null &&
-                      最低手續費 >= CalculatorConstant.交易參數.最小最低手續費 &&
-                      最低手續費 <= CalculatorConstant.交易參數.最大最低手續費
-                    ) {
-                      localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費 ?? 0));
+                    if (!最低手續費 || 最低手續費 < CalculatorConstant.交易參數.最小最低手續費 || 最低手續費 > CalculatorConstant.交易參數.最大最低手續費) {
+                      calculatorInput.最低手續費 = CalculatorConstant.交易參數.最大最低手續費;
                     }
+                    localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費));
+                    GTM.pushEvent('change_minimum_commission', { value: calculatorInput.最低手續費 });
                   }}
                   step="1"
                   type="number"

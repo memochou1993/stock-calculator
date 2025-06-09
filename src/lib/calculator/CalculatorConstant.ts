@@ -54,8 +54,8 @@ export const CalculatorConstant = Object.freeze({
   },
   字體大小: {
     預設: 1,
-    最小: 1,
-    最大: 1.25,
+    最小: 0.5,
+    最大: 1.5,
   },
 });
 

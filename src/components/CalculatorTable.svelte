@@ -108,16 +108,16 @@ const recover = () => {
   <div class="table-responsive">
     <table class="table table-bordered table-striped table-light align-middle text-center mb-0">
       <thead class="table-dark">
-        <tr>
+        <tr style="font-size: {fontSize}rem !important">
           <th>賣出價格</th>
-          <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 2}>股票成本</th>
-          <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 2}>股票市值</th>
+          <th>損益金額</th>
+          <th>報酬率</th>
           <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 1}>買入手續費</th>
           <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 1}>賣出手續費</th>
           <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 1}>證券交易稅</th>
           <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 1}>投資成本</th>
-          <th>損益金額</th>
-          <th>報酬率</th>
+          <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 2}>股票成本</th>
+          <th hidden={displayLevel < CalculatorConstant.顯示等級.最小 + 2}>股票市值</th>
         </tr>
       </thead>
       <tbody>
@@ -134,3 +134,15 @@ const recover = () => {
     </table>
   </div>
 </AppCard>
+
+<style lang="scss">
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+@include media-breakpoint-down(lg) {
+  th {
+    padding: 4px 2px !important;
+  }
+}
+</style>
