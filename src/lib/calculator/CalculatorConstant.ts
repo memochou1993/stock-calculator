@@ -22,6 +22,7 @@ export const CalculatorConstant = Object.freeze({
     指數股票型基金: 1 / 1000,
   },
   交易參數: {
+    // FIXME:
     最小買入價格: 0,
     最小賣出價格: 0,
     最小交易股數: 0,

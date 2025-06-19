@@ -1,9 +1,10 @@
 <script lang="ts">
 import { CalculatorConstant, CalculatorInput } from '$lib/calculator';
 import { GTM } from '$lib/gtm';
-import { validate } from '$lib/validator';
+import { Validator } from '$lib/validator';
 import { afterUpdate, onMount } from 'svelte';
 import AppIcon from './AppIcon.svelte';
+import { Float } from '$lib/utils';
 
 export let calculatorInput: CalculatorInput;
 export let onUpdate: (calculatorInput: CalculatorInput) => void;
@@ -50,7 +51,7 @@ afterUpdate(() => {
               <div class="d-flex align-items-center mb-1">
                 <label for="手續費折扣">手續費折扣</label>
                 <button
-                  class="btn btn-variant p-0"
+                  class="btn btn-variant btn-rounded p-0"
                   data-bs-custom-class="tooltip-variant"
                   data-bs-placement="right"
                   data-bs-toggle="tooltip"
@@ -61,12 +62,26 @@ afterUpdate(() => {
                 </button>
               </div>
               <div class="input-group">
+                <button
+                  type="button"
+                  class="input-group-text btn-variant btn-outline px-1"
+                  on:click={() => {
+                    if (Number(calculatorInput.手續費折扣) <= CalculatorConstant.交易參數.最小手續費折扣) {
+                      return;
+                    }
+                    calculatorInput.手續費折扣 = Float(calculatorInput.手續費折扣 || 0)
+                      .subtract(0.5)
+                      .getValue();
+                  }}
+                >
+                  <AppIcon fontSize={20} icon="remove" />
+                </button>
                 <input
                   aria-describedby="手續費折扣單位"
                   aria-label="手續費折扣"
                   autocomplete="off"
                   bind:value={calculatorInput.手續費折扣}
-                  class="form-control form-control-md {!validate(calculatorInput.手續費折扣).isBetween(
+                  class="form-control form-control-md {!new Validator(calculatorInput.手續費折扣).isBetween(
                     CalculatorConstant.交易參數.最小手續費折扣,
                     CalculatorConstant.交易參數.最大手續費折扣,
                   ) && 'is-invalid'}"
@@ -85,7 +100,21 @@ afterUpdate(() => {
                   step="0.5"
                   type="number"
                 />
-                <span class="input-group-text rounded-end" id="手續費折扣單位">折</span>
+                <button
+                  type="button"
+                  class="input-group-text btn-variant btn-outline px-1"
+                  on:click={() => {
+                    if (Number(calculatorInput.手續費折扣) >= CalculatorConstant.交易參數.最大手續費折扣) {
+                      return;
+                    }
+                    calculatorInput.手續費折扣 = Float(calculatorInput.手續費折扣 || 0)
+                      .add(0.5)
+                      .getValue();
+                  }}
+                >
+                  <AppIcon fontSize={20} icon="add" />
+                </button>
+                <span class="input-group-text rounded-end px-2" id="手續費折扣單位">折</span>
                 <span class="invalid-feedback">
                   {`請輸入 ${CalculatorConstant.交易參數.最小手續費折扣.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大手續費折扣.toLocaleString()} 之間的數字`}
                 </span>
@@ -97,7 +126,7 @@ afterUpdate(() => {
               <div class="d-flex align-items-center mb-1">
                 <label for="最低手續費">最低手續費</label>
                 <button
-                  class="btn btn-variant p-0"
+                  class="btn btn-variant btn-rounded p-0"
                   data-bs-custom-class="tooltip-variant"
                   data-bs-placement="right"
                   data-bs-toggle="tooltip"
@@ -108,12 +137,26 @@ afterUpdate(() => {
                 </button>
               </div>
               <div class="input-group">
+                <button
+                  type="button"
+                  class="input-group-text btn-variant btn-outline px-1"
+                  on:click={() => {
+                    if (Number(calculatorInput.最低手續費) <= CalculatorConstant.交易參數.最小最低手續費) {
+                      return;
+                    }
+                    calculatorInput.最低手續費 = Float(calculatorInput.最低手續費 || 0)
+                      .subtract(1)
+                      .getValue();
+                  }}
+                >
+                  <AppIcon fontSize={20} icon="remove" />
+                </button>
                 <input
                   aria-describedby="最低手續費單位"
                   aria-label="最低手續費"
                   autocomplete="off"
                   bind:value={calculatorInput.最低手續費}
-                  class="form-control form-control-md {!validate(calculatorInput.最低手續費).isBetween(
+                  class="form-control form-control-md {!new Validator(calculatorInput.最低手續費).isBetween(
                     CalculatorConstant.交易參數.最小最低手續費,
                     CalculatorConstant.交易參數.最大最低手續費,
                   ) && 'is-invalid'}"
@@ -132,7 +175,21 @@ afterUpdate(() => {
                   step="1"
                   type="number"
                 />
-                <span class="input-group-text rounded-end" id="最低手續費單位">元</span>
+                <button
+                  type="button"
+                  class="input-group-text btn-variant btn-outline px-1"
+                  on:click={() => {
+                    if (Number(calculatorInput.最低手續費) >= CalculatorConstant.交易參數.最大最低手續費) {
+                      return;
+                    }
+                    calculatorInput.最低手續費 = Float(calculatorInput.最低手續費 || 0)
+                      .add(1)
+                      .getValue();
+                  }}
+                >
+                  <AppIcon fontSize={20} icon="add" />
+                </button>
+                <span class="input-group-text rounded-end px-2" id="最低手續費單位">元</span>
                 <span class="invalid-feedback">
                   {`請輸入 ${CalculatorConstant.交易參數.最小最低手續費.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大最低手續費.toLocaleString()} 之間的數字`}
                 </span>

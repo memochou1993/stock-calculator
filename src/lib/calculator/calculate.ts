@@ -7,7 +7,7 @@ const calculate = (input: CalculatorInput): CalculatorOutput => {
   return new Calculator(input).output;
 };
 
-const getStep = (type: string, price: number | null): number => {
+const getPriceStep = (type: string, price: number | null): number => {
   if (!price) return 0.01;
   if (type === CalculatorConstant.交易類別.ETF) {
     if (price < 50) return 0.01;
@@ -21,13 +21,19 @@ const getStep = (type: string, price: number | null): number => {
   return 5;
 };
 
+const getShareStep = (share: number | null): number => {
+  if (!share) return 1000;
+  if (share % 1000 === 0) return 1000;
+  return 1;
+};
+
 const getPrevPrice = (type: string, price: number): number => {
-  const step = getStep(type, price - 0.01);
+  const step = getPriceStep(type, price - 0.01);
   return Math.round((price - step) * 100) / 100;
 };
 
 const getNextPrice = (type: string, price: number): number => {
-  const step = getStep(type, price);
+  const step = getPriceStep(type, price);
   return Math.round((price + step) * 100) / 100;
 };
 
@@ -45,4 +51,4 @@ const getNextPrices = (type: string, price: number, length: number): number[] =>
   });
 };
 
-export { calculate, getNextPrices, getPrevPrices, getStep };
+export { calculate, getNextPrices, getPrevPrices, getPriceStep, getShareStep };
