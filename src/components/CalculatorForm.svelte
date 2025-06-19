@@ -90,13 +90,13 @@ afterUpdate(() => {
         <!-- svelte-ignore a11y-autofocus -->
         <div class="input-group">
           <button
-            type="button"
             class="input-group-text btn-variant btn-outline px-1"
+            type="button"
             on:click={() => {
-              if (Number(calculatorInput.買入價格) <= CalculatorConstant.交易參數.最小買入價格) {
+              if (Number(calculatorInput.買入價格) <= CalculatorConstant.買入價格.最小) {
                 return;
               }
-              calculatorInput.買入價格 = Float(calculatorInput.買入價格 || 0)
+              calculatorInput.買入價格 = Float(calculatorInput.買入價格)
                 .subtract(getPriceStep(calculatorInput.交易類別, calculatorInput.買入價格))
                 .getValue();
             }}
@@ -110,13 +110,13 @@ afterUpdate(() => {
             aria-label="買入價格"
             bind:value={calculatorInput.買入價格}
             class="form-control form-control-md {!new Validator(calculatorInput.買入價格).isBetween(
-              CalculatorConstant.交易參數.最小買入價格,
-              CalculatorConstant.交易參數.最大買入價格,
+              CalculatorConstant.買入價格.最小,
+              CalculatorConstant.買入價格.最大,
             ) && 'is-invalid'}"
             id="買入價格"
             inputmode="decimal"
-            max={CalculatorConstant.交易參數.最大買入價格}
-            min={CalculatorConstant.交易參數.最小買入價格}
+            max={CalculatorConstant.買入價格.最大}
+            min={CalculatorConstant.買入價格.最小}
             on:blur={() => {
               GTM.pushEvent('change_purchase_price', { value: calculatorInput.買入價格 });
             }}
@@ -124,13 +124,13 @@ afterUpdate(() => {
             type="number"
           />
           <button
-            type="button"
             class="input-group-text btn-variant btn-outline px-1"
+            type="button"
             on:click={() => {
-              if (Number(calculatorInput.買入價格) >= CalculatorConstant.交易參數.最大買入價格) {
+              if (Number(calculatorInput.買入價格) >= CalculatorConstant.買入價格.最大) {
                 return;
               }
-              calculatorInput.買入價格 = Float(calculatorInput.買入價格 || 0)
+              calculatorInput.買入價格 = Float(calculatorInput.買入價格)
                 .add(getPriceStep(calculatorInput.交易類別, calculatorInput.買入價格))
                 .getValue();
             }}
@@ -139,7 +139,7 @@ afterUpdate(() => {
           </button>
           <span class="input-group-text rounded-end px-2" id="買入價格單位">元</span>
           <div class="invalid-feedback">
-            {`請輸入 ${CalculatorConstant.交易參數.最小買入價格.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大買入價格.toLocaleString()} 之間的數字`}
+            {`請輸入 ${CalculatorConstant.買入價格.最小.toLocaleString()} 至 ${CalculatorConstant.買入價格.最大.toLocaleString()} 之間的數字`}
           </div>
         </div>
       </div>
@@ -151,13 +151,13 @@ afterUpdate(() => {
         </div>
         <div class="input-group">
           <button
-            type="button"
             class="input-group-text btn-variant btn-outline px-1"
+            type="button"
             on:click={() => {
-              if (Number(calculatorInput.賣出價格) <= CalculatorConstant.交易參數.最小賣出價格) {
+              if (Number(calculatorInput.賣出價格) <= CalculatorConstant.賣出價格.最小) {
                 return;
               }
-              calculatorInput.賣出價格 = Float(calculatorInput.賣出價格 || 0)
+              calculatorInput.賣出價格 = Float(calculatorInput.賣出價格)
                 .subtract(getPriceStep(calculatorInput.交易類別, calculatorInput.賣出價格))
                 .getValue();
             }}
@@ -170,13 +170,13 @@ afterUpdate(() => {
             aria-label="賣出價格"
             bind:value={calculatorInput.賣出價格}
             class="form-control form-control-md {!new Validator(calculatorInput.賣出價格).isBetween(
-              CalculatorConstant.交易參數.最小賣出價格,
-              CalculatorConstant.交易參數.最大賣出價格,
+              CalculatorConstant.賣出價格.最小,
+              CalculatorConstant.賣出價格.最大,
             ) && 'is-invalid'}"
             id="賣出價格"
             inputmode="decimal"
-            max={CalculatorConstant.交易參數.最大賣出價格}
-            min={CalculatorConstant.交易參數.最小賣出價格}
+            max={CalculatorConstant.賣出價格.最大}
+            min={CalculatorConstant.賣出價格.最小}
             on:blur={() => {
               GTM.pushEvent('change_selling_price', { value: calculatorInput.賣出價格 });
             }}
@@ -184,13 +184,13 @@ afterUpdate(() => {
             type="number"
           />
           <button
-            type="button"
             class="input-group-text btn-variant btn-outline px-1"
+            type="button"
             on:click={() => {
-              if (Number(calculatorInput.賣出價格) >= CalculatorConstant.交易參數.最大賣出價格) {
+              if (Number(calculatorInput.賣出價格) >= CalculatorConstant.賣出價格.最大) {
                 return;
               }
-              calculatorInput.賣出價格 = Float(calculatorInput.賣出價格 || 0)
+              calculatorInput.賣出價格 = Float(calculatorInput.賣出價格)
                 .add(getPriceStep(calculatorInput.交易類別, calculatorInput.賣出價格))
                 .getValue();
             }}
@@ -199,7 +199,7 @@ afterUpdate(() => {
           </button>
           <span class="input-group-text rounded-end px-2" id="賣出價格單位">元</span>
           <div class="invalid-feedback">
-            {`請輸入 ${CalculatorConstant.交易參數.最小賣出價格.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大賣出價格.toLocaleString()} 之間的數字`}
+            {`請輸入 ${CalculatorConstant.賣出價格.最小.toLocaleString()} 至 ${CalculatorConstant.賣出價格.最大.toLocaleString()} 之間的數字`}
           </div>
         </div>
       </div>
@@ -211,13 +211,13 @@ afterUpdate(() => {
         </div>
         <div class="input-group">
           <button
-            type="button"
             class="input-group-text btn-variant btn-outline px-1"
+            type="button"
             on:click={() => {
-              if (Number(calculatorInput.交易股數) <= CalculatorConstant.交易參數.最小交易股數) {
+              if (Number(calculatorInput.交易股數) <= CalculatorConstant.交易股數.最小) {
                 return;
               }
-              calculatorInput.交易股數 = Float(calculatorInput.交易股數 || 0)
+              calculatorInput.交易股數 = Float(calculatorInput.交易股數)
                 .subtract(getShareStep(calculatorInput.交易股數))
                 .getValue();
             }}
@@ -230,27 +230,27 @@ afterUpdate(() => {
             autocomplete="off"
             bind:value={calculatorInput.交易股數}
             class="form-control form-control-md {!new Validator(calculatorInput.交易股數).isBetween(
-              CalculatorConstant.交易參數.最小交易股數,
-              CalculatorConstant.交易參數.最大交易股數,
+              CalculatorConstant.交易股數.最小,
+              CalculatorConstant.交易股數.最大,
             ) && 'is-invalid'}"
             id="交易股數"
             inputmode="numeric"
-            max={CalculatorConstant.交易參數.最大交易股數}
-            min={CalculatorConstant.交易參數.最小交易股數}
+            max={CalculatorConstant.交易股數.最大}
+            min={CalculatorConstant.交易股數.最小}
             on:blur={() => {
               GTM.pushEvent('change_shares', { value: calculatorInput.交易股數 });
             }}
-            step="1000"
+            step={getShareStep(calculatorInput.交易股數)}
             type="number"
           />
           <button
-            type="button"
             class="input-group-text btn-variant btn-outline px-1"
+            type="button"
             on:click={() => {
-              if (Number(calculatorInput.交易股數) >= CalculatorConstant.交易參數.最大交易股數) {
+              if (Number(calculatorInput.交易股數) >= CalculatorConstant.交易股數.最大) {
                 return;
               }
-              calculatorInput.交易股數 = Float(calculatorInput.交易股數 || 0)
+              calculatorInput.交易股數 = Float(calculatorInput.交易股數)
                 .add(getShareStep(calculatorInput.交易股數))
                 .getValue();
             }}
@@ -259,7 +259,7 @@ afterUpdate(() => {
           </button>
           <span class="input-group-text rounded-end px-2" id="交易股數單位">股</span>
           <span class="invalid-feedback">
-            {`請輸入 ${CalculatorConstant.交易參數.最小交易股數.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大交易股數.toLocaleString()} 之間的數字`}
+            {`請輸入 ${CalculatorConstant.交易股數.最小.toLocaleString()} 至 ${CalculatorConstant.交易股數.最大.toLocaleString()} 之間的數字`}
           </span>
         </div>
       </div>

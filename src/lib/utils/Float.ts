@@ -1,8 +1,8 @@
 class Float {
   private value: number;
 
-  constructor(value: number) {
-    this.value = value;
+  constructor(value: number | null) {
+    this.value = value ?? 0;
   }
 
   private getDecimalLength(num: number): number {
@@ -30,6 +30,6 @@ class Float {
   }
 }
 
-export default (value: number) => {
+export default (value: number | null) => {
   return new Float(value);
 };

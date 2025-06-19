@@ -66,11 +66,11 @@ afterUpdate(() => {
                   type="button"
                   class="input-group-text btn-variant btn-outline px-1"
                   on:click={() => {
-                    if (Number(calculatorInput.手續費折扣) <= CalculatorConstant.交易參數.最小手續費折扣) {
+                    if (Number(calculatorInput.手續費折扣) <= CalculatorConstant.手續費折扣.最小) {
                       return;
                     }
                     calculatorInput.手續費折扣 = Float(calculatorInput.手續費折扣 || 0)
-                      .subtract(0.5)
+                      .subtract(CalculatorConstant.手續費折扣.間距)
                       .getValue();
                   }}
                 >
@@ -82,33 +82,33 @@ afterUpdate(() => {
                   autocomplete="off"
                   bind:value={calculatorInput.手續費折扣}
                   class="form-control form-control-md {!new Validator(calculatorInput.手續費折扣).isBetween(
-                    CalculatorConstant.交易參數.最小手續費折扣,
-                    CalculatorConstant.交易參數.最大手續費折扣,
+                    CalculatorConstant.手續費折扣.最小,
+                    CalculatorConstant.手續費折扣.最大,
                   ) && 'is-invalid'}"
                   id="手續費折扣"
                   inputmode="decimal"
-                  max={CalculatorConstant.交易參數.最大手續費折扣}
-                  min={CalculatorConstant.交易參數.最小手續費折扣}
+                  max={CalculatorConstant.手續費折扣.最大}
+                  min={CalculatorConstant.手續費折扣.最小}
                   on:blur={() => {
                     const 手續費折扣 = calculatorInput.手續費折扣;
-                    if (!手續費折扣 || 手續費折扣 < CalculatorConstant.交易參數.最小手續費折扣 || 手續費折扣 > CalculatorConstant.交易參數.最大手續費折扣) {
-                      calculatorInput.手續費折扣 = CalculatorConstant.交易參數.最大手續費折扣;
+                    if (!手續費折扣 || 手續費折扣 < CalculatorConstant.手續費折扣.最小 || 手續費折扣 > CalculatorConstant.手續費折扣.最大) {
+                      calculatorInput.手續費折扣 = CalculatorConstant.手續費折扣.最大;
                     }
                     localStorage.setItem(CalculatorConstant.儲存鍵.手續費折扣, String(calculatorInput.手續費折扣));
                     GTM.pushEvent('change_commission_rate', { value: Number(calculatorInput.手續費折扣) / 10 });
                   }}
-                  step="0.5"
+                  step={CalculatorConstant.手續費折扣.間距}
                   type="number"
                 />
                 <button
                   type="button"
                   class="input-group-text btn-variant btn-outline px-1"
                   on:click={() => {
-                    if (Number(calculatorInput.手續費折扣) >= CalculatorConstant.交易參數.最大手續費折扣) {
+                    if (Number(calculatorInput.手續費折扣) >= CalculatorConstant.手續費折扣.最大) {
                       return;
                     }
                     calculatorInput.手續費折扣 = Float(calculatorInput.手續費折扣 || 0)
-                      .add(0.5)
+                      .add(CalculatorConstant.手續費折扣.間距)
                       .getValue();
                   }}
                 >
@@ -116,7 +116,7 @@ afterUpdate(() => {
                 </button>
                 <span class="input-group-text rounded-end px-2" id="手續費折扣單位">折</span>
                 <span class="invalid-feedback">
-                  {`請輸入 ${CalculatorConstant.交易參數.最小手續費折扣.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大手續費折扣.toLocaleString()} 之間的數字`}
+                  {`請輸入 ${CalculatorConstant.手續費折扣.最小.toLocaleString()} 至 ${CalculatorConstant.手續費折扣.最大.toLocaleString()} 之間的數字`}
                 </span>
               </div>
             </div>
@@ -141,11 +141,11 @@ afterUpdate(() => {
                   type="button"
                   class="input-group-text btn-variant btn-outline px-1"
                   on:click={() => {
-                    if (Number(calculatorInput.最低手續費) <= CalculatorConstant.交易參數.最小最低手續費) {
+                    if (Number(calculatorInput.最低手續費) <= CalculatorConstant.最低手續費.最小) {
                       return;
                     }
                     calculatorInput.最低手續費 = Float(calculatorInput.最低手續費 || 0)
-                      .subtract(1)
+                      .subtract(CalculatorConstant.最低手續費.間距)
                       .getValue();
                   }}
                 >
@@ -157,33 +157,33 @@ afterUpdate(() => {
                   autocomplete="off"
                   bind:value={calculatorInput.最低手續費}
                   class="form-control form-control-md {!new Validator(calculatorInput.最低手續費).isBetween(
-                    CalculatorConstant.交易參數.最小最低手續費,
-                    CalculatorConstant.交易參數.最大最低手續費,
+                    CalculatorConstant.最低手續費.最小,
+                    CalculatorConstant.最低手續費.最大,
                   ) && 'is-invalid'}"
                   id="最低手續費"
                   inputmode="numeric"
-                  max={CalculatorConstant.交易參數.最大最低手續費}
-                  min={CalculatorConstant.交易參數.最小最低手續費}
+                  max={CalculatorConstant.最低手續費.最大}
+                  min={CalculatorConstant.最低手續費.最小}
                   on:blur={() => {
                     const 最低手續費 = calculatorInput.最低手續費;
-                    if (!最低手續費 || 最低手續費 < CalculatorConstant.交易參數.最小最低手續費 || 最低手續費 > CalculatorConstant.交易參數.最大最低手續費) {
-                      calculatorInput.最低手續費 = CalculatorConstant.交易參數.最大最低手續費;
+                    if (!最低手續費 || 最低手續費 < CalculatorConstant.最低手續費.最小 || 最低手續費 > CalculatorConstant.最低手續費.最大) {
+                      calculatorInput.最低手續費 = CalculatorConstant.最低手續費.最大;
                     }
                     localStorage.setItem(CalculatorConstant.儲存鍵.最低手續費, String(calculatorInput.最低手續費));
                     GTM.pushEvent('change_minimum_commission', { value: calculatorInput.最低手續費 });
                   }}
-                  step="1"
+                  step={CalculatorConstant.最低手續費.間距}
                   type="number"
                 />
                 <button
                   type="button"
                   class="input-group-text btn-variant btn-outline px-1"
                   on:click={() => {
-                    if (Number(calculatorInput.最低手續費) >= CalculatorConstant.交易參數.最大最低手續費) {
+                    if (Number(calculatorInput.最低手續費) >= CalculatorConstant.最低手續費.最大) {
                       return;
                     }
                     calculatorInput.最低手續費 = Float(calculatorInput.最低手續費 || 0)
-                      .add(1)
+                      .add(CalculatorConstant.最低手續費.間距)
                       .getValue();
                   }}
                 >
@@ -191,7 +191,7 @@ afterUpdate(() => {
                 </button>
                 <span class="input-group-text rounded-end px-2" id="最低手續費單位">元</span>
                 <span class="invalid-feedback">
-                  {`請輸入 ${CalculatorConstant.交易參數.最小最低手續費.toLocaleString()} 至 ${CalculatorConstant.交易參數.最大最低手續費.toLocaleString()} 之間的數字`}
+                  {`請輸入 ${CalculatorConstant.最低手續費.最小.toLocaleString()} 至 ${CalculatorConstant.最低手續費.最大.toLocaleString()} 之間的數字`}
                 </span>
               </div>
             </div>
