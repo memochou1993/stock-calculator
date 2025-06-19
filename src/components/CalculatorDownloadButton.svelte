@@ -7,8 +7,8 @@ import AppIcon from './AppIcon.svelte';
 export let calculatorOutputs: Array<CalculatorOutput>;
 
 const downloadFile = () => {
-  const [output] = calculatorOutputs;
-  const keys = Object.keys(output);
+  const table = document.querySelector('table') as HTMLTableElement;
+  const keys = ['買入價格', ...[...table.querySelectorAll('th')].map((th) => String(th.textContent))];
   const rows = calculatorOutputs.map((output) =>
     keys.map((key) => {
       if (key === '報酬率') {
