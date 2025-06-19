@@ -87,4 +87,10 @@ class Calculator {
   }
 }
 
-export default Calculator;
+const calculator = {
+  create(input: CalculatorInput): Calculator {
+    return new Calculator(input);
+  },
+};
+
+export { calculator };

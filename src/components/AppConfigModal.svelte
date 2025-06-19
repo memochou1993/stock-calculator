@@ -1,10 +1,10 @@
 <script lang="ts">
 import { CalculatorConstant, CalculatorInput } from '$lib/calculator';
 import { GTM } from '$lib/gtm';
-import { Validator } from '$lib/validator';
+import { float } from '$lib/utils';
+import { validator } from '$lib/validator';
 import { afterUpdate, onMount } from 'svelte';
 import AppIcon from './AppIcon.svelte';
-import { Float } from '$lib/utils';
 
 export let calculatorInput: CalculatorInput;
 export let onUpdate: (calculatorInput: CalculatorInput) => void;
@@ -26,7 +26,7 @@ afterUpdate(() => {
 </script>
 
 <button
-  class="btn btn-variant px-2"
+  class="btn btn-variant"
   data-bs-target="#modal-config"
   data-bs-toggle="modal"
   on:click={() => {
@@ -69,9 +69,7 @@ afterUpdate(() => {
                     if (Number(calculatorInput.手續費折扣) <= CalculatorConstant.手續費折扣.最小) {
                       return;
                     }
-                    calculatorInput.手續費折扣 = Float(calculatorInput.手續費折扣 || 0)
-                      .subtract(CalculatorConstant.手續費折扣.間距)
-                      .getValue();
+                    calculatorInput.手續費折扣 = float.create(calculatorInput.手續費折扣).subtract(CalculatorConstant.手續費折扣.間距).getValue();
                   }}
                 >
                   <AppIcon fontSize={20} icon="remove" />
@@ -81,10 +79,9 @@ afterUpdate(() => {
                   aria-label="手續費折扣"
                   autocomplete="off"
                   bind:value={calculatorInput.手續費折扣}
-                  class="form-control form-control-md {!new Validator(calculatorInput.手續費折扣).isBetween(
-                    CalculatorConstant.手續費折扣.最小,
-                    CalculatorConstant.手續費折扣.最大,
-                  ) && 'is-invalid'}"
+                  class="form-control form-control-md {!validator
+                    .create(calculatorInput.手續費折扣)
+                    .isBetween(CalculatorConstant.手續費折扣.最小, CalculatorConstant.手續費折扣.最大) && 'is-invalid'}"
                   id="手續費折扣"
                   inputmode="decimal"
                   max={CalculatorConstant.手續費折扣.最大}
@@ -107,9 +104,7 @@ afterUpdate(() => {
                     if (Number(calculatorInput.手續費折扣) >= CalculatorConstant.手續費折扣.最大) {
                       return;
                     }
-                    calculatorInput.手續費折扣 = Float(calculatorInput.手續費折扣 || 0)
-                      .add(CalculatorConstant.手續費折扣.間距)
-                      .getValue();
+                    calculatorInput.手續費折扣 = float.create(calculatorInput.手續費折扣).add(CalculatorConstant.手續費折扣.間距).getValue();
                   }}
                 >
                   <AppIcon fontSize={20} icon="add" />
@@ -144,9 +139,7 @@ afterUpdate(() => {
                     if (Number(calculatorInput.最低手續費) <= CalculatorConstant.最低手續費.最小) {
                       return;
                     }
-                    calculatorInput.最低手續費 = Float(calculatorInput.最低手續費 || 0)
-                      .subtract(CalculatorConstant.最低手續費.間距)
-                      .getValue();
+                    calculatorInput.最低手續費 = float.create(calculatorInput.最低手續費).subtract(CalculatorConstant.最低手續費.間距).getValue();
                   }}
                 >
                   <AppIcon fontSize={20} icon="remove" />
@@ -156,10 +149,9 @@ afterUpdate(() => {
                   aria-label="最低手續費"
                   autocomplete="off"
                   bind:value={calculatorInput.最低手續費}
-                  class="form-control form-control-md {!new Validator(calculatorInput.最低手續費).isBetween(
-                    CalculatorConstant.最低手續費.最小,
-                    CalculatorConstant.最低手續費.最大,
-                  ) && 'is-invalid'}"
+                  class="form-control form-control-md {!validator
+                    .create(calculatorInput.最低手續費)
+                    .isBetween(CalculatorConstant.最低手續費.最小, CalculatorConstant.最低手續費.最大) && 'is-invalid'}"
                   id="最低手續費"
                   inputmode="numeric"
                   max={CalculatorConstant.最低手續費.最大}
@@ -182,9 +174,7 @@ afterUpdate(() => {
                     if (Number(calculatorInput.最低手續費) >= CalculatorConstant.最低手續費.最大) {
                       return;
                     }
-                    calculatorInput.最低手續費 = Float(calculatorInput.最低手續費 || 0)
-                      .add(CalculatorConstant.最低手續費.間距)
-                      .getValue();
+                    calculatorInput.最低手續費 = float.create(calculatorInput.最低手續費).add(CalculatorConstant.最低手續費.間距).getValue();
                   }}
                 >
                   <AppIcon fontSize={20} icon="add" />

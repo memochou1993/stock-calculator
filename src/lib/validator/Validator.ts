@@ -14,4 +14,10 @@ class Validator {
   }
 }
 
-export default Validator;
+const validator = {
+  create(value: unknown): Validator {
+    return new Validator(value);
+  },
+};
+
+export { validator };

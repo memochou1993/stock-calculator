@@ -51,7 +51,7 @@ const showTooltip = async (tooltip: Tooltip, content: string) => {
 </script>
 
 <button
-  class="btn btn-variant px-2"
+  class="btn btn-variant"
   data-bs-target="#modal-share"
   data-bs-toggle="modal"
   on:click={() => {

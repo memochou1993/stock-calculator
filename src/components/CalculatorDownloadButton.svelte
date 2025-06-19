@@ -24,7 +24,7 @@ const downloadFile = () => {
 </script>
 
 <button
-  class="btn btn-variant px-2"
+  class="btn btn-variant"
   on:click={() => {
     downloadFile();
     GTM.pushEvent('download_file');

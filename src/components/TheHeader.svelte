@@ -20,7 +20,7 @@ import AppThemeSwitch from './AppThemeSwitch.svelte';
     </div>
     <div class="d-flex">
       <button
-        class="btn btn-dark-variant px-2"
+        class="btn btn-dark-variant"
         on:click={() => {
           window.open('https://www.facebook.com/profile.php?id=61559734063696', '_blank', 'noopener noreferrer');
           GTM.pushEvent('visit_facebook_page');

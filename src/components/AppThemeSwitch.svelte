@@ -33,6 +33,6 @@ const toggleTheme = () => {
 };
 </script>
 
-<button type="button" class="btn btn-dark-variant px-2" on:click={toggleTheme}>
+<button type="button" class="btn btn-dark-variant" on:click={toggleTheme}>
   <AppIcon icon={isDarkTheme ? 'light_mode' : 'dark_mode'} />
 </button>

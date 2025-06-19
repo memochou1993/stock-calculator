@@ -1,5 +1,5 @@
 import delay from './delay';
 import download from './download';
-import Float from './Float';
+import { float } from './Float';
 
-export { delay, download, Float };
+export { delay, download, float };

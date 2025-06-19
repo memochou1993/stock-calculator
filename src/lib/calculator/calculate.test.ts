@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
+import { calculator } from './Calculator';
 import CalculatorConstant from './CalculatorConstant';
 import CalculatorInput from './CalculatorInput';
-import { calculate } from './calculate';
 
 test('試算：股票', () => {
   const input = new CalculatorInput({
@@ -13,7 +13,7 @@ test('試算：股票', () => {
     最低手續費: 20,
   });
 
-  const output = calculate(input);
+  const { output } = calculator.create(input);
 
   expect(output.買入價格.toFixed(1)).toBe('123.0');
   expect(output.賣出價格.toFixed(1)).toBe('456.0');
@@ -37,7 +37,7 @@ test('試算：股票（最低手續費）', () => {
     最低手續費: 20,
   });
 
-  const output = calculate(input);
+  const { output } = calculator.create(input);
 
   expect(output.買入價格.toFixed(1)).toBe('1.2');
   expect(output.賣出價格.toFixed(1)).toBe('3.4');
@@ -63,7 +63,7 @@ test('試算：股票當沖', () => {
     最低手續費: 20,
   });
 
-  const output = calculate(input);
+  const { output } = calculator.create(input);
 
   expect(output.買入價格.toFixed(1)).toBe('123.0');
   expect(output.賣出價格.toFixed(1)).toBe('456.0');
@@ -89,7 +89,7 @@ test('試算：股票當沖（最低手續費）', () => {
     最低手續費: 20,
   });
 
-  const output = calculate(input);
+  const { output } = calculator.create(input);
 
   expect(output.買入價格.toFixed(1)).toBe('1.2');
   expect(output.賣出價格.toFixed(1)).toBe('3.4');
@@ -115,7 +115,7 @@ test('試算：ETF', () => {
     最低手續費: 20,
   });
 
-  const output = calculate(input);
+  const { output } = calculator.create(input);
 
   expect(output.買入價格.toFixed(1)).toBe('123.0');
   expect(output.賣出價格.toFixed(1)).toBe('456.0');
@@ -141,7 +141,7 @@ test('試算：ETF（最低手續費）', () => {
     最低手續費: 20,
   });
 
-  const output = calculate(input);
+  const { output } = calculator.create(input);
 
   expect(output.買入價格.toFixed(1)).toBe('1.2');
   expect(output.賣出價格.toFixed(1)).toBe('3.4');

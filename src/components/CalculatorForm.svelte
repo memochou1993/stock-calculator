@@ -1,16 +1,16 @@
 <script lang="ts">
 import { goto } from '$app/navigation';
 import { page } from '$app/stores';
-import { CalculatorConstant, CalculatorInput, getPriceStep } from '$lib/calculator';
+import { CalculatorConstant, CalculatorInput } from '$lib/calculator';
+import { getPriceStep, getShareStep } from '$lib/calculator/utils';
 import { GTM } from '$lib/gtm';
-import { Validator } from '$lib/validator';
+import { float } from '$lib/utils';
+import { validator } from '$lib/validator';
 import { afterUpdate, onMount } from 'svelte';
 import AppCard from './AppCard.svelte';
 import AppCardTitle from './AppCardTitle.svelte';
 import AppConfigModal from './AppConfigModal.svelte';
-import { Float } from '$lib/utils';
 import AppIcon from './AppIcon.svelte';
-import { getShareStep } from '$lib/calculator/calculate';
 
 export let calculatorInput: CalculatorInput;
 export let onUpdate: (calculatorInput: CalculatorInput) => void;
@@ -96,7 +96,8 @@ afterUpdate(() => {
               if (Number(calculatorInput.買入價格) <= CalculatorConstant.買入價格.最小) {
                 return;
               }
-              calculatorInput.買入價格 = Float(calculatorInput.買入價格)
+              calculatorInput.買入價格 = float
+                .create(calculatorInput.買入價格)
                 .subtract(getPriceStep(calculatorInput.交易類別, calculatorInput.買入價格))
                 .getValue();
             }}
@@ -109,10 +110,9 @@ afterUpdate(() => {
             aria-describedby="買入價格單位"
             aria-label="買入價格"
             bind:value={calculatorInput.買入價格}
-            class="form-control form-control-md {!new Validator(calculatorInput.買入價格).isBetween(
-              CalculatorConstant.買入價格.最小,
-              CalculatorConstant.買入價格.最大,
-            ) && 'is-invalid'}"
+            class="form-control form-control-md {!validator
+              .create(calculatorInput.買入價格)
+              .isBetween(CalculatorConstant.買入價格.最小, CalculatorConstant.買入價格.最大) && 'is-invalid'}"
             id="買入價格"
             inputmode="decimal"
             max={CalculatorConstant.買入價格.最大}
@@ -130,7 +130,8 @@ afterUpdate(() => {
               if (Number(calculatorInput.買入價格) >= CalculatorConstant.買入價格.最大) {
                 return;
               }
-              calculatorInput.買入價格 = Float(calculatorInput.買入價格)
+              calculatorInput.買入價格 = float
+                .create(calculatorInput.買入價格)
                 .add(getPriceStep(calculatorInput.交易類別, calculatorInput.買入價格))
                 .getValue();
             }}
@@ -157,7 +158,8 @@ afterUpdate(() => {
               if (Number(calculatorInput.賣出價格) <= CalculatorConstant.賣出價格.最小) {
                 return;
               }
-              calculatorInput.賣出價格 = Float(calculatorInput.賣出價格)
+              calculatorInput.賣出價格 = float
+                .create(calculatorInput.賣出價格)
                 .subtract(getPriceStep(calculatorInput.交易類別, calculatorInput.賣出價格))
                 .getValue();
             }}
@@ -169,10 +171,9 @@ afterUpdate(() => {
             aria-describedby="賣出價格單位"
             aria-label="賣出價格"
             bind:value={calculatorInput.賣出價格}
-            class="form-control form-control-md {!new Validator(calculatorInput.賣出價格).isBetween(
-              CalculatorConstant.賣出價格.最小,
-              CalculatorConstant.賣出價格.最大,
-            ) && 'is-invalid'}"
+            class="form-control form-control-md {!validator
+              .create(calculatorInput.賣出價格)
+              .isBetween(CalculatorConstant.賣出價格.最小, CalculatorConstant.賣出價格.最大) && 'is-invalid'}"
             id="賣出價格"
             inputmode="decimal"
             max={CalculatorConstant.賣出價格.最大}
@@ -190,7 +191,8 @@ afterUpdate(() => {
               if (Number(calculatorInput.賣出價格) >= CalculatorConstant.賣出價格.最大) {
                 return;
               }
-              calculatorInput.賣出價格 = Float(calculatorInput.賣出價格)
+              calculatorInput.賣出價格 = float
+                .create(calculatorInput.賣出價格)
                 .add(getPriceStep(calculatorInput.交易類別, calculatorInput.賣出價格))
                 .getValue();
             }}
@@ -217,9 +219,7 @@ afterUpdate(() => {
               if (Number(calculatorInput.交易股數) <= CalculatorConstant.交易股數.最小) {
                 return;
               }
-              calculatorInput.交易股數 = Float(calculatorInput.交易股數)
-                .subtract(getShareStep(calculatorInput.交易股數))
-                .getValue();
+              calculatorInput.交易股數 = float.create(calculatorInput.交易股數).subtract(getShareStep(calculatorInput.交易股數)).getValue();
             }}
           >
             <AppIcon fontSize={20} icon="remove" />
@@ -229,10 +229,9 @@ afterUpdate(() => {
             aria-label="交易股數"
             autocomplete="off"
             bind:value={calculatorInput.交易股數}
-            class="form-control form-control-md {!new Validator(calculatorInput.交易股數).isBetween(
-              CalculatorConstant.交易股數.最小,
-              CalculatorConstant.交易股數.最大,
-            ) && 'is-invalid'}"
+            class="form-control form-control-md {!validator
+              .create(calculatorInput.交易股數)
+              .isBetween(CalculatorConstant.交易股數.最小, CalculatorConstant.交易股數.最大) && 'is-invalid'}"
             id="交易股數"
             inputmode="numeric"
             max={CalculatorConstant.交易股數.最大}
@@ -250,9 +249,7 @@ afterUpdate(() => {
               if (Number(calculatorInput.交易股數) >= CalculatorConstant.交易股數.最大) {
                 return;
               }
-              calculatorInput.交易股數 = Float(calculatorInput.交易股數)
-                .add(getShareStep(calculatorInput.交易股數))
-                .getValue();
+              calculatorInput.交易股數 = float.create(calculatorInput.交易股數).add(getShareStep(calculatorInput.交易股數)).getValue();
             }}
           >
             <AppIcon fontSize={20} icon="add" />

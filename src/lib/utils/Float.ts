@@ -30,6 +30,10 @@ class Float {
   }
 }
 
-export default (value: number | null) => {
-  return new Float(value);
+const float = {
+  create(value: number | null): Float {
+    return new Float(value);
+  },
 };
+
+export { float };

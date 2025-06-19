@@ -1,6 +1,7 @@
 <script lang="ts">
 import { page } from '$app/stores';
-import { CalculatorConstant, CalculatorInput, calculate, getNextPrices, getPrevPrices } from '$lib/calculator';
+import { calculator, CalculatorConstant, CalculatorInput } from '$lib/calculator';
+import { getNextPrices, getPrevPrices } from '$lib/calculator/utils';
 import { GTM } from '$lib/gtm';
 import { onMount } from 'svelte';
 import AppCard from './AppCard.svelte';
@@ -26,7 +27,7 @@ $: prices = [
 
 $: sortedPrices = sort === CalculatorConstant.排序.由小到大 ? prices : [...prices].reverse();
 
-$: calculatorOutputs = sortedPrices.map((price) => calculate(new CalculatorInput({ ...calculatorInput, 賣出價格: price })));
+$: calculatorOutputs = sortedPrices.map((price) => calculator.create(new CalculatorInput({ ...calculatorInput, 賣出價格: price })).output);
 
 $: params = (() => {
   const params = new URLSearchParams(

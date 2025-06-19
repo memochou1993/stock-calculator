@@ -23,7 +23,7 @@ export let onFontSizeChange = (_v: number) => {};
   <button
     type="button"
     aria-expanded="false"
-    class="btn btn-variant px-2"
+    class="btn btn-variant"
     data-bs-auto-close="outside"
     data-bs-offset="4,4"
     data-bs-toggle="dropdown"
