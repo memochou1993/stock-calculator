@@ -25,7 +25,7 @@ let calculatorInput = new CalculatorInput({
         <div class="mb-4">
           <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
             本網站支援 PWA 技術，加入主畫面後，即可作為 App 使用。
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" on:click={closeAlert}></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close Alert" on:click={closeAlert}></button>
           </div>
         </div>
       {/if}

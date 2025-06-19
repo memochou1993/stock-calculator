@@ -19,26 +19,24 @@ onMount(async () => {
 const copyUrl = async () => {
   const input = document.getElementById('url') as HTMLInputElement;
   input.select();
-
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: document.title,
-        text: `與你分享好用的${document.title}`,
-        url,
-      });
-    } catch (err) {
-      console.error(err);
-    }
-    modal.hide();
-    return;
-  }
   try {
     await navigator.clipboard.writeText(url);
     showTooltip(tooltip, '複製成功！');
   } catch (err) {
     console.error(err);
     showTooltip(tooltip, '複製失敗！');
+  }
+};
+
+const shareUrl = async () => {
+  try {
+    await navigator.share({
+      title: document.title,
+      text: `與你分享好用的${document.title}`,
+      url,
+    });
+  } catch (err) {
+    await copyUrl();
   }
 };
 
@@ -67,14 +65,14 @@ const showTooltip = async (tooltip: Tooltip, content: string) => {
     <div class="modal-content bg-body-secondary">
       <div class="modal-header">
         <h1 class="modal-title text-variant fs-5" id="modal-share-label">分享</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close Share Model"></button>
       </div>
       <div class="modal-body">
         <div class="form-group mb-0">
           <input type="text" id="url" class="form-control form-control-md mb-3" bind:value={url} readonly />
           <div class="d-grid">
             <button
-              class="btn bg-primary-variant text-white"
+              class="btn bg-primary-variant text-white mb-2"
               data-bs-custom-class="tooltip-variant"
               data-bs-placement="bottom"
               data-bs-toggle="tooltip"
@@ -84,10 +82,19 @@ const showTooltip = async (tooltip: Tooltip, content: string) => {
                 copyUrl();
                 GTM.pushEvent('copy_url');
               }}
-              title="複製成功！"
               type="button"
             >
               複製網址
+            </button>
+            <button
+              class="btn bg-primary-variant text-white"
+              on:click={() => {
+                shareUrl();
+                GTM.pushEvent('share_url');
+              }}
+              type="button"
+            >
+              分享
             </button>
           </div>
         </div>

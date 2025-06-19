@@ -42,7 +42,7 @@ afterUpdate(() => {
     <div class="modal-content bg-body-secondary">
       <div class="modal-header">
         <h1 class="modal-title text-variant fs-5" id="modal-config-label">設定</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close Config Modal"></button>
       </div>
       <div class="modal-body">
         <div class="row">

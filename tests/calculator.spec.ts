@@ -13,21 +13,24 @@ test('calculator', async ({ page }) => {
   await page.getByRole('button', { name: 'tune' }).click();
   await page.getByLabel('手續費折扣').fill('6');
   await page.getByLabel('最低手續費').fill('10');
-  await page.getByRole('button', { name: 'close' }).click();
+  await page.getByRole('button', { name: 'Close Config Modal' }).click();
 
   await page.getByRole('button', { name: 'more_vert' }).click();
   await page.getByRole('button', { name: '增加小數位數' }).click();
   await page.getByRole('button', { name: '增加小數位數' }).click();
   await page.locator('body').click();
 
-  const columns = page.locator('table > tbody > tr').nth(5).locator('td');
-  expect(await columns.nth(0).textContent()).toContain('34.00');
-  expect(await columns.nth(1).textContent()).toContain('1,200');
-  expect(await columns.nth(2).textContent()).toContain('3,400');
-  expect(await columns.nth(3).textContent()).toContain('10.00 (1.03)');
-  expect(await columns.nth(4).textContent()).toContain('10.00 (2.91)');
-  expect(await columns.nth(5).textContent()).toContain('3.40');
-  expect(await columns.nth(6).textContent()).toContain('1,223.40');
-  expect(await columns.nth(7).textContent()).toContain('2,176.60');
-  expect(await columns.nth(8).textContent()).toContain('177.91%');
+  const expected = {
+    4: ['33.99', '2,175.60', '177.83%', '10.00 (1.03)', '10.00 (2.91)', '3.40', '1,223.40', '1,200.00', '3,399.00'],
+    5: ['34.00', '2,176.60', '177.91%', '10.00 (1.03)', '10.00 (2.91)', '3.40', '1,223.40', '1,200', '3,400'],
+    6: ['34.01', '2,177.60', '178.00%', '10.00 (1.03)', '10.00 (2.91)', '3.40', '1,223.40', '1,200.00', '3,401.00'],
+  };
+
+  for (const [rowIndex, values] of Object.entries(expected)) {
+    const rowColumns = page.locator('table > tbody > tr').nth(Number(rowIndex)).locator('td');
+
+    for (let i = 0; i < values.length; i++) {
+      expect(await rowColumns.nth(i).textContent()).toContain(values[i]);
+    }
+  }
 });
