@@ -90,7 +90,7 @@ afterUpdate(() => {
         <!-- svelte-ignore a11y-autofocus -->
         <div class="input-group">
           <button
-            class="input-group-text btn-variant btn-outline px-1"
+            class="input-group-text btn-variant btn-outline"
             type="button"
             on:click={() => {
               if (Number(calculatorInput.買入價格) <= CalculatorConstant.買入價格.最小) {
@@ -124,7 +124,7 @@ afterUpdate(() => {
             type="number"
           />
           <button
-            class="input-group-text btn-variant btn-outline px-1"
+            class="input-group-text btn-variant btn-outline"
             type="button"
             on:click={() => {
               if (Number(calculatorInput.買入價格) >= CalculatorConstant.買入價格.最大) {
@@ -152,7 +152,7 @@ afterUpdate(() => {
         </div>
         <div class="input-group">
           <button
-            class="input-group-text btn-variant btn-outline px-1"
+            class="input-group-text btn-variant btn-outline"
             type="button"
             on:click={() => {
               if (Number(calculatorInput.賣出價格) <= CalculatorConstant.賣出價格.最小) {
@@ -185,7 +185,7 @@ afterUpdate(() => {
             type="number"
           />
           <button
-            class="input-group-text btn-variant btn-outline px-1"
+            class="input-group-text btn-variant btn-outline"
             type="button"
             on:click={() => {
               if (Number(calculatorInput.賣出價格) >= CalculatorConstant.賣出價格.最大) {
@@ -213,7 +213,7 @@ afterUpdate(() => {
         </div>
         <div class="input-group">
           <button
-            class="input-group-text btn-variant btn-outline px-1"
+            class="input-group-text btn-variant btn-outline"
             type="button"
             on:click={() => {
               if (Number(calculatorInput.交易股數) <= CalculatorConstant.交易股數.最小) {
@@ -243,7 +243,7 @@ afterUpdate(() => {
             type="number"
           />
           <button
-            class="input-group-text btn-variant btn-outline px-1"
+            class="input-group-text btn-variant btn-outline"
             type="button"
             on:click={() => {
               if (Number(calculatorInput.交易股數) >= CalculatorConstant.交易股數.最大) {

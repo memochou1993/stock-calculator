@@ -25,17 +25,19 @@ afterUpdate(() => {
 });
 </script>
 
-<button
-  class="btn btn-variant"
-  data-bs-target="#modal-config"
-  data-bs-toggle="modal"
-  on:click={() => {
-    GTM.pushEvent('open_config_modal');
-  }}
-  type="button"
->
-  <AppIcon icon="tune" />
-</button>
+<div class="d-flex gap-1">
+  <button
+    class="btn btn-variant"
+    data-bs-target="#modal-config"
+    data-bs-toggle="modal"
+    on:click={() => {
+      GTM.pushEvent('open_config_modal');
+    }}
+    type="button"
+  >
+    <AppIcon icon="tune" />
+  </button>
+</div>
 
 <div class="modal fade" id="modal-config" tabindex="-1" aria-labelledby="modal-config-label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -64,7 +66,7 @@ afterUpdate(() => {
               <div class="input-group">
                 <button
                   type="button"
-                  class="input-group-text btn-variant btn-outline px-1"
+                  class="input-group-text btn-variant btn-outline"
                   on:click={() => {
                     if (Number(calculatorInput.手續費折扣) <= CalculatorConstant.手續費折扣.最小) {
                       return;
@@ -99,7 +101,7 @@ afterUpdate(() => {
                 />
                 <button
                   type="button"
-                  class="input-group-text btn-variant btn-outline px-1"
+                  class="input-group-text btn-variant btn-outline"
                   on:click={() => {
                     if (Number(calculatorInput.手續費折扣) >= CalculatorConstant.手續費折扣.最大) {
                       return;
@@ -134,7 +136,7 @@ afterUpdate(() => {
               <div class="input-group">
                 <button
                   type="button"
-                  class="input-group-text btn-variant btn-outline px-1"
+                  class="input-group-text btn-variant btn-outline"
                   on:click={() => {
                     if (Number(calculatorInput.最低手續費) <= CalculatorConstant.最低手續費.最小) {
                       return;
@@ -169,7 +171,7 @@ afterUpdate(() => {
                 />
                 <button
                   type="button"
-                  class="input-group-text btn-variant btn-outline px-1"
+                  class="input-group-text btn-variant btn-outline"
                   on:click={() => {
                     if (Number(calculatorInput.最低手續費) >= CalculatorConstant.最低手續費.最大) {
                       return;

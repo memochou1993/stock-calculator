@@ -18,7 +18,7 @@ import AppThemeSwitch from './AppThemeSwitch.svelte';
         股票交易計算器
       </a>
     </div>
-    <div class="d-flex">
+    <div class="d-flex gap-1">
       <button
         class="btn btn-dark-variant"
         on:click={() => {

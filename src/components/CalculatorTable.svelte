@@ -69,7 +69,7 @@ const recover = () => {
 <AppCard>
   <div slot="title" class="d-flex align-items-center justify-content-between">
     <AppCardTitle title="試算結果" />
-    <div class="d-flex">
+    <div class="d-flex gap-1">
       <CalculatorDownloadButton {calculatorOutputs} />
       <CalculatorShareModal url={`${$page.url.origin}?${params}`} />
       <CalculatorMenu

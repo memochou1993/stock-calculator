@@ -56,6 +56,12 @@ input[type='number'] {
   --bs-modal-color: var(--modal-color);
 }
 
+.input-group-text {
+  justify-content: center;
+  min-width: 36px;
+  padding: 0;
+}
+
 .btn-close:focus {
   box-shadow: none;
 }
